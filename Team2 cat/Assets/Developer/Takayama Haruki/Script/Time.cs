@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Const;
+using TMPro;
 
 public class Time : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Time : MonoBehaviour
 
     private int time_interval; //ŠÔXVŠÔŠu
     private Text time_text;
+    private int min; //•ª
+    private int sec; //•b
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -30,6 +33,8 @@ public class Time : MonoBehaviour
 
     private void FixedUpdate()
     {
-        time_text.text = "ŠÔ :" + game_time;
+        min = game_time / 60;
+        sec = game_time % 60;
+        time_text.text = "ŠÔ :" + min.ToString() + ":" + sec.ToString();
     }
 }
