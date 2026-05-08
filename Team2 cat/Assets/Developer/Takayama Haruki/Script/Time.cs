@@ -10,13 +10,13 @@ public class Time : MonoBehaviour
     public int game_time; //ƒQ[ƒ€ŠÔ
 
     private int time_interval; //ŠÔXVŠÔŠu
-    private Text time_text;
+    private TMP_Text time_text;
     private int min; //•ª
     private int sec; //•b
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        time_text = time_obj.GetComponent<Text>();
+        time_text = time_obj.GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -33,8 +33,11 @@ public class Time : MonoBehaviour
 
     private void FixedUpdate()
     {
-        min = game_time / 60;
-        sec = game_time % 60;
-        time_text.text = "ŠÔ :" + min.ToString() + ":" + sec.ToString();
+        min = game_time / 60;//•ª‚ğŒvZ
+        sec = game_time % 60;//•b‚ğŒvZ
+            
+        //c‚èŠÔ‚ğ•\¦
+        if(game_time % 60 == 0)
+        time_text.text = "ŠÔ : " + min.ToString() + ":" + sec.ToString();
     }
 }
