@@ -37,7 +37,10 @@ public class Time : MonoBehaviour
         sec = game_time % 60;//•b‚ðŒvŽZ
             
         //Žc‚èŽžŠÔ‚ð•\Ž¦
-        if(game_time % 60 == 0)
-        time_text.text = "ŽžŠÔ : " + min.ToString() + ":" + sec.ToString();
+        if (game_time % 60 < 10)
+         time_text.text = "ŽžŠÔ : " + min.ToString() + ":0" + sec.ToString();
+        else
+         time_text.text = "ŽžŠÔ : " + min.ToString() + ":" + sec.ToString();
+
     }
 }
