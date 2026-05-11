@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 0000000087a6fd5e335dcbc73589355701bb6dd6
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -430,6 +430,7 @@ GameObject:
   - component: {fileID: 1246320383}
   - component: {fileID: 1246320382}
   - component: {fileID: 1246320384}
+  - component: {fileID: 1246320385}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -523,6 +524,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad66780b41782644893587af0f419e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FpsLimiter
+--- !u!114 &1246320385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246320381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947ad6553ba8e214586a67346a63f411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MovieSelect
+  movie_data: []
+  targets: []
+  fake: 0
 --- !u!1 &1349884664
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::time
   time_obj: {fileID: 2129008966}
-  game_time: 180
+  game_time: 130
 --- !u!114 &2129008969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,8 +807,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u6642\u9593 : 3:00"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
