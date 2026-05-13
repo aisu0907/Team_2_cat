@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Gamemanager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
    
-    public static Gamemanager Instance;
+    public static GameManager Instance;
 
     public int moves = 2;//手数
 
@@ -19,7 +19,8 @@ public class Gamemanager : MonoBehaviour
 
     void Start()
     {
-        UpdateMoves();
+        movesUI.UpdateUI(moves);
+      
     }
 
     // Update is called once per frame
@@ -27,16 +28,12 @@ public class Gamemanager : MonoBehaviour
     {
         moves--; //手数を減らす
 
-        UpdateMoves();
-
+        movesUI.UpdateUI(moves);
         if (moves <= 0)
         {
             //gameOverManager.GameOver();//ゲーム終了判定
         }
     }
 
-    public void UpdateMoves()
-    {
-        movesUI.UpdateUI(moves);//表示更新
-    }
-}
+    
+}  
