@@ -1,4 +1,5 @@
 using UnityEngine;
+
 using TMPro;
 
 public class MovesUI : MonoBehaviour
@@ -7,6 +8,6 @@ public class MovesUI : MonoBehaviour
 
     public void UpdateUI(int moves)
     {
-        movesText.text = "nokori: " + moves;//ï\é¶
+        movesText.text = "éËêî: " + moves;//ï\é¶
     }
 }
