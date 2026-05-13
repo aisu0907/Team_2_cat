@@ -6,7 +6,7 @@ using UnityEngine.Analytics;
 public class MovieSelect : MonoBehaviour
 {
     [SerializeField] MovieData[] movie_data; //映画のジャンルデータを入れる
-    public SpriteRenderer[] targets; //画像を変更するオブジェクトを入れる
+    [SerializeField] SpriteRenderer[] targets; //画像を変更するオブジェクトを入れる
     public int fake; //似た選択肢を入れる回数
     public int choices_num;
     
