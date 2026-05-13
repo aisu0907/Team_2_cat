@@ -10,7 +10,7 @@ public class CustomerText : MonoBehaviour
     private int text_num;
     private int count;
 
-    List<string[]> TextData = new List<string[]>();
+    List<string[]> text_data = new List<string[]>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,13 +20,13 @@ public class CustomerText : MonoBehaviour
         while (reader.Peek() != -1)
         {
             string line = reader.ReadLine();
-            TextData.Add(line.Split(','));
+            text_data.Add(line.Split(','));
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        string Times = TextData[text_num][count].ToString();
+        string hint = text_data[text_num][count].ToString();
     }
 }
