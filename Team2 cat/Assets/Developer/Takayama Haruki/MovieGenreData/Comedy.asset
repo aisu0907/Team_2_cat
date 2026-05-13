@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MovieData
   genre: 1
   poster:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7032575038388723723, guid: 666df69ec9bcd25438eea2afe1bc1e23, type: 3}
+  - {fileID: -5504243934885218091, guid: 9dc31310285457940a0e59ed9e1bb3dd, type: 3}
+  - {fileID: 5208302713237807408, guid: 7052d0ba1a723744abc84a5dd795b62d, type: 3}
+  - {fileID: 9223244760666304103, guid: a1c6c653e38c6ec47ab08874f8224bc7, type: 3}
