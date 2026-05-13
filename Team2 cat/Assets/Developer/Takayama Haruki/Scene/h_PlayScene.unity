@@ -595,7 +595,7 @@ Transform:
   m_GameObject: {fileID: 632431110}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.61, y: -2.08, z: 0}
+  m_LocalPosition: {x: -3.2, y: -3.21, z: 0}
   m_LocalScale: {x: 1.2896, y: 1.5998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -819,10 +819,11 @@ MonoBehaviour:
   - {fileID: 632431111}
   - {fileID: 1370727894}
   - {fileID: 263589310}
-  fake: 0
+  fake: 3
   choices_num: 5
   answer_genre: 0
   answer: 0
+  choices: []
 --- !u!1 &1349884664
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,7 +1000,7 @@ Transform:
   m_GameObject: {fileID: 1370727893}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4, y: -2.39, z: 0}
+  m_LocalPosition: {x: 2.51, y: -2.94, z: 0}
   m_LocalScale: {x: 1.2896, y: 1.5998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
