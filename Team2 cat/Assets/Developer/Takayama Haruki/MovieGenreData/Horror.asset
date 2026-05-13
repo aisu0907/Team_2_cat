@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Horror
   m_EditorClassIdentifier: Assembly-CSharp::MovieData
   genre: 0
-  poster: []
+  poster:
+  - {fileID: 8507887082906482727, guid: d171706a1f520ac46baae08a042461cf, type: 3}
+  - {fileID: 8191200483367261007, guid: 71c59fedae3a5544291ea67d79e6ec0c, type: 3}
+  - {fileID: -8211661520234084831, guid: dc3e6056f57f10142952fafdca40ac16, type: 3}
+  - {fileID: 6252176394427109290, guid: e37a6c94420048f4584163c977d9a680, type: 3}
