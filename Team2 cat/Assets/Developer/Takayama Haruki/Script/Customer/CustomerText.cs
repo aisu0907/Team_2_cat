@@ -5,23 +5,29 @@ using UnityEngine;
 
 public class CustomerText : MonoBehaviour
 {
-    public bool text_nexst;
+    public bool text_next;
 
-    [SerializeField] TextMeshProUGUI Text;
-    [SerializeField] TextAsset TextFile;
+    [SerializeField] TextMeshProUGUI text;
+    [SerializeField] TextAsset textfile;
     private int text_num;
     private int count;
 
-    private string genre;
-    private int poster;
-    List<string[]> text_data = new List<string[]>();
-
+    [SerializeField] private string genre;
+    [SerializeField] private int poster;
+    [SerializeField] List<string[]> text_data = new List<string[]>();
+    [SerializeField] private string hint;
+    [SerializeField] private bool genre_switch = false;
+    [SerializeField] private bool poster_switch = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        poster = MovieSelect.Instance.Answer();
-        StringReader reader = new StringReader(TextFile.text);
+        poster = MovieSelect.Instance.Answer(); //“š‚¦‚ðŽæ“¾
+        text_num = 0;
+        count = 0;
+        text_next = false;
+        StringReader reader = new StringReader(textfile.text);
         int answer_genre = MovieSelect.Instance.Answergenre();
+        
         
         switch (answer_genre)
         {
@@ -45,34 +51,44 @@ public class CustomerText : MonoBehaviour
             string line = reader.ReadLine();
             text_data.Add(line.Split(','));
         }
+
+        hint = text_data[text_num][count].ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        string hint = text_data[text_num][count].ToString();
-
-        bool genre_switch = false;
-        bool poster_switch = false;
         if (hint != "ENDTEXT")
         {
-            if (hint != genre && !genre_switch)
+            if (hint == genre && !genre_switch)
                 genre_switch = true;
-            else
-                text_num++;
-            if (hint != poster.ToString() && genre_switch && !poster_switch)
+
+            if (hint == poster.ToString() && genre_switch && !poster_switch)
                 poster_switch = true;
-            else
-                text_num++;
 
-
-            if (genre_switch)
+            if (!genre_switch || !poster_switch)
             {
-                if (Input.GetKeyDown(KeyCode.Return))
+                text_num++;
+                hint = text_data[text_num][count].ToString();
+                Debug.Log(hint);
+            }
+
+            if (poster_switch)
+            {
+                if (hint != "NEXT")
                 {
-                    count++;
+                    if(text_next)
+                    {
+                        count++;
+                        hint = text_data[text_num][count].ToString();
+
+                        text_next = false;
+                    }
+
+                    text.text = hint;
                 }
             }
+
         }
         else
         {

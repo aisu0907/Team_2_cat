@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "Test Action",
+    "maps": [
+        {
+            "name": "Test",
+            "id": "5f8f15e7-0b3a-4c46-8e36-689f59b19a68",
+            "actions": [
+                {
+                    "name": "TestKey",
+                    "type": "Button",
+                    "id": "5ebdb899-c00b-4710-80e5-3f80645062ce",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1d418307-3b23-4935-a928-a48d5f2b8810",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestKey",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

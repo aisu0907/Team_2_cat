@@ -22,7 +22,7 @@ public class Time : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        time_interval++;
+        ++time_interval;
         
         if(time_interval == Const.GameConfig.TICK_TIME && game_time > 0)
         {
