@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 using TMPro;
 
@@ -10,4 +10,4 @@ public class MovesUI : MonoBehaviour
     {
         movesText.text = "éËêî: " + moves;//ï\é¶
     }
-}
+}/*
