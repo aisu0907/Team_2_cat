@@ -953,7 +953,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1987538883}
   - component: {fileID: 1987538882}
-  - component: {fileID: 1987538881}
+  - component: {fileID: 1987538884}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -961,19 +961,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1987538881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987538880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65997e9918fa7a247905072c9be7a710, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Watch
-  timer: {fileID: 2129008968}
 --- !u!114 &1987538882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,6 +988,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1987538884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987538880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65997e9918fa7a247905072c9be7a710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Watch
+  timer: {fileID: 2129008968}
 --- !u!1 &2129008966
 GameObject:
   m_ObjectHideFlags: 0

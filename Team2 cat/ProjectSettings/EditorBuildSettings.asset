@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Developer/Niia Miyu/scene/n_PlayScene.unity
     guid: 9e06e73ce6ce9ad4eafcff4ad8a59339
+  - enabled: 1
+    path: Assets/Developer/Niia Miyu/scene/two Scene.unity
+    guid: a3dae7d4aca3c0e4e8c22b3c766add90
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
