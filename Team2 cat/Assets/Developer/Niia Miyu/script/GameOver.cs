@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;//シーンを切り替え機能を使うのに必要
 
 public class GameOverManager : MonoBehaviour
 {
-    public static GameOverManager Instance;
+    public static GameOverManager Instance;//どこからでも呼べるようにする
 
-    private bool isGameOver = false;
+    private bool isGameOver = false;//二重にシーン移動しないようにする
 
     void Awake()
     {
@@ -14,11 +14,12 @@ public class GameOverManager : MonoBehaviour
 
     public void GameOver()
     {
-        if (isGameOver)
+        Debug.Log("ゲームオーバーが呼ばれました！");//デバック用
+        if (isGameOver)//ゲームオーバー処理中ならこれ以降は無視
             return;
 
-        isGameOver = true;
+        isGameOver = true;//ゲームオーバー状態にする
 
-        SceneManager.LoadScene("GameOverScene");
+        SceneManager.LoadScene("two Scene");
     }
 }
