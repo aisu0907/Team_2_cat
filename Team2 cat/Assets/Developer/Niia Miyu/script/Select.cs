@@ -1,46 +1,35 @@
 using UnityEngine;
 
-public class Select : MonoBehaviour
+public class SelectableObject : MonoBehaviour
 {
-    private SpriteRenderer sr;
-    public GameObject outline;
+    public SpriteRenderer frameRenderer;//色を変えたい画像を入れる
 
-    private static Select currentSelected;//１個の記憶（常に１つだけ保存）
+    public Color normalColor = Color.white;//通常が白
+    public Color selectedColor = Color.red;//選択時が赤
+
+    private static SelectableObject currentSelected;//全オブジェクト共通で1つ
+
     void Start()
     {
-        Debug.Log("表示されてる");
-        sr = GetComponent<SpriteRenderer>();
-        //outline.SetActive(false);
+        frameRenderer.color = normalColor;//初めの色指定
+       
     }
 
-    void OnMouseDown()//クリックされた
+    void OnMouseDown()//このオブジェクトがクリックされた瞬間
     {
-        SelectThis();
-        GameManager.Instance.UseMove();
-    }
-
-    void SelectThis()
-    {
-        // 前の選択を解除
+        // 前の選択を戻す
         if (currentSelected != null)
         {
-            currentSelected.SetSelected(false);
+             currentSelected.frameRenderer.color =
+             currentSelected.normalColor;
+            
         }
 
-        // 今のやつを選択にする
-        currentSelected = this;
-        SetSelected(true);
+        // 今回クリックしたものを選択
+        frameRenderer.color = selectedColor;
+        currentSelected = this;//クリックされたものを保存
+        
+        // 手数消費
+        GameManager.Instance.UseMove();
     }
-
-    public void SetSelected(bool value)
-    {
-        outline.SetActive(value);
-        sr.color = value ? Color.yellow : Color.white;//色変更
-    }
-
-   /* void OnEnable()
-    {
-        Debug.Log("ON ENABLE: " + gameObject.name);
-    }
-   */
 }
