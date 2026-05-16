@@ -220,6 +220,22 @@ PrefabInstance:
       propertyPath: text_next
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6322654332738447337, guid: 5f1b4e292da8d7046a7f147a0b645e7e, type: 3}
+      propertyPath: textfile.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322654332738447337, guid: 5f1b4e292da8d7046a7f147a0b645e7e, type: 3}
+      propertyPath: 'textfile.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4900000, guid: 9fb0563b1adada947a8c191931fba7f8, type: 3}
+    - target: {fileID: 6322654332738447337, guid: 5f1b4e292da8d7046a7f147a0b645e7e, type: 3}
+      propertyPath: 'textfile.Array.data[1]'
+      value: 
+      objectReference: {fileID: 4900000, guid: 2b0bb0eb6e000794890d16bbfcb61383, type: 3}
+    - target: {fileID: 6322654332738447337, guid: 5f1b4e292da8d7046a7f147a0b645e7e, type: 3}
+      propertyPath: 'textfile.Array.data[2]'
+      value: 
+      objectReference: {fileID: 4900000, guid: 20d6574895ecbd845b1e013142ac2f60, type: 3}
     - target: {fileID: 8503432088606955968, guid: 5f1b4e292da8d7046a7f147a0b645e7e, type: 3}
       propertyPath: m_Pivot.x
       value: 0

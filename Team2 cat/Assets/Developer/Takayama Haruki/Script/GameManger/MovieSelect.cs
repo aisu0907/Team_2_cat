@@ -6,7 +6,7 @@ public class MovieSelect : MonoBehaviour
     [SerializeField] MovieData[] movie_data; //映画のジャンルデータを入れる
     public SpriteRenderer[] targets; //画像を変更するオブジェクトを入れる
     public int fake; //似た選択肢を入れる回数
-    public int choices_num;
+    public int choices_num; //選択肢の数
 
     [SerializeField] private int answer_genre; //答えのジャンル
     [SerializeField] private int answer; //答え
@@ -128,6 +128,14 @@ public class MovieSelect : MonoBehaviour
         used.Add($"{genre}_{poster}");
     }
 
+    /// <summary>
+    /// 答えを取得するようメソッド
+    /// </summary>
+    /// <returns></returns>
     public int Answer() { return answer;}
+    /// <summary>
+    /// 答えのジャンルを取得するようメソッド
+    /// </summary>
+    /// <returns></returns>
     public int Answergenre() { return answer_genre; }
 }
