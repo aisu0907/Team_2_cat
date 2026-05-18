@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         moves--; //手数を減らす
         
 
-        if (moves < 0)//0以下になったら
+        if (moves <= 0)//0以下になったら
         {
 
             moves = 0;//マイナスにならないように
