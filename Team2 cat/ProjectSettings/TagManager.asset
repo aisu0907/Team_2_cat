@@ -54,6 +54,12 @@ TagManager:
   - name: Movie
     uniqueID: 1463126325
     locked: 0
+  - name: Effect
+    uniqueID: 1632694693
+    locked: 0
+  - name: PictureBook
+    uniqueID: 3733966673
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

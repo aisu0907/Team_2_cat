@@ -603,6 +603,22 @@ PrefabInstance:
       propertyPath: moveText
       value: 
       objectReference: {fileID: 587225227}
+    - target: {fileID: 209597383044141733, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
+      propertyPath: movie_data.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 209597383044141733, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
+      propertyPath: 'movie_data.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d263a86bfbd23664b81896b4e9a8c442, type: 2}
+    - target: {fileID: 209597383044141733, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
+      propertyPath: 'movie_data.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bd38646b0757c2f468e65ba4f9c4913c, type: 2}
+    - target: {fileID: 209597383044141733, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
+      propertyPath: 'movie_data.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b714a9c098cabb647916627ce8b4c885, type: 2}
     - target: {fileID: 4618345193462581903, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
       propertyPath: 'targets.Array.data[0]'
       value: 
