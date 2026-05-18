@@ -30,6 +30,7 @@ public class CustomerText : MonoBehaviour
         //テキストファイル内のテキストを取得
         while (reader.Peek() != -1)
         {
+            //,で区切る
             string line = reader.ReadLine();
             text_data.Add(line.Split(','));
         }
@@ -40,7 +41,7 @@ public class CustomerText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //テキストの終わりの検出
+        //テキストの終わりを検出するまで
         if (hint != "ENDTEXT")
         {
             if (hint != "NEXT")
@@ -69,6 +70,7 @@ public class CustomerText : MonoBehaviour
                         text_next = false;
                     }
 
+                    if(hint != "NEXT")
                     text.text = hint;
                 }
             }
