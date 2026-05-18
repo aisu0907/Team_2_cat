@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5162775001396660642}
   - component: {fileID: 1480528419590797110}
   - component: {fileID: 593602458747531318}
+  - component: {fileID: 209597383044141733}
   - component: {fileID: 4618345193462581903}
   m_Layer: 0
   m_Name: GameManager
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8916660990900603788}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.66, y: 4.14, z: 0}
+  m_LocalPosition: {x: 3.87, y: 4.25, z: 0}
   m_LocalScale: {x: 1.2291, y: 1.5041, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -105,6 +106,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad66780b41782644893587af0f419e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FpsLimiter
+--- !u!114 &209597383044141733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916660990900603788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55533ce25cf295d46a8c22cd7463bcf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  movie_data: []
+  moveText: {fileID: 0}
+  timer: {fileID: 0}
+  moves: 2
 --- !u!114 &4618345193462581903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,8 +144,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  fake: 3
   choices_num: 5
+  fake: 1
   answer_genre: 0
   answer: 0
   choices: []

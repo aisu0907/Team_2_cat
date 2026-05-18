@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class MovieSelect : MonoBehaviour
 {
-    [SerializeField] MovieData[] movie_data; //映画のジャンルデータを入れる
-    public SpriteRenderer[] targets; //画像を変更するオブジェクトを入れる
-    public int fake; //似た選択肢を入れる回数
-    public int choices_num; //選択肢の数
+    [SerializeField] MovieData[] movie_data;//映画のジャンルデータを入れる
+    public SpriteRenderer[] targets;       //画像を変更するオブジェクトを入れる
+    public int choices_num;//選択肢の数
+    public int fake;       //似た選択肢を入れる回数
 
-    [SerializeField] private int answer_genre; //答えのジャンル
-    [SerializeField] private int answer; //答え
-    [SerializeField] private Sprite[] choices; //選択肢
-    private Sprite[] choices_save; //選択肢を一時的に保存用
+    [SerializeField] private int answer_genre;//答えのジャンル
+    [SerializeField] private int answer;      //答え
+    [SerializeField] private Sprite[] choices;//選択肢
+    private Sprite[] choices_save;//選択肢を一時的に保存用
 
-    private HashSet<string> used = new HashSet<string>(); //同じ画像を使わないよう管理用
+    private HashSet<string> used = new HashSet<string>();//同じ画像を使わないよう管理用
 
     public static MovieSelect Instance { get; private set; }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,18 +21,23 @@ public class MovieSelect : MonoBehaviour
     {
         Instance = this;
 
-        choices = new Sprite[choices_num]; //配列の数を指定
-        choices_save = new Sprite[choices_num]; //配列の数を指定
-        answer_genre = Random.Range(0, movie_data.Length); //答えのジャンルをランダムで取得
-        answer = Random.Range(0, movie_data[answer_genre].poster.Length); //答えをランダムで取得
-        choices_save[0] = movie_data[answer_genre].poster[answer]; //答えの画像を取得
+        //配列の数を指定
+        choices = new Sprite[choices_num];
+        choices_save = new Sprite[choices_num];
+
+        answer_genre = Random.Range(0, movie_data.Length);//答えのジャンルをランダムで取得
+        answer = Random.Range(0, movie_data[answer_genre].poster.Length);//答えをランダムで取得
+        choices_save[0] = movie_data[answer_genre].poster[answer];//答えの画像を取得
+        Movieselect();
+
     }
 
     private void Start()
     {
-        Movieselect();
     }
-    // Update is called once per frame
+    /// <summary>
+    /// ゲームで使う映画を決めるようメソッド
+    /// </summary>
     public void Movieselect()
     {
         //フェイクが設定されていた場合

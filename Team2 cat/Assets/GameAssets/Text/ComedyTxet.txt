@@ -1,5 +1,4 @@
-﻿
-NEXT, COMEDY,
+﻿NEXT, COMEDY,
 0,
 これはコメディの1です。,NEXT,
 ENDTEXT,
