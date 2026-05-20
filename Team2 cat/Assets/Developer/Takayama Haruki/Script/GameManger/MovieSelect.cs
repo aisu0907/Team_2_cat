@@ -15,7 +15,7 @@ public class MovieSelect : MonoBehaviour
 
     private HashSet<string> used = new HashSet<string>();//同じ画像を使わないよう管理用
 
-    public static MovieSelect Instance { get; private set; }
+    public static MovieSelect Instance { get; private set; } ///シングルトン
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -32,9 +32,6 @@ public class MovieSelect : MonoBehaviour
 
     }
 
-    private void Start()
-    {
-    }
     /// <summary>
     /// ゲームで使う映画を決めるようメソッド
     /// </summary>
