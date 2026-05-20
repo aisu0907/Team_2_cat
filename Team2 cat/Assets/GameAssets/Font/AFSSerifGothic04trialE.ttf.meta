@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d7bf87caf8603734a9485e8c4449e908
+guid: 27db817e07470c648a84784e8b9ae594
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - DotGothic16
+  - AFSSerifGothic04trial E
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

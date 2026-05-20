@@ -103,13 +103,13 @@ TextureImporter:
       name: book_0
       rect:
         serializedVersion: 2
-        x: 80
-        y: 57
-        width: 98
-        height: 90
+        x: 43
+        y: 70
+        width: 169
+        height: 163
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 2, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e72552b903c279044826b95dacba8f0b
+    spriteID: 16a683806553244458c33f7678c18038
     internalID: 0
     vertices: []
     indices: 

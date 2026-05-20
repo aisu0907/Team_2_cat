@@ -33,7 +33,6 @@ public class Book : MonoBehaviour
             book_on = true;
             gray_save = Instantiate(gray, new Vector3(0, 0, 0), Quaternion.identity);
 
-
         }
     }
 }
