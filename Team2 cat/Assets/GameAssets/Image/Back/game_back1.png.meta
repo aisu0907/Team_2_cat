@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 6885d47eb1aa6df458624651c62da1c2
+guid: 85c0c441e0e7adf48bb96855eee03354
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9081400949542472210
-    second: game_back _0
+      213: -1741615326511405258
+    second: game_back1_0
+  - first:
+      213: 1403557559834695421
+    second: game_back1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +103,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: game_back _0
+      name: game_back1_0
       rect:
         serializedVersion: 2
-        x: 502
-        y: 671
-        width: 923
-        height: 719
+        x: 508
+        y: 177
+        width: 906
+        height: 1202
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ee530a3a3f168f180800000000000000
-      internalID: -9081400949542472210
+      spriteID: 63769e7861a84d7e0800000000000000
+      internalID: -1741615326511405258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: game_back1_1
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 743
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df6d2cf0a207a7310800000000000000
+      internalID: 1403557559834695421
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2dc447d2d8f59724dbc3c10f81830590
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      game_back _0: -9081400949542472210
+      game_back1_0: -1741615326511405258
+      game_back1_1: 1403557559834695421
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

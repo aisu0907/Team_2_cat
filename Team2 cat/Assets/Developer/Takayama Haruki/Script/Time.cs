@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using Const;
 using TMPro;
 
@@ -27,7 +26,7 @@ public class Time : MonoBehaviour
         {
             ++time_interval;
 
-            if (time_interval == Const.GameConfig.TICK_TIME && game_time > 0)
+            if (time_interval == GameConfig.TICK_TIME && game_time > 0)
             {
                 time_interval = 0; //インターバルリセット
                 game_time--; //1秒減らす

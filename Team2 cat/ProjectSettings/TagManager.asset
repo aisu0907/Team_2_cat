@@ -45,14 +45,17 @@ TagManager:
   - name: Back
     uniqueID: 1593681543
     locked: 0
-  - name: UI
-    uniqueID: 3351993651
-    locked: 0
   - name: Customer
     uniqueID: 3597515521
     locked: 0
-  - name: Movie
+  - name: Poster
     uniqueID: 1463126325
+    locked: 0
+  - name: UI
+    uniqueID: 3351993651
+    locked: 0
+  - name: Text
+    uniqueID: 233707583
     locked: 0
   - name: Effect
     uniqueID: 1632694693
