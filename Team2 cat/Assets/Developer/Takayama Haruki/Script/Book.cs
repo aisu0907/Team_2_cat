@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class Book : MonoBehaviour
 {
@@ -32,8 +31,6 @@ public class Book : MonoBehaviour
             time.pause = true;
             book_on = true;
             gray_save = Instantiate(gray, new Vector3(0, 0, 0), Quaternion.identity);
-            Instantiate(gray_save);
-
         }
     }
 }

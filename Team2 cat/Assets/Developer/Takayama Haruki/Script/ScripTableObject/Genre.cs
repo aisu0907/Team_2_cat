@@ -4,8 +4,10 @@ public enum Genre
 {
     Horror,
     Comedy,
-    LoveRomance,
+    LoveComedy,
+    HumanDrama,
 }
+
 [CreateAssetMenu(fileName = "MovieData", menuName = "Scriptable Objects/MovieData")]
 public class MovieData : ScriptableObject
 {

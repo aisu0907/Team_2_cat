@@ -10,11 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65dab36e77905404eae868b8e9c09ea0, type: 3}
-  m_Name: LoveRomance
+  m_Name: HumanDrama
   m_EditorClassIdentifier: Assembly-CSharp::MovieData
-  genre: 2
-  poster:
-  - {fileID: 819731304089647741, guid: e060646955fe0474bb2d1fe90b032b2b, type: 3}
-  - {fileID: -1054054346898175383, guid: c6139c0a96cbc6940a4717fc11765924, type: 3}
-  - {fileID: 877027550226945015, guid: 1fb5821d3607bf14b95ea8c3f7ca9b82, type: 3}
-  - {fileID: 1311686016717344871, guid: 5fc747748e34f3841958d068f82e24bb, type: 3}
+  genre: 0
+  poster: []

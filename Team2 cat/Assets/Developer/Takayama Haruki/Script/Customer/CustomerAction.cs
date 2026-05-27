@@ -23,7 +23,7 @@ public class CustomerAction : MonoBehaviour
         if(!comment.GetComponent<CustomerText>().text_next)
         ++count;
 
-        if(count >= Const.GameConfig.TICK_TIME)
+        if(count >= GameConfig.TICK_TIME)
         {
             ++comment_interval;
             count = 0;

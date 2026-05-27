@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
 
     private int ans_genre; //答えのジャンル
     private int ans_poster;//答え
-    private bool isgameclear;
-    private bool isgameover;//二重にシーン移動しないようにする
+    private bool is_game_clear;
+    private bool is_game_over;//二重にシーン移動しないようにする
     //public GameOverManager gameOverManager;
 
     void Awake()
@@ -25,21 +25,23 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        isgameclear = false;
-        isgameover = false;
-        ans_genre = MovieSelect.Instance.Answergenre();
-        ans_poster = MovieSelect.Instance.Answer();
+        //フラグをリセット
+        is_game_clear = false;
+        is_game_over = false;
+
+        ans_genre = MovieSelect.Instance.Answergenre(); //答えのジャンルを取得
+        ans_poster = MovieSelect.Instance.Answer(); //答えを取得
         UpdateUI();//ゲーム開始時に一度UIを表示
     }
 
     private void Update()
     {
-        if(!isgameover)
+        if(!is_game_over)
         {
             // 時間のスクリプトが存在、残り時間が0以下
             if (timer != null && timer.game_time <= 0)
             {
-                isgameover = true;
+                is_game_over = true;
 
                 GameOver();
             }
@@ -56,14 +58,14 @@ public class GameManager : MonoBehaviour
             moves--; //手数を減らす
 
 
-        if (moves <= 0 && !isgameclear)//0以下になったら
+        if (moves <= 0 && !is_game_clear)//0以下になったら
         {
 
             moves = 0;//マイナスにならないように
             UpdateUI();
 
             // 手数切れによるゲームオーバー呼び出し
-            if (!isgameover)
+            if (!is_game_over)
                 GameOver();
         }
         else
@@ -91,7 +93,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("ゲームオーバーが呼ばれました！");//デバック用
 
-        isgameover = true;//ゲームオーバー状態にする
+        is_game_over = true;//ゲームオーバー状態にする
 
         SceneManager.LoadScene(SceneName.Two);//シーン移動
     }
@@ -103,9 +105,9 @@ public class GameManager : MonoBehaviour
     public void Gameclear(Sprite ans)
     { 
         //ゲームがクリアされていないかつ画像が正解だったら
-        if(ans == movie_data[ans_genre].poster[ans_poster] && !isgameclear)
+        if(ans == movie_data[ans_genre].poster[ans_poster] && !is_game_clear)
         {
-            isgameclear = true;
+            is_game_clear = true;
             Debug.Log("ゲームクリアが呼ばれました！");//デバック用
             UseMove();
             SceneManager.LoadScene(SceneName.Result);

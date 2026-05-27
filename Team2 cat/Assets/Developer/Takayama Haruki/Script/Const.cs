@@ -18,7 +18,7 @@ namespace Const
         public const string Game   = "GameScene";
         public const string Result = "ResultScene";
         public const string Title  = "TitleScene";
-        public const string Two    = "twoScene";
+        public const string Two    = "two Scene";
 
     }
 }
