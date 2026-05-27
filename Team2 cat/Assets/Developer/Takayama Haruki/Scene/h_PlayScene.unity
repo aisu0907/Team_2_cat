@@ -1177,11 +1177,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4618345193462581903, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
       propertyPath: answer
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618345193462581903, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
+      propertyPath: set_on
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4618345193462581903, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
       propertyPath: answer_genre
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4618345193462581903, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
       propertyPath: 'targets.Array.data[0]'
@@ -1737,6 +1741,10 @@ PrefabInstance:
       propertyPath: comment
       value: 
       objectReference: {fileID: 1385896346}
+    - target: {fileID: 5366819144911281984, guid: 7a6b8261169f35e4a8060ac4e8fd4da8, type: 3}
+      propertyPath: comment_time
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6987980111659303534, guid: 7a6b8261169f35e4a8060ac4e8fd4da8, type: 3}
       propertyPath: m_fontSize
       value: 30

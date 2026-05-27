@@ -1,6 +1,8 @@
 ﻿NEXT, HOLLOL,
-0,
+0, IT
 これはホラーの1です。,NEXT,
+これは殺人鬼が出てきます,NEXT,
+これはピエロが主役です,NEXT,
 ENDTEXT,
 1,
 これはホラーの2です。,NEXT,

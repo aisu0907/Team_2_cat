@@ -9,7 +9,6 @@ public class CustomerAction : MonoBehaviour
     private int count; 
     private int comment_interval;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //リセット
@@ -17,22 +16,24 @@ public class CustomerAction : MonoBehaviour
         comment_interval = 0;
 }
 
-    // Update is called once per frame
     void Update()
     {
+        //次のヒントに行ってなかったら
         if(!comment.GetComponent<CustomerText>().text_next)
         ++count;
 
+        //1秒たったら
         if(count >= GameConfig.TICK_TIME)
         {
             ++comment_interval;
             count = 0;
         }
 
+        //インターバルが終了したら
         if(comment_interval >= comment_time)
         {
-            comment.GetComponent<CustomerText>().text_next = true;
-            comment_interval = 0;
+            comment.GetComponent<CustomerText>().text_next = true; //次のヒントに行く
+            comment_interval = 0; //インターバルリセット
         }
     }
 }
