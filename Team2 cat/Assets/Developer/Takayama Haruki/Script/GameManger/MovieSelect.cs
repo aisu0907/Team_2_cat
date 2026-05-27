@@ -7,11 +7,13 @@ public class MovieSelect : MonoBehaviour
     public SpriteRenderer[] targets;       //画像を変更するオブジェクトを入れる
     public int choices_num;//選択肢の数
     public int fake;       //似た選択肢を入れる回数
+    public bool set_on;
 
     [SerializeField] private int answer_genre;//答えのジャンル
     [SerializeField] private int answer;      //答え
     [SerializeField] private Sprite[] choices;//選択肢
     private Sprite[] choices_save;//選択肢を一時的に保存用
+    private bool set_switch;
 
     private HashSet<string> used = new HashSet<string>();//同じ画像を使わないよう管理用
 
@@ -21,12 +23,19 @@ public class MovieSelect : MonoBehaviour
     {
         Instance = this;
 
+        set_switch = set_on;
+
         //配列の数を指定
         choices = new Sprite[choices_num];
         choices_save = new Sprite[choices_num];
 
-        answer_genre = Random.Range(0, movie_data.Length);//答えのジャンルをランダムで取得
-        answer = Random.Range(0, movie_data[answer_genre].poster.Length);//答えをランダムで取得
+        //falseだったらランダムで選出する
+        if (!set_switch)
+        {
+            answer_genre = Random.Range(0, movie_data.Length);//答えのジャンルをランダムで取得
+            answer = Random.Range(0, movie_data[answer_genre].poster.Length);//答えをランダムで取得
+        }
+
         choices_save[0] = movie_data[answer_genre].poster[answer];//答えの画像を取得
         Movieselect();
 

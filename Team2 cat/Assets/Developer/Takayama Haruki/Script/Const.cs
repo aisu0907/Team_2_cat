@@ -6,8 +6,19 @@ namespace Const
     //変数名はすべて小文字の単語をアンダーバー区切り　例(fps_limiter)
     //関数名は頭文字大文字あとは小文字　例(Fpslimiter)
 
+    //ゲームの基礎設定
     public static class GameConfig
     {
         public const int TICK_TIME = 60;
+    }
+
+    //シーンの名前
+    public static class SceneName
+    {
+        public const string Game   = "GameScene";
+        public const string Result = "ResultScene";
+        public const string Title  = "TitleScene";
+        public const string Two    = "twoScene";
+
     }
 }

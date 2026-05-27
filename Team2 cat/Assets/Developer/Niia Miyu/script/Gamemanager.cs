@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Const;
 
 public class GameManager : MonoBehaviour
 {
@@ -92,7 +93,7 @@ public class GameManager : MonoBehaviour
 
         isgameover = true;//ゲームオーバー状態にする
 
-        SceneManager.LoadScene("two Scene");//シーン移動
+        SceneManager.LoadScene(SceneName.Two);//シーン移動
     }
 
     /// <summary>
@@ -107,6 +108,7 @@ public class GameManager : MonoBehaviour
             isgameclear = true;
             Debug.Log("ゲームクリアが呼ばれました！");//デバック用
             UseMove();
+            SceneManager.LoadScene(SceneName.Result);
         }
         else
             UseMove();
