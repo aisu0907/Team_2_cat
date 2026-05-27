@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 
         is_game_over = true;//ゲームオーバー状態にする
 
-        SceneManager.LoadScene(SceneName.Two);//シーン移動
+        SceneManager.LoadScene(SceneName.GameOver);//シーン移動
     }
 
     /// <summary>
@@ -103,16 +103,20 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="ans">判定する画像</param>
     public void Gameclear(Sprite ans)
-    { 
-        //ゲームがクリアされていないかつ画像が正解だったら
-        if(ans == movie_data[ans_genre].poster[ans_poster] && !is_game_clear)
+    {
+        //ゲームがクリアされてなかったら
+        if (!is_game_clear)
         {
-            is_game_clear = true;
-            Debug.Log("ゲームクリアが呼ばれました！");//デバック用
-            UseMove();
-            SceneManager.LoadScene(SceneName.Result);
+            //画像が正解だったら
+            if (ans == movie_data[ans_genre].poster[ans_poster])
+            {
+                is_game_clear = true;
+                Debug.Log("ゲームクリアが呼ばれました！");//デバック用
+                UseMove();
+                SceneManager.LoadScene(SceneName.Result);
+            }
+            else
+                UseMove();
         }
-        else
-            UseMove();
     }
 }  

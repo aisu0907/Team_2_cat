@@ -15,9 +15,10 @@ namespace Const
     //ÉVÅ[ÉìÇÃñºëO
     public static class SceneName
     {
+        public const string Title  = "TitleScene";
         public const string Game   = "GameScene";
         public const string Result = "ResultScene";
-        public const string Title  = "TitleScene";
+        public const string GameOver = "GameOverScene";
         public const string Two    = "two Scene";
 
     }

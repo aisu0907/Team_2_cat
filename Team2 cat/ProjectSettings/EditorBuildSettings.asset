@@ -6,14 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/MainScenes/TitleScene.unity
+    guid: 9ae715bccd405484c9c552ff42f3eae1
+  - enabled: 1
     path: Assets/MainScenes/PlayScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    guid: d31a21b5b17f5ac41b7e59cdcda954d9
   - enabled: 1
     path: Assets/MainScenes/ResultScene.unity
     guid: 164c670cbf346b641b140971cd131ddc
   - enabled: 1
-    path: Assets/MainScenes/TitleScene.unity
-    guid: 9ae715bccd405484c9c552ff42f3eae1
+    path: Assets/MainScenes/GameOverScene.unity
+    guid: 778aaaa3e2078f8499456e529824a0dd
   - enabled: 1
     path: Assets/Developer/Niia Miyu/scene/n_PlayScene.unity
     guid: 9e06e73ce6ce9ad4eafcff4ad8a59339
