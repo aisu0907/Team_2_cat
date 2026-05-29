@@ -22,6 +22,7 @@ public class CustomerText : MonoBehaviour
     {
         poster = MovieSelect.Instance.Answer(); //答えを取得
         text_num = 0; //行数をリセット
+        text_count = 0;
         text_next = false; //フラグをリセット
         poster_switch = false; //フラグをリセット
         genre = MovieSelect.Instance.Answergenre(); //答えのジャンルを取得
@@ -41,11 +42,13 @@ public class CustomerText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //テキストの終わりを検出するまで
+        //テキストの終わりを検出しなかった場合
         if (hint != "ENDTEXT")
         {
+            //テキストの改行を検出しかった場合
             if (hint != "NEXT")
             {
+                //答えのポスターかつ答えのポスターが見つかっていなかった場合
                 if (hint == poster.ToString() && !poster_switch)
                 {
                     Savetext();
@@ -53,15 +56,17 @@ public class CustomerText : MonoBehaviour
                     Debug.Log("成功");
                 }
 
+                //答えのポスターが見つかっていなかった場合
                 if (!poster_switch)
                 {
                     Savetext();
                     Debug.Log(hint);
                 }
 
+                //答えのポスターが見つかっていたら
                 if (poster_switch)
                 {
-
+                    //次のヒントにいける場合
                     if (text_next)
                     {
                         text_count++;
@@ -70,6 +75,7 @@ public class CustomerText : MonoBehaviour
                         text_next = false;
                     }
 
+                    //入ってる文字がNEXTじゃない場合
                     if(hint != "NEXT")
                     text.text = hint;
                 }
@@ -89,9 +95,13 @@ public class CustomerText : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 改行用メソッド
+    /// </summary>
     void Savetext()
     {
         text_num++;
-        hint = text_data[text_num][0].ToString();
+        text_count = 0;
+        hint = text_data[text_num][text_count].ToString();
     }
 }
