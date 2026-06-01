@@ -638,7 +638,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000a5f1506151cf8fde3589355701bb6dd6335dcbc787a6fd5e3f18ee0d
+  m_ApplyToSortingLayers: 00000000a5f1506151cf8fde3589355701bb6dd6335dcbc787a6fd5e3f18ee0d45037de1
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -689,6 +689,11 @@ Transform:
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 9015035934041956257, guid: 9ec4255303a30f749aaced4f6969a29e, type: 3}
   m_PrefabInstance: {fileID: 204395717}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &712397405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8916660990900603788, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
+  m_PrefabInstance: {fileID: 1294915364}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &741857449 stripped
 MonoBehaviour:
@@ -1015,7 +1020,7 @@ GameObject:
   - component: {fileID: 1213672918}
   - component: {fileID: 1213672919}
   m_Layer: 0
-  m_Name: book_0
+  m_Name: book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1082,7 +1087,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -942973645
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 3843231544584785974, guid: ce9868b003b75484aba21cdef8b1dffc, type: 3}
@@ -1109,6 +1114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Book
   gray: {fileID: 6870331782164517942, guid: b16bfe9fd9639d84382a044d27a63d18, type: 3}
   time: {fileID: 1339103603}
+  book_num: 2
 --- !u!61 &1213672919
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1262,13 +1268,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8916660990900603788, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1294915370}
   m_SourcePrefab: {fileID: 100100000, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
 --- !u!4 &1294915365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5162775001396660642, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
   m_PrefabInstance: {fileID: 1294915364}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1294915370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712397405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b04823e1b463b469ac544d55f74bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameController
+  on_close: 0
 --- !u!1001 &1339103601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1512,7 +1534,7 @@ GameObject:
   - component: {fileID: 1714520943}
   - component: {fileID: 1714520942}
   m_Layer: 0
-  m_Name: comment_0
+  m_Name: comment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1564,7 +1586,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -942973645
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1748267088253392275, guid: 3aa740b4c3f65db48b3bb46f2c738ba1, type: 3}

@@ -87,7 +87,7 @@ public class CustomerText : MonoBehaviour
         {
             if (poster_switch)
             {
-                hint = "";
+                hint = "ENDTEXT";
                 return;
             }
             else

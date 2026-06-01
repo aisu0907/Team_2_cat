@@ -12,7 +12,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Effect
   - 
   - 
   - 
@@ -47,6 +47,9 @@ TagManager:
     locked: 0
   - name: Customer
     uniqueID: 3597515521
+    locked: 0
+  - name: PosterEffect
+    uniqueID: 3783066437
     locked: 0
   - name: Poster
     uniqueID: 1463126325

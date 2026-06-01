@@ -3,11 +3,11 @@ using Const;
 
 public class CustomerAction : MonoBehaviour
 {
-    public GameObject comment;
-    public int comment_time;
+    public GameObject comment; //コメントオブジェクト
+    public int comment_time; //コメントするまでの時間
 
     private int count; 
-    private int comment_interval;
+    private int comment_interval; //秒数記録
 
     void Start()
     {
