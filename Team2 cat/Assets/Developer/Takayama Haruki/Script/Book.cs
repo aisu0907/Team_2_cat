@@ -33,7 +33,7 @@ public class Book : MonoBehaviour
             {
                 time.pause = true;
                 book_on = true;
-                gray_save = Instantiate(gray, new Vector3(0, 0, 0), Quaternion.identity);
+                gray_save = Instantiate(gray, new Vector3(0, 0, -5), Quaternion.identity);
                 book_num--;
 
             }

@@ -34,6 +34,7 @@ public class Poster : MonoBehaviour
     //オブジェクトの上にカーソルがあるとき
     private void OnMouseEnter()
     {
+
         if (highlight == true)
         {
             //ハイライトオブジェクトを生成
