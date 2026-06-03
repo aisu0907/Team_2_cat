@@ -66,6 +66,9 @@ TagManager:
   - name: PictureBook
     uniqueID: 3733966673
     locked: 0
+  - name: New Layer 9
+    uniqueID: 3774892087
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 namespace Const 
@@ -10,6 +11,9 @@ namespace Const
     public static class GameConfig
     {
         public const int TICK_TIME = 60;
+        public const int COMEDY = 0;
+        public const int HOLLOR = 1;
+        public const int LOVECOMEDY = 2;
     }
 
     //ÉVÅ[ÉìÇÃñºëO

@@ -7,7 +7,7 @@ public class MovieSelect : MonoBehaviour
     public SpriteRenderer[] targets;       //画像を変更するオブジェクトを入れる
     public int choices_num;//選択肢の数
     public int fake;       //似た選択肢を入れる回数
-    public bool set_on;
+    public bool set_on;    //映画を指定する用
 
     [SerializeField] private int answer_genre;//答えのジャンル
     [SerializeField] private int answer;      //答え
