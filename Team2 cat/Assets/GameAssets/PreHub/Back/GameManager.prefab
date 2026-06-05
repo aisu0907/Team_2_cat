@@ -149,6 +149,7 @@ MonoBehaviour:
   - {fileID: 0}
   choices_num: 5
   fake: 1
+  set_on: 0
   answer_genre: 0
   answer: 0
   choices: []

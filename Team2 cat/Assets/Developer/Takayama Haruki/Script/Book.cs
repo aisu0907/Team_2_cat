@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Book : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Book : MonoBehaviour
     private void Start()
     {
         book_on = false;
+        book_ui.SetActive(false);
     }   
 
     private void Update()
@@ -22,21 +24,23 @@ public class Book : MonoBehaviour
                 book_on = false;
                 time.pause = false;
                 GameController.Instanse.on_close = false;
-                Destroy(book_ui_save);
+                //Destroy(book_ui_save);
+                book_ui.SetActive(false);
             }
     }
 
     private void OnMouseDown()
     {
-        if(book_num > 0){ 
+        if (book_num > 0){ 
             if (!book_on && !time.pause)
             {
                 time.pause = true;
                 book_on = true;
-                book_ui_save = Instantiate(book_ui);
-                book_ui_save.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
-                book_ui_save.GetComponent<Canvas>().worldCamera = Camera.main;
                 book_num--;
+                book_ui.SetActive(true);
+                //book_ui_save = Instantiate(book_ui);
+                //book_ui_save.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+                //book_ui_save.GetComponent<Canvas>().worldCamera = Camera.main;
 
             }
         }

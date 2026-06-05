@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Poster : MonoBehaviour
 {
@@ -34,13 +35,12 @@ public class Poster : MonoBehaviour
     //オブジェクトの上にカーソルがあるとき
     private void OnMouseEnter()
     {
-
         if (highlight == true)
         {
             //ハイライトオブジェクトを生成
             //if (highlight_effect_save == null)
             //    highlight_effect_save = Instantiate(highlight_effect, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0), Quaternion.identity); //オブジェクトを生成
-            highlight_effect_save.transform.localScale = effect_size + gameObject.transform.localScale; //大きさを設定 
+            //highlight_effect_save.transform.localScale = effect_size + gameObject.transform.localScale; //大きさを設定 
 
             //ポスターの大きさを変更
             gameObject.transform.localScale = (poster_size_save + new Vector3(poster_size_up_x, poster_size_up_y, 0.0f));
