@@ -26,23 +26,6 @@ public class Poster : MonoBehaviour
     }
 
 
-    void Update()
-    {
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
-
-            if (hit.collider != null)
-            {
-                Debug.Log(hit.collider.name);
-            }
-        }
-    }
-
     //オブジェクトがクリックされたとき
     private void OnMouseDown()
     {
