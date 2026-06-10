@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Poster : MonoBehaviour
+public class Poster : MouseController
 {
     public GameObject highlight_effect; //ハイライトエフェクトオブジェクト
     public float effect_size_x; //ハイライトエフェクトの横幅
@@ -10,31 +10,38 @@ public class Poster : MonoBehaviour
     public float poster_size_up_y;//大きくするサイズ縦幅
 
     private SpriteRenderer poster; //ポスター画像
+    
     private GameObject highlight_effect_save; //ハイライトエフェクト一時保存用
     private bool highlight;     //ハイライト切り替え用
     private Vector3 effect_size;//ハイライトエフェクト保存用
     private Vector3 poster_size_save;//ポスターの大きさ保存用
+    private Camera cam; //カメラ
+    private bool is_hover;
 
-    void Start()
+    private void Start() 
     {
         //リセット
         highlight = true;
+        is_hover = false;
 
-        effect_size = new Vector3(effect_size_x, effect_size_y, 0); //座標を設定
-        poster_size_save = gameObject.transform.localScale;
         poster = gameObject.GetComponent<SpriteRenderer>(); //画像をセット
+        poster_size_save = gameObject.transform.localScale;
+        effect_size = new Vector3(effect_size_x, effect_size_y, 0); //座標を設定
+        cam = Camera.main;
     }
 
+    private void Update()
+    {
+        MouseControll(cam, ref is_hover);
+    }
 
-    //オブジェクトがクリックされたとき
-    private void OnMouseDown()
+    public override void OnClick()
     {
         //クリア判定
         GameManager.Instance.Gameclear(poster.sprite);
     }
 
-    //オブジェクトの上にカーソルがあるとき
-    private void OnMouseEnter()
+    public override void OnEnter()
     {
         if (highlight == true)
         {
@@ -50,8 +57,7 @@ public class Poster : MonoBehaviour
         highlight = false;
     }
 
-    //オブジェクトの上からカーソルがなくなったとき
-    private void OnMouseExit()
+    public override void OnExit()
     {
         if (highlight == false)
         {
@@ -63,5 +69,6 @@ public class Poster : MonoBehaviour
         }
 
         highlight = true;
+
     }
 }

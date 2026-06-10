@@ -5,19 +5,19 @@ using Unity.VisualScripting;
 
 public class PosterSetList : MonoBehaviour
 {
-    [SerializeField] MovieData[] poster_data;
+    [SerializeField] MovieData[] poster_data; //ScripTableObject
     public GameObject null_poster; //空のポスター
     public Transform content; //ポスターを置く場所
     public Vector3 start_pos; //初期位置
     public int set_num; //一度に置く数
-    public Vector2 plus_space;
+    public Vector2 plus_space; //ポスターの配置間隔
 
     private GameObject[] null_poster_save; //ポスター保存用
     private Vector3 poster_pos; //ポスターを配置する場所
     private int max_set_num; //ポスターを置く数
-    private int count;
-    private bool set_start;
-    private bool set_end;
+    private int count; 
+    private bool set_start; //ポスターセット開始管理用
+    private bool set_end; 
     private int object_num;
     private void OnEnable()
     {

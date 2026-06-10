@@ -20,20 +20,20 @@ public class GameController : MonoBehaviour
     private void OnEnable()
     {
         controller.Enable();
-        controller.Game.Close.performed += Onpause; 
+        controller.Game.Close.performed += OnPause; 
     }
 
     private void OnDisable()
     {
         controller.Disable();
-        controller.Game.Close.performed -= Onpause;
+        controller.Game.Close.performed -= OnPause;
     }
 
     /// <summary>
     /// on_close管理用メソッド
     /// </summary>
     /// <param name="context"></param>
-    private void Onpause(InputAction.CallbackContext context)
+    private void OnPause(InputAction.CallbackContext context)
     {
         on_close = true;
     }
