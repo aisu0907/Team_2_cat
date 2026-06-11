@@ -15,8 +15,7 @@ public class Poster : MouseController
     private bool highlight;     //ハイライト切り替え用
     private Vector3 effect_size;//ハイライトエフェクト保存用
     private Vector3 poster_size_save;//ポスターの大きさ保存用
-    private Camera cam; //カメラ
-    private bool is_hover;
+    private bool clear_check; //クリアチェック管理用フラグ
 
     private void Start() 
     {
@@ -25,22 +24,32 @@ public class Poster : MouseController
         is_hover = false;
 
         poster = gameObject.GetComponent<SpriteRenderer>(); //画像をセット
-        poster_size_save = gameObject.transform.localScale;
+        poster_size_save = gameObject.transform.localScale; //ポスターの元のサイズを保存
         effect_size = new Vector3(effect_size_x, effect_size_y, 0); //座標を設定
-        cam = Camera.main;
     }
 
     private void Update()
     {
-        MouseControll(cam, ref is_hover);
+        MouseControll(ref is_hover);
+
+        if(!GameController.Instanse.is_click)
+        {
+            clear_check = true;
+        }
     }
 
+    //クリック時の処理
     public override void OnClick()
     {
-        //クリア判定
-        GameManager.Instance.Gameclear(poster.sprite);
+        if (clear_check)
+        {
+            //クリア判定
+            GameManager.Instance.Gameclear(poster.sprite);
+            clear_check = false;
+        }
     }
 
+    //カーソルが上にある時の処理
     public override void OnEnter()
     {
         if (highlight == true)
@@ -57,12 +66,13 @@ public class Poster : MouseController
         highlight = false;
     }
 
+    //カーソルがいなくなったときの処理
     public override void OnExit()
     {
         if (highlight == false)
         {
             //ハイライトオブジェクトを削除
-            Destroy(highlight_effect_save);
+            //Destroy(highlight_effect_save);
 
             //ポスターの大きさをリセット
             gameObject.transform.localScale = poster_size_save;

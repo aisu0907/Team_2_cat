@@ -1,14 +1,16 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
+using Const;
 
-public class Book : MonoBehaviour
+public class Book : MouseController
 {
-    public GameObject book_ui; //エフェクトオブジェクト
-    public Time time; //タイマーオブジェクト
+    [Header("使用オブジェクトの設定")]
+    [SerializeField] GameObject book_ui; //図鑑オブジェクト
+    [SerializeField] Time time; //タイマーオブジェクト
+    [Space(CodeAsset.SPACE)]
+    [Header("図鑑の使用回数")]
     public int book_num; //図鑑使用回数
 
     private bool book_on; //図鑑表示管理用フラグ
-    private GameObject book_ui_save; //オブジェクト一時保存用
 
     private void Start()
     {
@@ -23,25 +25,25 @@ public class Book : MonoBehaviour
             {
                 book_on = false;
                 time.pause = false;
-                GameController.Instanse.on_close = false;
-                //Destroy(book_ui_save);
                 book_ui.SetActive(false);
+                GameController.Instanse.on_close = false;
             }
+
+        MouseControll(ref is_hover);
+
     }
 
-    private void OnMouseDown()
+    //クリック時の処理
+    public override void OnClick()
     {
-        if (book_num > 0){ 
+        if (book_num > 0)
+        {
             if (!book_on && !time.pause)
             {
                 time.pause = true;
                 book_on = true;
                 book_num--;
                 book_ui.SetActive(true);
-                //book_ui_save = Instantiate(book_ui);
-                //book_ui_save.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
-                //book_ui_save.GetComponent<Canvas>().worldCamera = Camera.main;
-
             }
         }
     }

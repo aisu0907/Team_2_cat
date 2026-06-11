@@ -3,7 +3,8 @@ using Const;
 
 public class CustomerAction : MonoBehaviour
 {
-    public GameObject comment; //コメントオブジェクト
+    [Header("コメントの設定")]
+    [SerializeField] GameObject comment; //コメントオブジェクト
     public int comment_time; //コメントするまでの時間
 
     private int count; 

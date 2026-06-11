@@ -19,11 +19,16 @@ namespace Const
     //ÉVÅ[ÉìÇÃñºëO
     public static class SceneName
     {
-        public const string Title  = "TitleScene";
-        public const string Game   = "GameScene";
-        public const string Result = "ResultScene";
-        public const string GameOver = "GameOverScene";
-        public const string Two    = "two Scene";
+        public const string TITLE  = "TitleScene";
+        public const string GAME   = "GameScene";
+        public const string RESULT = "ResultScene";
+        public const string GAMEOVER = "GameOverScene";
+        public const string TWO    = "two Scene";
 
+    }
+
+    public static class CodeAsset
+    {
+        public const int SPACE = 5;
     }
 }

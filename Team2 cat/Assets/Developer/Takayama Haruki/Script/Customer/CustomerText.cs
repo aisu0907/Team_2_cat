@@ -7,16 +7,19 @@ public class CustomerText : MonoBehaviour
 {
     public bool text_next; //テキスト変更用フラグ
 
+    [Header("テキストデータの設定")]
     [SerializeField] TextMeshProUGUI text; //変更するテキスト先
     [SerializeField] TextAsset[] textfile; //読み取るテキストデータ
+    [SerializeField] List<string[]> text_data = new List<string[]>(); //テキストファイルのテキストを保存用
+
+    [Header("ゲームの答え")]
+    [SerializeField] private int genre; //答えのジャンル
+    [SerializeField] private int poster; //答えの映画
+
     private int text_num; //テキスト行数
     private int text_count; //テキストの区切り
-
-    [SerializeField] private int genre; //答えのジャンル
-    [SerializeField] private int poster; //答えの映画s
-    [SerializeField] List<string[]> text_data = new List<string[]>(); //テキストファイルのテキストを保存用
-    [SerializeField] private string hint; //テキストを1行保存用
-    [SerializeField] private bool poster_switch;
+    private string hint; //テキストを1行保存用
+    private bool poster_switch;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

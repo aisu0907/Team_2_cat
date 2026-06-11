@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 
         is_game_over = true;//ゲームオーバー状態にする
 
-        SceneManager.LoadScene(SceneName.GameOver);//シーン移動
+        SceneManager.LoadScene(SceneName.GAMEOVER);//シーン移動
     }
 
     /// <summary>
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
                 is_game_clear = true;
                 Debug.Log("ゲームクリアが呼ばれました！");//デバック用
                 UseMove();
-                SceneManager.LoadScene(SceneName.Result);
+                SceneManager.LoadScene(SceneName.RESULT);
             }
             else
                 UseMove();

@@ -1279,7 +1279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7b04823e1b463b469ac544d55f74bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
-  on_close: 0
 --- !u!1001 &1339103601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1805,7 +1804,7 @@ PrefabInstance:
       objectReference: {fileID: 1385896346}
     - target: {fileID: 5366819144911281984, guid: 7a6b8261169f35e4a8060ac4e8fd4da8, type: 3}
       propertyPath: comment_time
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6987980111659303534, guid: 7a6b8261169f35e4a8060ac4e8fd4da8, type: 3}
       propertyPath: m_fontSize
@@ -2176,6 +2175,10 @@ PrefabInstance:
       propertyPath: book_ui
       value: 
       objectReference: {fileID: 6923274258905248822}
+    - target: {fileID: 7187172675862351263, guid: 0710837ab43113a4f8ff43869f0a572d, type: 3}
+      propertyPath: book_num
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -32,6 +32,7 @@ public class PosterSetList : MonoBehaviour
 
             poster_pos = start_pos; //ポスターの配置座標を作成
 
+            //設置するポスターの数を決める
             for (int i = 0; i < poster_data.Length; i++)
             {
                 max_set_num += poster_data[i].poster.Length;
