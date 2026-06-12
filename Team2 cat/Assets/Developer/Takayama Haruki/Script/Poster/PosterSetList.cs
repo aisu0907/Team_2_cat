@@ -5,12 +5,15 @@ using Unity.VisualScripting;
 
 public class PosterSetList : MonoBehaviour
 {
+    [Header("使用オブジェクト")]
     [SerializeField] MovieData[] poster_data; //ScripTableObject
-    public GameObject null_poster; //空のポスター
-    public Transform content; //ポスターを置く場所
+    [SerializeField] GameObject null_poster; //空のポスター
+    [SerializeField] Transform content; //ポスターを置く場所
+
+    [Header("ポスターセット設定")]
     public Vector3 start_pos; //初期位置
-    public int set_num; //一度に置く数
     public Vector2 plus_space; //ポスターの配置間隔
+    public int set_num; //一度に置く数
 
     private GameObject[] null_poster_save; //ポスター保存用
     private Vector3 poster_pos; //ポスターを配置する場所
@@ -44,8 +47,8 @@ public class PosterSetList : MonoBehaviour
 
             Debug.Log("画像を配置します");
             //ポスターを配置
-            for (int j = 0; j < poster_data.Length; j++)
-                for (int k = 0; k < poster_data[j].poster.Length; k++)
+            for (int genre = 0; genre < poster_data.Length; genre++)
+                for (int poster = 0; poster < poster_data[genre].poster.Length; poster++)
                 {
 
                     //指定された数ポスターを配置したら
@@ -59,9 +62,12 @@ public class PosterSetList : MonoBehaviour
 
                     null_poster_save[object_num] = Instantiate(null_poster, content); //ポスターを生成
                     null_poster_save[object_num].GetComponent<RectTransform>().anchoredPosition = poster_pos; //ポスターの位置を指定
-                    var image = null_poster_save[object_num].GetComponent<Image>(); //Spriteを取得
-                    image.sprite = poster_data[j].poster[k]; //画像を変更
-                    poster_pos.x += plus_space.x; //x位置を変更
+                    null_poster_save[object_num].GetComponent<Image>().sprite = poster_data[genre].poster[poster]; //ポスターの画像を設定
+                    var movie_data = null_poster_save[object_num].GetComponent<BookPosterSelect>(); //BookPosterSelectを取得
+                    movie_data.genre_id =  genre; //ジャンルを取得
+                    movie_data.poster_id = poster;//ポスターを取得
+
+                    poster_pos.x += plus_space.x;  //x位置を変更
 
                     count++;
 

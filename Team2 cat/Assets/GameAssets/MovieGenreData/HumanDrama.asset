@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: HumanDrama
   m_EditorClassIdentifier: Assembly-CSharp::MovieData
   genre: 0
-  poster: []
+  poster:
+  - {fileID: 8226717278381846504, guid: df22b711dc59a02449a50d61fa163437, type: 3}
+  - {fileID: -4683338572171058021, guid: fea8dce055afad840b585a6d007c5dad, type: 3}

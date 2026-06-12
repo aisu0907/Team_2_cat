@@ -3,23 +3,28 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 public class MouseController : MonoBehaviour
 {
-    public bool is_hover;//マウスのホバー状態
+    public bool not_ui = false; //UIの上にいるかどうか
+    public bool is_hover = false;//マウスのホバー状態
 
     /// <summary>
     /// マウスのホバー状態を検知する用メソッド
     /// </summary>
     /// <param name="cam">そのシーンのカメラ</param>
     /// <param name="is_hovered">前フレームのマウスのホバー状態</param>
-    public void MouseControll(ref bool is_hovered)
+    /// <param name="ui">使用オブジェクトがUIを無視するか</param>
+    public void MouseControll(ref bool is_hovered, bool ui)
     {
         Camera cam = Camera.main;
-        
-        //UIに触れていた場合
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-        {   
-            //Debug.Log("UIの上にいます");
-            OnExit();
-            return; 
+
+        //UI判定がいる場合
+        if(!ui){
+            //UIに触れていた場合
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            {
+                //Debug.Log("UIの上にいます");
+                OnExit();
+                return;
+            }
         }
 
         Vector2 mouse_pos = Mouse.current.position.ReadValue(); //マウスの位置を取得
@@ -36,7 +41,7 @@ public class MouseController : MonoBehaviour
             OnEnter();
         }
 
-        // カーソルが当たっている状態でクリックした時（未完成）
+        // カーソルが当たっている状態でクリックした時
         if(now_hovered && GameController.Instanse.is_click)
         {
             OnClick();

@@ -14,10 +14,9 @@ public class GameManager : MonoBehaviour
     public int moves = 2;//手数
 
     private int ans_genre; //答えのジャンル
-    private int ans_poster;//答え
+    private int ans_poster;//答えのポスター
     private bool is_game_clear;
     private bool is_game_over;//二重にシーン移動しないようにする
-    //public GameOverManager gameOverManager;
 
     void Awake()
     {

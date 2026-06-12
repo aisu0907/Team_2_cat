@@ -12,7 +12,7 @@ public class CustomerText : MonoBehaviour
     [SerializeField] TextAsset[] textfile; //読み取るテキストデータ
     [SerializeField] List<string[]> text_data = new List<string[]>(); //テキストファイルのテキストを保存用
 
-    [Header("ゲームの答え")]
+    [Header("ゲームの答え確認用")]
     [SerializeField] private int genre; //答えのジャンル
     [SerializeField] private int poster; //答えの映画
 
@@ -23,11 +23,11 @@ public class CustomerText : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        poster = MovieSelect.Instance.Answer(); //答えを取得
         text_num = 0; //行数をリセット
         text_count = 0;
         text_next = false; //フラグをリセット
         poster_switch = false; //フラグをリセット
+        poster = MovieSelect.Instance.Answer(); //答えを取得
         genre = MovieSelect.Instance.Answergenre(); //答えのジャンルを取得
         StringReader reader = new StringReader(textfile[genre].text); //テキストファイルを取得
 

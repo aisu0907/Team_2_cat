@@ -7,29 +7,25 @@ public class Book : MouseController
     [SerializeField] GameObject book_ui; //図鑑オブジェクト
     [SerializeField] Time time; //タイマーオブジェクト
     [Space(CodeAsset.SPACE)]
+
     [Header("図鑑の使用回数")]
     public int book_num; //図鑑使用回数
-
-    private bool book_on; //図鑑表示管理用フラグ
-
     private void Start()
     {
-        book_on = false;
+        //図鑑表示リセット
         book_ui.SetActive(false);
     }   
 
     private void Update()
     {
-        if (GameController.Instanse.on_close)
-            if (book_on && time.pause)
-            {
-                book_on = false;
-                time.pause = false;
-                book_ui.SetActive(false);
-                GameController.Instanse.on_close = false;
-            }
+        //UIが消えた時
+        if (!GameController.Instanse.on_ui && time.pause)
+        {
+            time.pause = false;
+            book_ui.SetActive(false); //図鑑を非表示
+        }
 
-        MouseControll(ref is_hover);
+        MouseControll(ref is_hover, not_ui);
 
     }
 
@@ -38,12 +34,12 @@ public class Book : MouseController
     {
         if (book_num > 0)
         {
-            if (!book_on && !time.pause)
+            if (!GameController.Instanse.on_ui && !time.pause)
             {
+                GameController.Instanse.on_ui = true;
                 time.pause = true;
-                book_on = true;
                 book_num--;
-                book_ui.SetActive(true);
+                book_ui.SetActive(true); //図鑑を表示
             }
         }
     }

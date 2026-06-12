@@ -122,6 +122,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d263a86bfbd23664b81896b4e9a8c442, type: 2}
   - {fileID: 11400000, guid: bd38646b0757c2f468e65ba4f9c4913c, type: 2}
   - {fileID: 11400000, guid: b714a9c098cabb647916627ce8b4c885, type: 2}
+  - {fileID: 11400000, guid: 5f66a9ed0d8d03943aa1eb6456f7b2ca, type: 2}
   moveText: {fileID: 0}
   timer: {fileID: 0}
   moves: 2
@@ -141,6 +142,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d263a86bfbd23664b81896b4e9a8c442, type: 2}
   - {fileID: 11400000, guid: bd38646b0757c2f468e65ba4f9c4913c, type: 2}
   - {fileID: 11400000, guid: b714a9c098cabb647916627ce8b4c885, type: 2}
+  - {fileID: 11400000, guid: 5f66a9ed0d8d03943aa1eb6456f7b2ca, type: 2}
   targets:
   - {fileID: 0}
   - {fileID: 0}

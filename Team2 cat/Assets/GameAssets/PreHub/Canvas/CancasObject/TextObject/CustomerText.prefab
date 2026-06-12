@@ -157,10 +157,9 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 9fb0563b1adada947a8c191931fba7f8, type: 3}
   - {fileID: 4900000, guid: 2b0bb0eb6e000794890d16bbfcb61383, type: 3}
   - {fileID: 4900000, guid: 20d6574895ecbd845b1e013142ac2f60, type: 3}
+  - {fileID: 4900000, guid: 5d2e06d49dfae224692687cb07f725a9, type: 3}
   genre: 0
   poster: 0
-  hint: 
-  poster_switch: 0
 --- !u!114 &5366819144911281984
 MonoBehaviour:
   m_ObjectHideFlags: 0

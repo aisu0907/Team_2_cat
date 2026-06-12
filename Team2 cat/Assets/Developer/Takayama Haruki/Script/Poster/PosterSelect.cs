@@ -3,7 +3,10 @@ using UnityEngine.EventSystems;
 
 public class Poster : MouseController
 {
-    public GameObject highlight_effect; //ハイライトエフェクトオブジェクト
+    [Header("使用オブジェクト")]
+    [SerializeField] GameObject highlight_effect; //ハイライトエフェクトオブジェクト
+
+    [Header("エフェクト設定")]
     public float effect_size_x; //ハイライトエフェクトの横幅
     public float effect_size_y; //ハイライトエフェクトの縦幅
     public float poster_size_up_x;//大きくするサイズ横幅
@@ -21,7 +24,6 @@ public class Poster : MouseController
     {
         //リセット
         highlight = true;
-        is_hover = false;
 
         poster = gameObject.GetComponent<SpriteRenderer>(); //画像をセット
         poster_size_save = gameObject.transform.localScale; //ポスターの元のサイズを保存
@@ -30,7 +32,7 @@ public class Poster : MouseController
 
     private void Update()
     {
-        MouseControll(ref is_hover);
+        MouseControll(ref is_hover, not_ui);
 
         if(!GameController.Instanse.is_click)
         {
@@ -55,9 +57,9 @@ public class Poster : MouseController
         if (highlight == true)
         {
             //ハイライトオブジェクトを生成
-            //if (highlight_effect_save == null)
-            //    highlight_effect_save = Instantiate(highlight_effect, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0), Quaternion.identity); //オブジェクトを生成
-            //highlight_effect_save.transform.localScale = effect_size + gameObject.transform.localScale; //大きさを設定 
+            if (highlight_effect_save == null)
+                highlight_effect_save = Instantiate(highlight_effect, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0), Quaternion.identity); //オブジェクトを生成
+            highlight_effect_save.transform.localScale = effect_size + gameObject.transform.localScale; //大きさを設定 
 
             //ポスターの大きさを変更
             gameObject.transform.localScale = (poster_size_save + new Vector3(poster_size_up_x, poster_size_up_y, 0.0f));
@@ -72,7 +74,7 @@ public class Poster : MouseController
         if (highlight == false)
         {
             //ハイライトオブジェクトを削除
-            //Destroy(highlight_effect_save);
+            Destroy(highlight_effect_save);
 
             //ポスターの大きさをリセット
             gameObject.transform.localScale = poster_size_save;
