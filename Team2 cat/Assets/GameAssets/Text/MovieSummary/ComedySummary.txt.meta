@@ -1,6 +1,8 @@
 fileFormatVersion: 2
-guid: 9e48ac0b804375048a401ef1a1d3f386
-PrefabImporter:
+guid: 034c6ccd62eb05545bcc5912f15fc0be
+labels:
+- ScripTableObject
+TextScriptImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7187172675862351263}
   - component: {fileID: 8058577752775381949}
   m_Layer: 0
-  m_Name: book
+  m_Name: Book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,9 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f4fff07fda258459bf9c79417d959b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Book
+  not_ui: 0
+  is_hover: 0
   book_ui: {fileID: 0}
   time: {fileID: 0}
-  book_num: 2
+  book_num: 999
 --- !u!61 &8058577752775381949
 BoxCollider2D:
   m_ObjectHideFlags: 0

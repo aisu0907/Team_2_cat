@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d4b45c0a14f03b845b577a3dbd2e5d7a
+guid: dc815816cf6b39447a1ef633726996d0
 labels:
 - ScripTableObject
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
   userData: 
-  assetBundleName: 
+  assetBundleName: scriptableobject
   assetBundleVariant: 

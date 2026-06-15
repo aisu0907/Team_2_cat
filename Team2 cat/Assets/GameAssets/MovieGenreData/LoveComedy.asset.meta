@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: b714a9c098cabb647916627ce8b4c885
+labels:
+- ScripTableObject
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

@@ -91,15 +91,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BookPosterSelect
   not_ui: 0
   is_hover: 0
-  text: {fileID: 0}
-  title_text: []
-  genre_text: []
-  summary_text: []
+  movie_text_file:
+  - {fileID: 4900000, guid: 034c6ccd62eb05545bcc5912f15fc0be, type: 3}
+  - {fileID: 4900000, guid: 4882981c2b3ee5f4ab61f38448b205c2, type: 3}
+  - {fileID: 4900000, guid: 9d5d18d06cba08542bcbe2c8cdbd5723, type: 3}
+  - {fileID: 4900000, guid: 7f1103ae84698d44087c7b5ffc7cffb5, type: 3}
   highlight_effect: {fileID: 5684479619681306667, guid: 2bbd4a52a4b64f343be8ed4fccdb66a0, type: 3}
   genre_id: 0
   poster_id: 0
   effect_size_x: 0.1
   effect_size_y: 0.75
+  movie_information: []
 --- !u!61 &-2298109948863577734
 BoxCollider2D:
   m_ObjectHideFlags: 0

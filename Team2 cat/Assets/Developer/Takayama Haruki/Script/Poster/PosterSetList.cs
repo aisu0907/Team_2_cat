@@ -22,7 +22,8 @@ public class PosterSetList : MonoBehaviour
     private bool set_start; //ポスターセット開始管理用
     private bool set_end; 
     private int object_num;
-    private void OnEnable()
+
+    private void Start()
     {
         if(!set_end)
            set_start = true;

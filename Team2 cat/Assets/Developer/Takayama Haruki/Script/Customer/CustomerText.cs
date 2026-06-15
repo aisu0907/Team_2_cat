@@ -58,12 +58,10 @@ public class CustomerText : MonoBehaviour
                     poster_switch = true;
                     Debug.Log("成功");
                 }
-
                 //答えのポスターが見つかっていなかった場合
-                if (!poster_switch)
+                else if (!poster_switch)
                 {
                     Savetext();
-                    Debug.Log(hint);
                 }
 
                 //答えのポスターが見つかっていたら

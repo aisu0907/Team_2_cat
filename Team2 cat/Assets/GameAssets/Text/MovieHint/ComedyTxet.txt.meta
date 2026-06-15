@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: 20d6574895ecbd845b1e013142ac2f60
+guid: 9fb0563b1adada947a8c191931fba7f8
+labels:
+- ScripTableObject
 TextScriptImporter:
   externalObjects: {}
   userData: 
