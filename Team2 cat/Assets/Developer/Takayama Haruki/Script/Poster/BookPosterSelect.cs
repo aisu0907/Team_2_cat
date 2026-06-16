@@ -79,18 +79,21 @@ public class BookPosterSelect : MouseController
                 Debug.Log(movie_text);
                 NextText();
                 Debug.Log(movie_text);
-                break;
+                if (movie_text == poster_id.ToString())
+                    Debug.Log("成功！！！！！！！！！！！！");
             }
 
             if (set_informatinon)
             {
+                Debug.Log("通った");
+
                 if (movie_text == "TITLE" && !set_title)
                 {
                     text_word++;
                     movie_information[PosterConst.TITLE] = movie_text_data[text_line][text_word];
                     set_title = true;
                     NextText();
-                    break;
+                    Debug.Log("TITLE");
                 }
 
                 if(movie_text == "SUMMARY" && !set_summary)
@@ -101,13 +104,19 @@ public class BookPosterSelect : MouseController
                         movie_information[PosterConst.SUMMARY] += movie_text;
                         movie_information[PosterConst.SUMMARY] += "\n";
                         NextText();
+                        Debug.Log("SUMMARY");
                     }
 
                     if (movie_text == "ENDTEXT")
                     {
                         set_title = true;
+                        Debug.Log("SUMMARY");
                         break;
                     }
+                }
+                else if(set_informatinon)
+                {
+                    NextText();
                 }
             }
         }
