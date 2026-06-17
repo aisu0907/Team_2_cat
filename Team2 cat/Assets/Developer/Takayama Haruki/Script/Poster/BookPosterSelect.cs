@@ -76,7 +76,6 @@ public class BookPosterSelect : MouseController
                 set_informatinon = true;
             else if (!set_informatinon)
             {
-                Debug.Log(movie_text);
                 NextText();
                 Debug.Log(movie_text);
                 if (movie_text == poster_id.ToString())
@@ -104,7 +103,7 @@ public class BookPosterSelect : MouseController
                         movie_information[PosterConst.SUMMARY] += movie_text;
                         movie_information[PosterConst.SUMMARY] += "\n";
                         NextText();
-                        Debug.Log("SUMMARY");
+                        Debug.Log(movie_information[PosterConst.SUMMARY]);
                     }
 
                     if (movie_text == "ENDTEXT")
