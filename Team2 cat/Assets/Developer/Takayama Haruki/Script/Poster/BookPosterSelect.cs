@@ -27,6 +27,7 @@ public class BookPosterSelect : MouseController
     private bool set_genre; //ジャンルセット管理用フラグ
     private bool set_title; //タイトルセット管理用フラグ
     private bool set_summary; //映画概要セット管理用フラグ
+    private bool poster_click;//ポスタークリック管理用フラグ
 
     [SerializeField] private string[] movie_information;
     private GameObject highlight_effect_save; //ハイライトエフェクト一時保存用
@@ -65,58 +66,54 @@ public class BookPosterSelect : MouseController
             //文字列がジャンルの場合
             if (movie_text == "GENRE" && !set_genre)
             {
-                text_word++;
-                Debug.Log(movie_text_data[text_line][text_word]);
-                movie_information[PosterConst.GENRE] = movie_text_data[text_line][text_word].ToString(); //テキストファイルのジャンルを保存
+                text_word++; //1行進める
+                movie_information[PosterConst.GENRE] = movie_text_data[text_line][text_word].ToString(); //ジャンルを取得
                 set_genre = true;
                 NextText();
             }
 
+            //数字が一致してかつポスターが見つかっていなかったら
             if (movie_text == poster_id.ToString() && !set_informatinon)
                 set_informatinon = true;
+            //ポスターが見つかっていなかった場合
             else if (!set_informatinon)
-            {
                 NextText();
-                Debug.Log(movie_text);
-                if (movie_text == poster_id.ToString())
-                    Debug.Log("成功！！！！！！！！！！！！");
-            }
 
+            //ポスターが見つかっていた場合
             if (set_informatinon)
             {
-                Debug.Log("通った");
-
+                //入ってる文字がTITLEかつタイトルを見つけていない場合
                 if (movie_text == "TITLE" && !set_title)
                 {
-                    text_word++;
-                    movie_information[PosterConst.TITLE] = movie_text_data[text_line][text_word];
+                    text_word++; //1行進める
+                    movie_information[PosterConst.TITLE] = movie_text_data[text_line][text_word]; //タイトルを取得
                     set_title = true;
                     NextText();
-                    Debug.Log("TITLE");
                 }
 
-                if(movie_text == "SUMMARY" && !set_summary)
+                //入ってる文字がSUMMARYかつ概要を見つけていない場合
+                if (movie_text == "SUMMARY" && !set_summary)
                 {
                     NextText();
+
+                    //入ってる文字がENDTEXTになるまでループ
                     while(movie_text != "ENDTEXT")
                     {
-                        movie_information[PosterConst.SUMMARY] += movie_text;
-                        movie_information[PosterConst.SUMMARY] += "\n";
+                        movie_information[PosterConst.SUMMARY] += movie_text; //テキストを1行追加
+                        movie_information[PosterConst.SUMMARY] += "\n"; //改行を追加
                         NextText();
                         Debug.Log(movie_information[PosterConst.SUMMARY]);
                     }
 
+                    //入ってる文字がENDTEXTなら
                     if (movie_text == "ENDTEXT")
                     {
                         set_title = true;
-                        Debug.Log("SUMMARY");
                         break;
                     }
                 }
-                else if(set_informatinon)
-                {
-                    NextText();
-                }
+
+                NextText();
             }
         }
     }
@@ -124,13 +121,22 @@ public class BookPosterSelect : MouseController
     void Update()
     {
         MouseControll(ref is_hover, not_ui);
+
+        //クリックされていない時
+        if(!GameController.Instanse.is_click)
+        {
+            poster_click = false;
+        }
     }
 
     public override void OnClick()
     {
-        Debug.Log("クリック確認");
-        PosterInformationText.Instanse.SetMovieDataText(movie_information);
-
+        if (!poster_click)
+        {
+            Debug.Log("クリック確認");
+            PosterInformationText.Instanse.SetMovieDataText(movie_information);
+            poster_click = true;
+        }
     }
 
     /// <summary>

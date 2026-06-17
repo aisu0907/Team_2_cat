@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class GameController : MonoBehaviour
 {
     public bool on_ui;
-    public bool is_click { get; private set; } //クリックを管理する用フラグ
+    public bool is_click { get; private set; }//クリックを管理する用フラグ
 
     private GameControllerAction controller;//input syestem
 

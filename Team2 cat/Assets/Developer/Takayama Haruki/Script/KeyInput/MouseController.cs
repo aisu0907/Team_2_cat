@@ -5,11 +5,11 @@ public class MouseController : MonoBehaviour
 {
     public bool not_ui = false; //UIの上にいるかどうか
     public bool is_hover = false;//マウスのホバー状態
+    public bool hover_click = false;//クリックを長押ししているどうか
 
     /// <summary>
-    /// マウスのホバー状態を検知する用メソッド
+    /// マウスの状態を検知する用メソッド
     /// </summary>
-    /// <param name="cam">そのシーンのカメラ</param>
     /// <param name="is_hovered">前フレームのマウスのホバー状態</param>
     /// <param name="ui">使用オブジェクトがUIを無視するか</param>
     public void MouseControll(ref bool is_hovered, bool ui)
@@ -35,19 +35,26 @@ public class MouseController : MonoBehaviour
         //当たっているものが自分自身か確認
         bool now_hovered = (hit.collider != null && hit.collider.gameObject == gameObject); //現フレームのマウスのホバー状態
 
-        // カーソルが当たった時
+        //カーソルが当たった時
         if (now_hovered && !is_hovered )
         {
             OnEnter();
         }
 
-        // カーソルが当たっている状態でクリックした時
-        if(now_hovered && GameController.Instanse.is_click)
+        //マウスがクリックされていない時
+        if (GameController.Instanse.is_click)
         {
-            OnClick();
+            //カーソルが当たっている状態でクリックした時
+            if (now_hovered && !hover_click)
+            {
+                OnClick();
+                hover_click = true;
+            }
         }
+        else
+            hover_click = false;
 
-        // カーソルが外れた時
+        //カーソルが外れた時
         if (!now_hovered && is_hovered)
         {
             OnExit();

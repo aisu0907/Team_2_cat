@@ -36,18 +36,18 @@ public class Poster : MouseController
 
         if(!GameController.Instanse.is_click)
         {
-            clear_check = true;
+            clear_check = false;
         }
     }
 
     //クリック時の処理
     public override void OnClick()
     {
-        if (clear_check)
+        if (!clear_check)
         {
             //クリア判定
             GameManager.Instance.Gameclear(poster.sprite);
-            clear_check = false;
+            clear_check = true;
         }
     }
 
