@@ -12,7 +12,10 @@ GameObject:
   - component: {fileID: 1480528419590797110}
   - component: {fileID: 593602458747531318}
   - component: {fileID: 209597383044141733}
+  - component: {fileID: 141436365846030736}
   - component: {fileID: 4618345193462581903}
+  - component: {fileID: 2118262177351735767}
+  - component: {fileID: 2140249885634518143}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -84,7 +87,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -92,7 +95,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!114 &593602458747531318
 MonoBehaviour:
@@ -119,13 +122,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   movie_data:
-  - {fileID: 11400000, guid: d263a86bfbd23664b81896b4e9a8c442, type: 2}
   - {fileID: 11400000, guid: bd38646b0757c2f468e65ba4f9c4913c, type: 2}
   - {fileID: 11400000, guid: b714a9c098cabb647916627ce8b4c885, type: 2}
   - {fileID: 11400000, guid: 5f66a9ed0d8d03943aa1eb6456f7b2ca, type: 2}
   moveText: {fileID: 0}
   timer: {fileID: 0}
   moves: 2
+--- !u!114 &141436365846030736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916660990900603788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b04823e1b463b469ac544d55f74bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameController
+  on_ui: 0
 --- !u!114 &4618345193462581903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovieSelect
   movie_data:
-  - {fileID: 11400000, guid: d263a86bfbd23664b81896b4e9a8c442, type: 2}
   - {fileID: 11400000, guid: bd38646b0757c2f468e65ba4f9c4913c, type: 2}
   - {fileID: 11400000, guid: b714a9c098cabb647916627ce8b4c885, type: 2}
   - {fileID: 11400000, guid: 5f66a9ed0d8d03943aa1eb6456f7b2ca, type: 2}
@@ -155,3 +169,31 @@ MonoBehaviour:
   answer_genre: 0
   answer: 0
   choices: []
+--- !u!114 &2118262177351735767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916660990900603788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff79b5f63ef5cab40be72ffa96122a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PosterInformationText
+  movie_information_data: []
+--- !u!114 &2140249885634518143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916660990900603788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27582e5ef33a3149a34788e6f92747d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MouseController
+  not_ui: 0
+  is_hover: 0
+  hover_click: 0

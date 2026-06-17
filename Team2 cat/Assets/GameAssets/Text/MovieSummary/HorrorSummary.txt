@@ -1,7 +1,7 @@
 ﻿GENRE,ホラー,
 
 0,
-TITLE,最強,
+TITLE,mimic,
 SUMMARY,
 
 ENDTEXT,

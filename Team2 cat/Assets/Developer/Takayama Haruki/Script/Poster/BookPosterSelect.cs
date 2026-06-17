@@ -67,7 +67,7 @@ public class BookPosterSelect : MouseController
             if (movie_text == "GENRE" && !set_genre)
             {
                 text_word++; //1行進める
-                movie_information[PosterConst.GENRE] = movie_text_data[text_line][text_word].ToString(); //ジャンルを取得
+                movie_information[PosterConst.GENRE] = ("ジャンル : " + movie_text_data[text_line][text_word].ToString()); //ジャンルを取得
                 set_genre = true;
                 NextText();
             }
@@ -86,7 +86,7 @@ public class BookPosterSelect : MouseController
                 if (movie_text == "TITLE" && !set_title)
                 {
                     text_word++; //1行進める
-                    movie_information[PosterConst.TITLE] = movie_text_data[text_line][text_word]; //タイトルを取得
+                    movie_information[PosterConst.TITLE] = ("タイトル : " + movie_text_data[text_line][text_word]); //タイトルを取得
                     set_title = true;
                     NextText();
                 }

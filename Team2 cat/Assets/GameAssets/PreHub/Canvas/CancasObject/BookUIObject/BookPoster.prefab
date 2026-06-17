@@ -91,8 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BookPosterSelect
   not_ui: 0
   is_hover: 0
+  hover_click: 0
   movie_text_file:
-  - {fileID: 4900000, guid: 034c6ccd62eb05545bcc5912f15fc0be, type: 3}
   - {fileID: 4900000, guid: 4882981c2b3ee5f4ab61f38448b205c2, type: 3}
   - {fileID: 4900000, guid: 9d5d18d06cba08542bcbe2c8cdbd5723, type: 3}
   - {fileID: 4900000, guid: 7f1103ae84698d44087c7b5ffc7cffb5, type: 3}

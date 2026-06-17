@@ -151,6 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001f60de65dcd8d428edb642e7cd4d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PosterSelect
+  not_ui: 0
+  is_hover: 0
+  hover_click: 0
   highlight_effect: {fileID: 5684479619681306667, guid: 2bbd4a52a4b64f343be8ed4fccdb66a0, type: 3}
   effect_size_x: 0.1
   effect_size_y: 0.75

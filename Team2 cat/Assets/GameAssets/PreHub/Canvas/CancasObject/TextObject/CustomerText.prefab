@@ -154,7 +154,6 @@ MonoBehaviour:
   text_next: 0
   text: {fileID: 6987980111659303534}
   textfile:
-  - {fileID: 4900000, guid: 9fb0563b1adada947a8c191931fba7f8, type: 3}
   - {fileID: 4900000, guid: 2b0bb0eb6e000794890d16bbfcb61383, type: 3}
   - {fileID: 4900000, guid: 20d6574895ecbd845b1e013142ac2f60, type: 3}
   - {fileID: 4900000, guid: 5d2e06d49dfae224692687cb07f725a9, type: 3}

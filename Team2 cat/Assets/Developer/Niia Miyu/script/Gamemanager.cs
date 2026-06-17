@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text moveText;//画面に残り手数を出すUI
     public Time timer;//時間を測っているスクリプト
     public int moves = 2;//手数
+    public static int score;
 
     private int ans_genre; //答えのジャンル
     private int ans_poster;//答えのポスター

@@ -17,7 +17,8 @@ public class MouseController : MonoBehaviour
         Camera cam = Camera.main;
 
         //UI”»’è‚ª‚¢‚éê‡
-        if(!ui){
+        if(!ui)
+        {
             //UI‚ÉG‚ê‚Ä‚¢‚½ê‡
             if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             {
@@ -48,8 +49,9 @@ public class MouseController : MonoBehaviour
             if (now_hovered && !hover_click)
             {
                 OnClick();
-                hover_click = true;
             }
+
+            hover_click = true;
         }
         else
             hover_click = false;
