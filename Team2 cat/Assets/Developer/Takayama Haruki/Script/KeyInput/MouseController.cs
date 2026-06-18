@@ -6,6 +6,7 @@ public class MouseController : MonoBehaviour
     public bool not_ui = false; //UIの上にいるかどうか
     public bool is_hover = false;//マウスのホバー状態
     public bool hover_click = false;//クリックを長押ししているどうか
+    public bool one_click = false;
 
     /// <summary>
     /// マウスの状態を検知する用メソッド
@@ -43,7 +44,7 @@ public class MouseController : MonoBehaviour
         }
 
         //マウスがクリックされていない時
-        if (GameController.Instanse.is_click)
+        if (!GameController.Instanse.is_click)
         {
             //カーソルが当たっている状態でクリックした時
             if (now_hovered && !hover_click)

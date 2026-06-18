@@ -18,15 +18,9 @@ public class Book : MouseController
 
     private void Update()
     {
-        //UIが消えた時
-        if (!GameController.Instanse.on_ui && time.pause)
-        {
-            time.pause = false;
-            book_ui.SetActive(false); //図鑑を非表示
-        }
+        CloseBook();
 
         MouseControll(ref is_hover, not_ui);
-
     }
 
     //クリック時の処理
@@ -41,6 +35,16 @@ public class Book : MouseController
                 book_num--;
                 book_ui.SetActive(true); //図鑑を表示
             }
+        }
+    }
+
+    public void CloseBook()
+    {
+        //UIが消えた時
+        if (!GameController.Instanse.on_ui && time.pause)
+        {
+            time.pause = false;
+            book_ui.SetActive(false); //図鑑を非表示
         }
     }
 }

@@ -27,7 +27,6 @@ public class BookPosterSelect : MouseController
     private bool set_genre; //ジャンルセット管理用フラグ
     private bool set_title; //タイトルセット管理用フラグ
     private bool set_summary; //映画概要セット管理用フラグ
-    private bool poster_click;//ポスタークリック管理用フラグ
 
     [SerializeField] private string[] movie_information;
     private GameObject highlight_effect_save; //ハイライトエフェクト一時保存用
@@ -125,17 +124,17 @@ public class BookPosterSelect : MouseController
         //クリックされていない時
         if(!GameController.Instanse.is_click)
         {
-            poster_click = false;
+            one_click = false;
         }
     }
 
     public override void OnClick()
     {
-        if (!poster_click)
+        if (!one_click)
         {
             Debug.Log("クリック確認");
             PosterInformationText.Instanse.SetMovieDataText(movie_information);
-            poster_click = true;
+            one_click = true;
         }
     }
 

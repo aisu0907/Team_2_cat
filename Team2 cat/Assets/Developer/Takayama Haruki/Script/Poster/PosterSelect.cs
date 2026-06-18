@@ -18,7 +18,6 @@ public class Poster : MouseController
     private bool highlight;     //ハイライト切り替え用
     private Vector3 effect_size;//ハイライトエフェクト保存用
     private Vector3 poster_size_save;//ポスターの大きさ保存用
-    private bool clear_check; //クリアチェック管理用フラグ
 
     private void Start() 
     {
@@ -36,18 +35,18 @@ public class Poster : MouseController
 
         if(!GameController.Instanse.is_click)
         {
-            clear_check = false;
+            one_click = false;
         }
     }
 
     //クリック時の処理
     public override void OnClick()
     {
-        if (!clear_check)
+        if (!one_click)
         {
             //クリア判定
             GameManager.Instance.Gameclear(poster.sprite);
-            clear_check = true;
+            one_click = true;
         }
     }
 

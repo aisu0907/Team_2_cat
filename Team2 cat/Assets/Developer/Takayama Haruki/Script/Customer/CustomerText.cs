@@ -11,8 +11,9 @@ public class CustomerText : MonoBehaviour
     [SerializeField] TextMeshProUGUI text; //変更するテキスト先
     [SerializeField] TextAsset[] textfile; //読み取るテキストデータ
     [SerializeField] List<string[]> text_data = new List<string[]>(); //テキストファイルのテキストを保存用
+    [SerializeField] TextMeshProUGUI book_coment; //図鑑のテキスト
 
-    [Header("ゲームの答え確認用")]
+    [Header("ゲームの答え確認用\n設定不可")]
     [SerializeField] private int genre; //答えのジャンル
     [SerializeField] private int poster; //答えの映画
 
@@ -56,7 +57,6 @@ public class CustomerText : MonoBehaviour
                 {
                     Savetext();
                     poster_switch = true;
-                    Debug.Log("成功");
                 }
                 //答えのポスターが見つかっていなかった場合
                 else if (!poster_switch)
@@ -77,8 +77,11 @@ public class CustomerText : MonoBehaviour
                     }
 
                     //入ってる文字がNEXTじゃない場合
-                    if(hint != "NEXT")
-                    text.text = hint;
+                    if (hint != "NEXT")
+                    {
+                        text.text = hint;
+                        book_coment.text = hint;
+                    }
                 }
             }
             else
