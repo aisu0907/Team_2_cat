@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.IO;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using System.IO;
 
 public class CustomerText : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class CustomerText : MonoBehaviour
     [SerializeField] private int genre; //答えのジャンル
     [SerializeField] private int poster; //答えの映画
 
+    [Header("文字送りのスピード")]
+    public float show_interval; //文字送りのスピード
+
+    private Coroutine execution_text;
     private int text_num; //テキスト行数
     private int text_count; //テキストの区切り
     private string hint; //テキストを1行保存用
@@ -55,13 +60,14 @@ public class CustomerText : MonoBehaviour
                 //答えのポスターかつ答えのポスターが見つかっていなかった場合
                 if (hint == poster.ToString() && !poster_switch)
                 {
-                    Savetext();
+                    NextText();
                     poster_switch = true;
+                    SaveText();
                 }
                 //答えのポスターが見つかっていなかった場合
                 else if (!poster_switch)
                 {
-                    Savetext();
+                    NextText();
                 }
 
                 //答えのポスターが見つかっていたら
@@ -74,18 +80,15 @@ public class CustomerText : MonoBehaviour
                         hint = text_data[text_num][text_count].ToString();
 
                         text_next = false;
-                    }
 
-                    //入ってる文字がNEXTじゃない場合
-                    if (hint != "NEXT")
-                    {
-                        text.text = hint;
-                        book_coment.text = hint;
+                        SaveText();
                     }
                 }
             }
             else
-                Savetext();
+                NextText();
+
+
         }
         else
         {
@@ -95,17 +98,47 @@ public class CustomerText : MonoBehaviour
                 return;
             }
             else
-                Savetext();
+                NextText();
         }
     }
 
     /// <summary>
     /// 改行用メソッド
     /// </summary>
-    void Savetext()
+    void NextText()
     {
         text_num++;
         text_count = 0;
         hint = text_data[text_num][text_count].ToString();
+    }
+
+    private void SaveText()
+    {
+        //入ってる文字がNEXTじゃない場合
+        if (hint != "NEXT")
+        {
+            text.text = hint;
+            book_coment.text = hint;
+        }
+
+        //コールチンが起動していた場合
+        if (execution_text != null)
+            StopCoroutine(execution_text); //コールチンを止める
+
+        execution_text = StartCoroutine(ShowText()); // コルーチンを開始
+    }
+
+    private IEnumerator ShowText()
+    {
+        text.ForceMeshUpdate();
+
+        int totalChars = text.textInfo.characterCount;
+        text.maxVisibleCharacters = 0;
+
+        for (int i = 0; i <= totalChars; i++)
+        {
+            text.maxVisibleCharacters = i;
+            yield return new WaitForSeconds(show_interval);
+        }
     }
 }
