@@ -76,7 +76,7 @@ public class CustomerText : MonoBehaviour
                     //次のヒントにいける場合
                     if (text_next)
                     {
-                        text_count++;
+                        text_num++;
                         hint = text_data[text_num][text_count].ToString();
 
                         text_next = false;
