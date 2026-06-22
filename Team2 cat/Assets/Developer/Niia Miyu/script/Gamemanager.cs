@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     [SerializeField] MovieData[] movie_data;//映画のデータ
-    public static GameManager Instance;//どこからでもゲームマネージャーを使える
     public TMP_Text moveText;//画面に残り手数を出すUI
     public Time timer;//時間を測っているスクリプト
     public int moves = 2;//手数
@@ -19,6 +18,7 @@ public class GameManager : MonoBehaviour
     private bool is_game_clear;
     private bool is_game_over;//二重にシーン移動しないようにする
 
+    public static GameManager Instance;//どこからでもゲームマネージャーを使える
     void Awake()
     {
         Instance = this;

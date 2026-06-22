@@ -10,14 +10,14 @@ public class Poster : MouseController
     [Header("エフェクト設定")]
     public float effect_size_x; //ハイライトエフェクトの横幅
     public float effect_size_y; //ハイライトエフェクトの縦幅
-    public float poster_size_up_x;//大きくするサイズ横幅
-    public float poster_size_up_y;//大きくするサイズ縦幅
+    public float poster_up_size_rate; //大きくするエフェクトの拡大率
 
     private Image poster; //ポスター画像
     
     private GameObject highlight_effect_save; //ハイライトエフェクト一時保存用
     private bool highlight;     //ハイライト切り替え用
     private Vector3 effect_size;//ハイライトエフェクト保存用
+    private Vector3 poster_up_size;  //拡大後サイズ保存用
     private Vector3 poster_size_save;//ポスターの大きさ保存用
 
     private void Start() 
@@ -28,6 +28,7 @@ public class Poster : MouseController
 
         poster = gameObject.GetComponent<Image>(); //画像をセット
         poster_size_save = gameObject.transform.localScale; //ポスターの元のサイズを保存
+        poster_up_size = gameObject.transform.localScale * poster_up_size_rate;
         effect_size = new Vector3(effect_size_x, effect_size_y, 0); //座標を設定
     }
 
@@ -61,7 +62,8 @@ public class Poster : MouseController
             highlight_effect_save.transform.localScale = effect_size + gameObject.transform.localScale; //大きさを設定 
 
             //ポスターの大きさを変更
-            gameObject.transform.localScale = (poster_size_save + new Vector3(poster_size_up_x, poster_size_up_y, 0.0f));
+            gameObject.transform.localScale = poster_up_size;
+                //(poster_size_save + new Vector3(poster_size_up_x, poster_size_up_y, 0.0f));
         }
 
         highlight = false;
