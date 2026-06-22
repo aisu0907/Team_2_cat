@@ -23,7 +23,7 @@ public class MouseController : MonoBehaviour
             //UIÇ…êGÇÍÇƒÇ¢ÇΩèÍçá
             if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             {
-                //Debug.Log("UIÇÃè„Ç…Ç¢Ç‹Ç∑");
+                Debug.Log("UIÇÃè„Ç…Ç¢Ç‹Ç∑");
                 OnExit();
                 return;
             }

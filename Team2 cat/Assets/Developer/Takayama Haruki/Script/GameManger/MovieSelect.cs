@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MovieSelect : MonoBehaviour
 {
     [Header("使用オブジェクト")]
     [SerializeField] MovieData[] movie_data;//映画のジャンルデータを入れる
-    [SerializeField] SpriteRenderer[] targets;       //画像を変更するオブジェクトを入れる
+    [SerializeField] GameObject[] targets;       //画像を変更するオブジェクトを入れる
 
     [Header("ゲーム設定")]
     public int choices_num;//選択肢の数
@@ -106,7 +107,7 @@ public class MovieSelect : MonoBehaviour
         //ターゲットに画像を貼り付ける
         for(int i = 0; i < choices.Length; i++)
         {
-            targets[i].sprite = choices[i];
+            targets[i].GetComponent<Image>().sprite = choices[i];
         }
     }
 

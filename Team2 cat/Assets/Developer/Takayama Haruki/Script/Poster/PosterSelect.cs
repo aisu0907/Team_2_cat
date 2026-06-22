@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Poster : MouseController
 {
@@ -12,7 +13,7 @@ public class Poster : MouseController
     public float poster_size_up_x;//大きくするサイズ横幅
     public float poster_size_up_y;//大きくするサイズ縦幅
 
-    private SpriteRenderer poster; //ポスター画像
+    private Image poster; //ポスター画像
     
     private GameObject highlight_effect_save; //ハイライトエフェクト一時保存用
     private bool highlight;     //ハイライト切り替え用
@@ -23,8 +24,9 @@ public class Poster : MouseController
     {
         //リセット
         highlight = true;
+        //not_ui = true;
 
-        poster = gameObject.GetComponent<SpriteRenderer>(); //画像をセット
+        poster = gameObject.GetComponent<Image>(); //画像をセット
         poster_size_save = gameObject.transform.localScale; //ポスターの元のサイズを保存
         effect_size = new Vector3(effect_size_x, effect_size_y, 0); //座標を設定
     }
@@ -33,10 +35,8 @@ public class Poster : MouseController
     {
         MouseControll(ref is_hover, not_ui);
 
-        if(!GameController.Instanse.is_click)
-        {
+        if (!GameController.Instanse.is_click)
             one_click = false;
-        }
     }
 
     //クリック時の処理
