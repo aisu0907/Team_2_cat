@@ -40,4 +40,21 @@ namespace Const
         public const int TITLE = 1;
         public const int SUMMARY = 2;
     }
+
+    public static class SoundConst
+    {
+        enum SE
+        {
+            BELL,
+            DOOR,
+            SELECT,
+        }
+
+        enum BGM
+        {
+            TITLE,
+            GAME,
+            RESULT,
+        }
+    }
 }
