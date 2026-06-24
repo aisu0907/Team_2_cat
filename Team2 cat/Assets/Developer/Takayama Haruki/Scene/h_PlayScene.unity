@@ -1843,7 +1843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4618345193462581903, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
       propertyPath: answer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4618345193462581903, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
       propertyPath: set_on
