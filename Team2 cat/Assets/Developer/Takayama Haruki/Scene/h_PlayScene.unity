@@ -950,6 +950,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3842415253264004081, guid: 4aa98b94501452b4eb941dfa1a1697fd, type: 3}
   m_PrefabInstance: {fileID: 1126351839}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &508051855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8916660990900603788, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
+  m_PrefabInstance: {fileID: 1294915364}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1924,13 +1929,37 @@ PrefabInstance:
     - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8916660990900603788, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1294915373}
   m_SourcePrefab: {fileID: 100100000, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
 --- !u!4 &1294915365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5162775001396660642, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
   m_PrefabInstance: {fileID: 1294915364}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1294915373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508051855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2622e063966e6409cb165e79c94ced, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartGame
+  set_object:
+  - {fileID: 1360573385}
+  - {fileID: 6923274258905248822}
+  - {fileID: 272143268}
+  - {fileID: 2017044090}
+  - {fileID: 1439075569}
+  start_time: 0
+  bell_time: 0
+  castomer_time: 0
 --- !u!1 &1298435443
 GameObject:
   m_ObjectHideFlags: 0
@@ -5036,10 +5065,10 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1045825699}
-  - {fileID: 2017044094}
-  - {fileID: 27809157288227881}
-  - {fileID: 1439075573}
-  - {fileID: 6828559600701073508}
   - {fileID: 5617132850968727257}
+  - {fileID: 27809157288227881}
   - {fileID: 938789143289068389}
+  - {fileID: 6828559600701073508}
+  - {fileID: 2017044094}
+  - {fileID: 1439075573}
   - {fileID: 1916161235}

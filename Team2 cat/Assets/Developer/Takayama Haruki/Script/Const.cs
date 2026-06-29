@@ -43,18 +43,21 @@ namespace Const
 
     public static class SoundConst
     {
-        enum SE
-        {
-            BELL,
-            DOOR,
-            SELECT,
-        }
+        public const int BGM = 0;
+        public const int SE = 1;
 
-        enum BGM
+        public enum BGM_ID
         {
             TITLE,
             GAME,
             RESULT,
+        }
+
+        public enum SE_ID
+        {
+            BELL,
+            DOOR,
+            SELECT,
         }
     }
 }

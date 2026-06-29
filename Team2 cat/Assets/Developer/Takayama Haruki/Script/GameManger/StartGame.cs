@@ -1,41 +1,60 @@
-//using UnityEngine;
-//using Const;
-//using System.Collections;
+using UnityEngine;
+using Const;
+using System.Collections;
 
-//public class StartGame : MonoBehaviour
-//{
-//    [SerializeField] GameObject[] set_object; //スタート時にセットするオブジェクト
+public class StartGame : MonoBehaviour
+{
+    [SerializeField] GameObject[] set_object; //スタート時にセットするオブジェクト
 
-//   // private bool game_start;
-//    private float start_time;
-//    private float castomer_time; 
+    public float start_time;
+    public float bell_time;
+    public float castomer_time;
 
-//    public StartGame Instans;
-//    void Awake()
-//    {
-//        Instans = this;
+    private bool game_start;
+    private SoundManger sound;
 
-//        game_start = false;
-//        for (int i = 0; i < set_object.Length; i++)
-//            set_object[i].SetActive(false);
+    public static StartGame Instans;
+    void Awake()
+    {
+        Instans = this;
 
-//    }
+        sound = SoundManger.Instans;
 
-//    IEnumerator StartMovie()
-//    {
-//        yield return new WaitForSeconds(start_time);
+        game_start = false;
+        for (int i = 0; i < set_object.Length; i++)
+            set_object[i].SetActive(false);
 
-//        //ここで音を鳴らす
+        
 
-//        yield return new WaitForSeconds(castomer_time);
+    }
+    
+    void Start()
+    {
+        StartCoroutine(StartMovie());
 
-//        //ここでお客さんを登場
+    }
+    IEnumerator StartMovie()
+    {
+        yield return new WaitForSeconds(start_time);
 
-//        //その次にお客さんのテキスト]
+        //入店音を鳴らす
+        sound.PlaySE((int)SoundConst.SE_ID.BELL, 50.0f);
 
-//        //if()
+        yield return new WaitForSeconds(bell_time);
 
-//        //ゲーム開始
+        //ドアが開いた音を鳴らす
+        sound.PlaySE((int)SoundConst.SE_ID.DOOR, 50.0f);
 
-//    }
-//}
+        yield return new WaitForSeconds(castomer_time);
+
+        //ここでお客さんを登場
+        set_object[3].SetActive(true);
+
+        //その次にお客さんのテキスト]
+
+        //if()
+
+        //ゲーム開始
+
+    }
+}
