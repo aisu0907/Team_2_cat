@@ -24,8 +24,9 @@ public class SoundManger : MonoBehaviour
     public void PlaySE(int se_id, float vlome)
     {
         se_sound.volume = vlome; //‰¹—Ê‚ğİ’è
-
         se_sound.PlayOneShot(sound_data[SoundConst.SE].sound[se_id]); //‘Î‰‚µ‚½SE‚ğ—¬‚·
+
+        Debug.Log("SE‚ğ–Â‚ç‚µ‚Ü‚µ‚½");
     }
 
     public void PlayBGM(int bgm_id, float vlome)

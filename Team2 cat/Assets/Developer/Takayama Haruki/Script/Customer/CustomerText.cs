@@ -25,7 +25,7 @@ public class CustomerText : MonoBehaviour
     private int text_num; //テキスト行数
     private int text_count; //テキストの区切り
     private string hint; //テキストを1行保存用
-    private bool poster_switch;
+    private bool poster_switch; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -57,32 +57,36 @@ public class CustomerText : MonoBehaviour
             //テキストの改行を検出しかった場合
             if (hint != "NEXT")
             {
-                //答えのポスターかつ答えのポスターが見つかっていなかった場合
-                if (hint == poster.ToString() && !poster_switch)
+                if (StartGame.Instans.game_start)
                 {
-                    NextText();
-                    poster_switch = true;
-                    SaveText();
-                }
-                //答えのポスターが見つかっていなかった場合
-                else if (!poster_switch)
-                {
-                    NextText();
-                }
-
-                //答えのポスターが見つかっていたら
-                if (poster_switch)
-                {
-                    //次のヒントにいける場合
-                    if (text_next)
+                    //答えのポスターかつ答えのポスターが見つかっていなかった場合
+                    if (hint == poster.ToString() && !poster_switch)
                     {
-                        text_num++;
-                        hint = text_data[text_num][text_count].ToString();
-
-                        text_next = false;
-
+                        NextText();
+                        poster_switch = true;
                         SaveText();
                     }
+                    //答えのポスターが見つかっていなかった場合
+                    else if (!poster_switch)
+                    {
+                        NextText();
+                    }
+
+                    //答えのポスターが見つかっていたら
+                    if (poster_switch)
+                    {
+                        //次のヒントにいける場合
+                        if (text_next)
+                        {
+                            text_num++;
+                            hint = text_data[text_num][text_count].ToString();
+
+                            text_next = false;
+
+                            SaveText();
+                        }
+                    }
+
                 }
             }
             else

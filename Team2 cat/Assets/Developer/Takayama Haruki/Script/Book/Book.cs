@@ -18,9 +18,9 @@ public class Book : MouseController
 
     private void Update()
     {
-        CloseBook();
+            CloseBook();
 
-        MouseControll(ref is_hover, not_ui);
+            MouseControll(ref is_hover, not_ui);
     }
 
     //ƒNƒŠƒbƒN‚Ìˆ—
