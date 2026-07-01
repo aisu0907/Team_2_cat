@@ -6,7 +6,7 @@ public class MouseController : MonoBehaviour
     public bool not_ui = false; //UIの上にいるかどうか
     public bool is_hover = false;//マウスのホバー状態
     public bool hover_click = false;//クリックを長押ししているどうか
-    public bool one_click = false;
+    public bool one_click = false;  //1クリックだけを検知する用
 
     /// <summary>
     /// マウスの状態を検知する用メソッド
