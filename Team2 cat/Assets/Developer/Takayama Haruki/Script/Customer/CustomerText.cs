@@ -57,7 +57,7 @@ public class CustomerText : MonoBehaviour
             //テキストの改行を検出しかった場合
             if (hint != "NEXT")
             {
-                if (StartGame.Instans.game_start)
+                if (StartGame.Instance.game_start)
                 {
                     //答えのポスターかつ答えのポスターが見つかっていなかった場合
                     if (hint == poster.ToString() && !poster_switch)

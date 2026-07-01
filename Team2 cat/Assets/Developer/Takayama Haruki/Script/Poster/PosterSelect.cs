@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -7,13 +9,19 @@ public class Poster : MouseController
     [Header("使用オブジェクト")]
     [SerializeField] GameObject highlight_effect; //ハイライトエフェクトオブジェクト
 
+    [Header("スタートエフェクト設定")]
+    public float poster_pos_x;
+    public float poster_pos_y;
+    public float poster_speed;
+
     [Header("エフェクト設定")]
     public float effect_size_x; //ハイライトエフェクトの横幅
     public float effect_size_y; //ハイライトエフェクトの縦幅
     public float poster_up_size_rate; //大きくするエフェクトの拡大率
 
     private Image poster; //ポスター画像
-    
+
+    private bool effect_end;
     private GameObject highlight_effect_save; //ハイライトエフェクト一時保存用
     private bool highlight;     //ハイライト切り替え用
     private Vector3 effect_size;//ハイライトエフェクト保存用
@@ -24,6 +32,7 @@ public class Poster : MouseController
     {
         //リセット
         highlight = true;
+        effect_end = false;
         //not_ui = true;
 
         poster = gameObject.GetComponent<Image>(); //画像をセット
@@ -34,10 +43,13 @@ public class Poster : MouseController
 
     private void Update()
     {
+        if(effect_end)
+        {
         MouseControll(ref is_hover, not_ui);
 
         if (!GameController.Instanse.is_click)
             one_click = false;
+        }
     }
 
     //クリック時の処理

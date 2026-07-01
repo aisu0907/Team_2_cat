@@ -18,9 +18,12 @@ public class Book : MouseController
 
     private void Update()
     {
+        if (StartGame.Instance.game_start)
+        {
             CloseBook();
 
             MouseControll(ref is_hover, not_ui);
+        }
     }
 
     //ƒNƒŠƒbƒN‚Ìˆ—

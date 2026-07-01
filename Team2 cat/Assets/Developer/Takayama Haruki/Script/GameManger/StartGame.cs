@@ -13,34 +13,37 @@ public class StartGame : MonoBehaviour
     
     private SoundManger sound;
 
-    public static StartGame Instans; //シングルトン
+    public static StartGame Instance; //シングルトン
     void Awake()
     {
-        Instans = this; //シングルトン
-
-        sound = SoundManger.Instans;
+        Instance = this; //シングルトン
 
         game_start = false;
+        
+        //オブジェクトを非表示
+        for (int i = 0; i < set_object.Length; i++)
+            set_object[i].SetActive(false);
+
     }
     
     void Start()
     {
-        //オブジェクトを非表示
-        for (int i = 0; i < set_object.Length; i++)
-            set_object[i].SetActive(false);
+        sound = SoundManger.Instance;
+
+        sound.PlayBGM((int)SoundConst.BGM_ID.GAME, 50.0f);
         StartCoroutine(StartMovie());
     }
     IEnumerator StartMovie()
     {
         yield return new WaitForSeconds(start_time);
 
-        //ドアの音を鳴らす
-        sound.PlaySE((int)SoundConst.SE_ID.DOOR, 50.0f);
+        //入店音を鳴らす
+        sound.PlaySE((int)SoundConst.SE_ID.BELL, 50.0f);
 
         yield return new WaitForSeconds(bell_time);
 
-        //入店音を鳴らす
-        sound.PlaySE((int)SoundConst.SE_ID.BELL, 50.0f);
+        //ドアの音を鳴らす
+        sound.PlaySE((int)SoundConst.SE_ID.DOOR, 50.0f);
 
         yield return new WaitForSeconds(castomer_time);
 
@@ -48,7 +51,7 @@ public class StartGame : MonoBehaviour
         set_object[2].SetActive(true);
 
 
-        //その次にお客さんのテキスト]
+        //その次にお客さんのテキスト
 
         //if()
 

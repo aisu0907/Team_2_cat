@@ -37,6 +37,12 @@ public class MouseController : MonoBehaviour
         //当たっているものが自分自身か確認
         bool now_hovered = (hit.collider != null && hit.collider.gameObject == gameObject); //現フレームのマウスのホバー状態
 
+        if (hit.collider != null&& now_hovered)
+        {
+            // マウスが当たっているオブジェクトの名前をコンソールに表示
+            Debug.Log($"マウスが触れているオブジェクト: {hit.collider.gameObject.name}");
+        }
+
         //カーソルが当たった時
         if (now_hovered && !is_hovered )
         {
@@ -51,7 +57,7 @@ public class MouseController : MonoBehaviour
             {
                 OnClick();
             }
-
+            
             hover_click = true;
         }
         else

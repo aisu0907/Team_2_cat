@@ -10,23 +10,24 @@ public class SoundManger : MonoBehaviour
     private AudioSource bgm_sound;//BGMを鳴らす用
 
     //シングルトン
-    public static SoundManger Instans;
+    public static SoundManger Instance;
     void Awake()
     {
-        Instans = this;
+        Instance = this;
 
         //コンポーネント設定
         se_sound = gameObject.GetComponent<AudioSource>();
+        bgm_sound = gameObject.GetComponent<AudioSource>();
 
         bgm_sound.loop = true; //BGMのループをON
     }
 
     public void PlaySE(int se_id, float vlome)
     {
+        Debug.Log("SEを鳴らしました");
         se_sound.volume = vlome; //音量を設定
         se_sound.PlayOneShot(sound_data[SoundConst.SE].sound[se_id]); //対応したSEを流す
 
-        Debug.Log("SEを鳴らしました");
     }
 
     public void PlayBGM(int bgm_id, float vlome)
