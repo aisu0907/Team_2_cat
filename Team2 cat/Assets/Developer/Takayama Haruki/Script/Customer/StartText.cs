@@ -9,7 +9,6 @@ public class StartText : MonoBehaviour
     [SerializeField] TextAsset[] textfile; //読み取るテキストデータ
     [SerializeField] List<string[]> text_data = new List<string[]>(); //テキストファイルのテキストを保存用
 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

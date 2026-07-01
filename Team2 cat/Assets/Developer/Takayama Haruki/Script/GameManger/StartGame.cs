@@ -31,6 +31,7 @@ public class StartGame : MonoBehaviour
         sound = SoundManger.Instance;
 
         sound.PlayBGM((int)SoundConst.BGM_ID.GAME, 50.0f);
+
         StartCoroutine(StartMovie());
     }
     IEnumerator StartMovie()
