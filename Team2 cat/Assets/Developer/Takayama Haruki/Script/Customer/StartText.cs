@@ -1,3 +1,4 @@
+using Const;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -96,6 +97,8 @@ public class StartText : MonoBehaviour
     {
         //テキストオブジェクトにテキストを入れる
         customer_text.text = start_text;
+
+        SoundManager.Instance.PlaySE((int)SoundConst.SE_ID.CUSTOMER_POP, 1.0f);
 
         StartCoroutine(ShowText()); // コルーチンを開始
     }

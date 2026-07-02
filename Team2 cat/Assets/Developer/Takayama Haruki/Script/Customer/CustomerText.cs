@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using System.IO;
+using Const;
 
 public class CustomerText : MonoBehaviour
 {
@@ -125,11 +126,8 @@ public class CustomerText : MonoBehaviour
         text.text = hint;
         book_coment.text = hint;
 
-        //コールチンが起動していた場合
-        if (execution_text != null)
-            StopCoroutine(execution_text); //コールチンを止める
-
-        execution_text = StartCoroutine(ShowText()); // コルーチンを開始
+        SoundManager.Instance.PlaySE((int)SoundConst.SE_ID.CUSTOMER_POP, 1.0f);
+        StartCoroutine(ShowText()); // コルーチンを開始
     }
 
     /// <summary>

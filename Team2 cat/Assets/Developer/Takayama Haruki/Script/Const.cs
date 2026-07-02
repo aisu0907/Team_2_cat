@@ -11,7 +11,6 @@ namespace Const
     public static class GameConfig
     {
         public const int TICK_TIME = 60;
-        
     }
 
     //ÉVÅ[ÉìÇÃñºëO
@@ -62,6 +61,7 @@ namespace Const
             EXIT,
             BOOK_OPEN,
             MISS,
+            CUSTOMER_POP,
         }
     }
 }

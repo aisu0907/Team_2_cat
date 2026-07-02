@@ -134,6 +134,7 @@ public class BookPosterSelect : MouseController
     {
         if (!one_click)
         {
+            SoundManager.Instance.PlaySE((int)SoundConst.SE_ID.SELECT, 1.0f);
             Debug.Log("クリック確認");
             PosterInformationText.Instanse.SetMovieDataText(movie_information);
             one_click = true;
