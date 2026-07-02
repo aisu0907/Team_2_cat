@@ -1,6 +1,6 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Const;
 
 public class GameManager : MonoBehaviour
@@ -8,15 +8,28 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     [SerializeField] MovieData[] movie_data;//映画のデータ
+    [SerializeField] RectTransform[] target_posters; //移動させるポスターの位置
+    [SerializeField] FadeManager fade_obj; //フェードするオブジェクト
+
+    [Header("ポスター演出系")]
+    public Vector2[] poster_target_pos; //ポスターが移動する場所
+    public float move_speed; //ポスターが動く速度
+
+    [Header("その他")]
     public TMP_Text moveText;//画面に残り手数を出すUI
-    public Time timer;//時間を測っているスクリプト
+    public Timer timer;//時間を測っているスクリプト
     public int moves = 2;//手数
     public static int score;
+
+    public bool move_scene;
+    public bool effect_start;
+    public bool effect_end;
 
     private int ans_genre; //答えのジャンル
     private int ans_poster;//答えのポスター
     private bool is_game_clear;
     private bool is_game_over;//二重にシーン移動しないようにする
+    private SoundManager sound; //サウンドインスタンス省略用
 
     public static GameManager Instance;//どこからでもゲームマネージャーを使える
     void Awake()
@@ -28,9 +41,15 @@ public class GameManager : MonoBehaviour
         //フラグをリセット
         is_game_clear = false;
         is_game_over = false;
+        effect_start = false;
+        effect_end = false;
+        move_scene = true;
 
         ans_genre = MovieSelect.Instance.Answergenre(); //答えのジャンルを取得
         ans_poster = MovieSelect.Instance.Answer(); //答えを取得
+
+        sound = SoundManager.Instance;
+
         UpdateUI();//ゲーム開始時に一度UIを表示
     }
 
@@ -42,9 +61,15 @@ public class GameManager : MonoBehaviour
             if (timer != null && timer.game_time <= 0)
             {
                 is_game_over = true;
-
+                
                 GameOver();
             }
+        }
+
+        if(effect_start && !effect_end)
+        {
+            StartCoroutine(StartMovePoster());
+            effect_start = false;
         }
     }
 
@@ -54,9 +79,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void UseMove()
     {
-        if(moves > 0)
+        if (moves > 0)
+        {
             moves--; //手数を減らす
-
+        }
 
         if (moves <= 0 && !is_game_clear)//0以下になったら
         {
@@ -66,7 +92,9 @@ public class GameManager : MonoBehaviour
 
             // 手数切れによるゲームオーバー呼び出し
             if (!is_game_over)
+            {
                 GameOver();
+            }
         }
         else
         {
@@ -95,7 +123,7 @@ public class GameManager : MonoBehaviour
 
         is_game_over = true;//ゲームオーバー状態にする
 
-        SceneManager.LoadScene(SceneName.GAMEOVER);//シーン移動
+        fade_obj.StartFadeOut(move_scene, SceneName.GAMEOVER);
     }
 
     /// <summary>
@@ -111,12 +139,59 @@ public class GameManager : MonoBehaviour
             if (ans == movie_data[ans_genre].poster[ans_poster])
             {
                 is_game_clear = true;
+
                 Debug.Log("ゲームクリアが呼ばれました！");//デバック用
+
                 UseMove();
-                SceneManager.LoadScene(SceneName.RESULT);
+                fade_obj.StartFadeOut(move_scene, SceneName.RESULT);
             }
             else
+            {
+                sound.PlaySE((int)SoundConst.SE_ID.MISS, 1.0f); //
                 UseMove();
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// ポスター全体の移動を管理する用メソッド
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator StartMovePoster()
+    {
+        for(int i= 0; i < target_posters.Length; i++)
+        {
+            //ポスターの移動をする
+            yield return StartCoroutine(MovePoster(i));
+
+            //指定された時間待つ
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        effect_end = true;//エフェクトを終了
+        StartGame.Instance.game_start = true;
+
+        yield return new WaitForSeconds(1.0f);
+        StartGame.Instance.ObjectActive();
+
+    }
+
+    /// <summary>
+    /// ポスターを移動させる用メソッド
+    /// </summary>
+    /// <param name="obj_id">移動さえるオブジェクトの配列番号</param>
+    /// <returns></returns>
+    IEnumerator MovePoster(int obj_id)
+    {
+        // 目的地との距離がほぼ0になるまでループ
+        while (Vector2.Distance(target_posters[obj_id].anchoredPosition, poster_target_pos[obj_id]) > 0.01f)
+        {
+            // 前回の移動処理と同じ（Time.deltaTimeを掛ける）
+            target_posters[obj_id].anchoredPosition = Vector3.MoveTowards(target_posters[obj_id].anchoredPosition, poster_target_pos[obj_id], move_speed * Time.deltaTime);
+
+            // 1フレーム待ってから、次のフレームでwhile文の先頭に戻る
+            yield return null;
         }
     }
 }  

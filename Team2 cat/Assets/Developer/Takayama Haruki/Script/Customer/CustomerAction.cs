@@ -19,22 +19,25 @@ public class CustomerAction : MonoBehaviour
 
     void Update()
     {
-        //次のヒントに行ってなかったら
-        if(!comment.GetComponent<CustomerText>().text_next)
-        ++count;
-
-        //1秒たったら
-        if(count >= GameConfig.TICK_TIME)
+        if (StartGame.Instance.game_start)
         {
-            ++comment_interval;
-            count = 0;
-        }
+            //次のヒントに行ってなかったら
+            if (!comment.GetComponent<CustomerText>().text_next)
+                ++count;
 
-        //インターバルが終了したら
-        if(comment_interval >= comment_time)
-        {
-            comment.GetComponent<CustomerText>().text_next = true; //次のヒントに行く
-            comment_interval = 0; //インターバルリセット
+            //1秒たったら
+            if (count >= GameConfig.TICK_TIME)
+            {
+                ++comment_interval;
+                count = 0;
+            }
+
+            //インターバルが終了したら
+            if (comment_interval >= comment_time)
+            {
+                comment.GetComponent<CustomerText>().text_next = true; //次のヒントに行く
+                comment_interval = 0; //インターバルリセット
+            }
         }
     }
 }

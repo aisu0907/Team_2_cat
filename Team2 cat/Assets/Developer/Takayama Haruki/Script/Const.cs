@@ -18,11 +18,11 @@ namespace Const
     public static class SceneName
     {
         public const string TITLE = "TitleScene";
-        public const string GAME = "GameScene";
+        public const string GAME = "PlayScene";
         public const string RESULT = "ResultScene";
         public const string GAMEOVER = "GameOverScene";
         public const string TWO = "two Scene";
-
+        public const string H_GAME = "h_GameScene";
     }
 
     public static class CodeAsset
@@ -58,6 +58,10 @@ namespace Const
             BELL,
             DOOR,
             SELECT,
+            POSTER_CURSOR,
+            EXIT,
+            BOOK_OPEN,
+            MISS,
         }
     }
 }

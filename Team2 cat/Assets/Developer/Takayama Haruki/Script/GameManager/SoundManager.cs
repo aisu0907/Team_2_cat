@@ -2,22 +2,18 @@ using Const;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class SoundManger : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     [SerializeField] SoundData[] sound_data; //サウンドデータ
 
-    private AudioSource se_sound; //SEを鳴らす用
-    private AudioSource bgm_sound;//BGMを鳴らす用
+    [SerializeField] AudioSource se_sound; //SEを鳴らす用
+    [SerializeField] AudioSource bgm_sound;//BGMを鳴らす用
 
     //シングルトン
-    public static SoundManger Instance;
+    public static SoundManager Instance;
     void Awake()
     {
         Instance = this;
-
-        //コンポーネント設定
-        se_sound = gameObject.GetComponent<AudioSource>();
-        bgm_sound = gameObject.GetComponent<AudioSource>();
 
         bgm_sound.loop = true; //BGMのループをON
     }

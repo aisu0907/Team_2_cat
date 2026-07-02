@@ -1,8 +1,6 @@
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Const;
 
 public class Poster : MouseController
 {
@@ -21,29 +19,29 @@ public class Poster : MouseController
 
     private Image poster; //ポスター画像
 
-    private bool effect_end;
     private GameObject highlight_effect_save; //ハイライトエフェクト一時保存用
     private bool highlight;     //ハイライト切り替え用
     private Vector3 effect_size;//ハイライトエフェクト保存用
     private Vector3 poster_up_size;  //拡大後サイズ保存用
     private Vector3 poster_size_save;//ポスターの大きさ保存用
-
+    private SoundManager sound; //サウンドインスタンス省略用
     private void Start() 
     {
         //リセット
         highlight = true;
-        effect_end = false;
-        //not_ui = true;
+        hover_click = true;
 
         poster = gameObject.GetComponent<Image>(); //画像をセット
         poster_size_save = gameObject.transform.localScale; //ポスターの元のサイズを保存
         poster_up_size = gameObject.transform.localScale * poster_up_size_rate;
         effect_size = new Vector3(effect_size_x, effect_size_y, 0); //座標を設定
+
+        sound = SoundManager.Instance;
     }
 
     private void Update()
     {
-        if(effect_end)
+        if(GameManager.Instance.effect_end)
         {
         MouseControll(ref is_hover, not_ui);
 
@@ -68,10 +66,13 @@ public class Poster : MouseController
     {
         if (highlight == true)
         {
+            sound.PlaySE((int)SoundConst.SE_ID.POSTER_CURSOR, 1.0f);
+
             //ハイライトオブジェクトを生成
-            if (highlight_effect_save == null)
-                highlight_effect_save = Instantiate(highlight_effect, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0), Quaternion.identity); //オブジェクトを生成
-            highlight_effect_save.transform.localScale = effect_size + gameObject.transform.localScale; //大きさを設定 
+
+            //if (highlight_effect_save == null)
+            //    highlight_effect_save = Instantiate(highlight_effect, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0), Quaternion.identity); //オブジェクトを生成
+            //highlight_effect_save.transform.localScale = effect_size + gameObject.transform.localScale; //大きさを設定 
 
             //ポスターの大きさを変更
             gameObject.transform.localScale = poster_up_size;
@@ -86,8 +87,8 @@ public class Poster : MouseController
     {
         if (highlight == false)
         {
-            //ハイライトオブジェクトを削除
-            Destroy(highlight_effect_save);
+            ////ハイライトオブジェクトを削除
+            //Destroy(highlight_effect_save);
 
             //ポスターの大きさをリセット
             gameObject.transform.localScale = poster_size_save;

@@ -2,7 +2,7 @@ using UnityEngine;
 using Const;
 using TMPro;
 
-public class Time : MonoBehaviour
+public class Timer : MonoBehaviour
 {
     public int game_time; //ƒQ[ƒ€ŠÔ
     public bool pause;//ƒQ[ƒ€‚ÌŠÔ’â~ŠÇ——p

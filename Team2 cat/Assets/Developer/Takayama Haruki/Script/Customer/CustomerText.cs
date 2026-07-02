@@ -21,7 +21,7 @@ public class CustomerText : MonoBehaviour
     [Header("文字送りのスピード")]
     public float show_interval; //文字送りのスピード
 
-    private Coroutine execution_text;
+    private Coroutine execution_text; //文字送り用
     private int text_num; //テキスト行数
     private int text_count; //テキストの区切り
     private string hint; //テキストを1行保存用
@@ -51,14 +51,15 @@ public class CustomerText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //テキストの終わりを検出しなかった場合
-        if (hint != "ENDTEXT")
+        if (StartGame.Instance.game_start)
         {
-            //テキストの改行を検出しかった場合
-            if (hint != "NEXT")
+            //テキストの終わりを検出しなかった場合
+            if (hint != "ENDTEXT")
             {
-                if (StartGame.Instance.game_start)
+                //テキストの改行を検出しかった場合
+                if (hint != "NEXT")
                 {
+
                     //答えのポスターかつ答えのポスターが見つかっていなかった場合
                     if (hint == poster.ToString() && !poster_switch)
                     {
@@ -87,22 +88,21 @@ public class CustomerText : MonoBehaviour
                         }
                     }
 
+
                 }
+                else
+                    NextText();
             }
             else
-                NextText();
-
-
-        }
-        else
-        {
-            if (poster_switch)
             {
-                hint = "ENDTEXT";
-                return;
+                if (poster_switch)
+                {
+                    hint = "ENDTEXT";
+                    return;
+                }
+                else
+                    NextText();
             }
-            else
-                NextText();
         }
     }
 
@@ -116,14 +116,14 @@ public class CustomerText : MonoBehaviour
         hint = text_data[text_num][text_count].ToString();
     }
 
+
+    /// <summary>
+    /// お客さんのテキスト変更用メソッド
+    /// </summary>
     private void SaveText()
     {
-        //入ってる文字がNEXTじゃない場合
-        if (hint != "NEXT")
-        {
-            text.text = hint;
-            book_coment.text = hint;
-        }
+        text.text = hint;
+        book_coment.text = hint;
 
         //コールチンが起動していた場合
         if (execution_text != null)
@@ -132,6 +132,10 @@ public class CustomerText : MonoBehaviour
         execution_text = StartCoroutine(ShowText()); // コルーチンを開始
     }
 
+    /// <summary>
+    /// 文字をゆっくり出す用のコルーチン
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ShowText()
     {
         text.ForceMeshUpdate();

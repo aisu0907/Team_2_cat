@@ -28,7 +28,6 @@ public class MovieSelect : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
         set_switch = set_on;
 
         //”z—ñ‚Ì”‚ğw’è

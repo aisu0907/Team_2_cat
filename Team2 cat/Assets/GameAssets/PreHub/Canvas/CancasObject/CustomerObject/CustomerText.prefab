@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6987980111659303534}
   - component: {fileID: 1361711224926315822}
   - component: {fileID: 5366819144911281984}
+  - component: {fileID: -3478458438626028594}
   m_Layer: 5
   m_Name: CustomerText
   m_TagString: Untagged
@@ -67,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u7B54\u3048\u306B\u5BFE\u5FDC\u3057\u305F\u30D2\u30F3\u30C8\u3092\u8868\u793A\n"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aa2b557382f71f044b76b4dc3c804cc5, type: 2}
   m_sharedMaterial: {fileID: -3766913294596617981, guid: aa2b557382f71f044b76b4dc3c804cc5, type: 2}
@@ -175,3 +176,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomerAction
   comment: {fileID: 7571660093291329474}
   comment_time: 180
+--- !u!114 &-3478458438626028594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571660093291329474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00daf702f5c11b3488253763a9b8d1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartText
+  customer_text: {fileID: 0}
+  start_text_file:
+  - {fileID: 4900000, guid: 1eb2655a241c50f40b567cafdc8e7468, type: 3}
+  show_interval: 0
+  next_text: 0
+  end_text_cooltime: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   soundtype: 1
   sound:
-  - {fileID: 8300000, guid: 7e7df7aeabdc1f74faceab4faf683a90, type: 3}
-  - {fileID: 8300000, guid: 7e7df7aeabdc1f74faceab4faf683a90, type: 3}
+  - {fileID: 8300000, guid: 8f456c18d6f250049974f37c736ee746, type: 3}
+  - {fileID: 8300000, guid: dcf4fea7b34087a40819b9058b3f2d72, type: 3}
   - {fileID: 0}
   - {fileID: 0}

@@ -15,5 +15,12 @@ MonoBehaviour:
   soundtype: 0
   sound:
   - {fileID: 8300000, guid: 7e7df7aeabdc1f74faceab4faf683a90, type: 3}
-  - {fileID: 8300000, guid: 7e7df7aeabdc1f74faceab4faf683a90, type: 3}
-  - {fileID: 8300000, guid: 7e7df7aeabdc1f74faceab4faf683a90, type: 3}
+  - {fileID: 8300000, guid: c4da507e6998ad84b873bd1e23cb132f, type: 3}
+  - {fileID: 8300000, guid: 4c6c712ab3f49154ebe8d244e263600f, type: 3}
+  - {fileID: 8300000, guid: b463908a5d9b3534ea65fc52f50c9494, type: 3}
+  - {fileID: 8300000, guid: ebdd8ead0442d46419ec178959993c02, type: 3}
+  - {fileID: 8300000, guid: 747f4a467c747df41b4378feccd64fbf, type: 3}
+  - {fileID: 8300000, guid: 1094cf63daf0cda4fb3befc0ffff0548, type: 3}
+  - {fileID: 8300000, guid: 1094cf63daf0cda4fb3befc0ffff0548, type: 3}
+  - {fileID: 8300000, guid: 1094cf63daf0cda4fb3befc0ffff0548, type: 3}
+  - {fileID: 8300000, guid: 1094cf63daf0cda4fb3befc0ffff0548, type: 3}

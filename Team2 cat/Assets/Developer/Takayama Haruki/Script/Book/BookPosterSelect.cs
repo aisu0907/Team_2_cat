@@ -41,6 +41,8 @@ public class BookPosterSelect : MouseController
         set_genre = false;
         set_title = false;
         set_summary = false;
+        hover_click = true;
+
         //数値リセット
         text_line = 0;
         text_word = 0;
@@ -146,7 +148,6 @@ public class BookPosterSelect : MouseController
         text_line++;
         text_word = 0;
         movie_text = movie_text_data[text_line][text_word].ToString();
-
     }
 
     ////カーソルが上にある時の処理
