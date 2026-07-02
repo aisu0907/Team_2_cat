@@ -19,15 +19,14 @@ public class StartGame : MonoBehaviour
         Instance = this; //シングルトン
 
         game_start = false;
-        
-        //オブジェクトを非表示
-        for (int i = 0; i < set_object.Length; i++)
-            set_object[i].SetActive(false);
-
     }
     
     void Start()
     {
+        //オブジェクトを非表示
+        for (int i = 0; i < set_object.Length; i++)
+            set_object[i].SetActive(false);
+
         sound = SoundManger.Instance;
 
         sound.PlayBGM((int)SoundConst.BGM_ID.GAME, 50.0f);
