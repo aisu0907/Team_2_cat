@@ -60,7 +60,6 @@ public class CustomerText : MonoBehaviour
                 //テキストの改行を検出しかった場合
                 if (hint != "NEXT")
                 {
-
                     //答えのポスターかつ答えのポスターが見つかっていなかった場合
                     if (hint == poster.ToString() && !poster_switch)
                     {

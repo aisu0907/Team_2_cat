@@ -41,7 +41,7 @@ public class StartGame : MonoBehaviour
 
         sound = SoundManager.Instance;
 
-        sound.PlayBGM((int)SoundConst.BGM_ID.GAME, 0.3f);
+        sound.PlayBGM((int)SoundConst.BGM_ID.GAME, 1.0f);
 
         fade_in_obj.StartFadeIn();
 

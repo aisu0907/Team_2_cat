@@ -38,11 +38,11 @@ public class Book : MouseController
         Debug.Log("クリック検知");
         if (book_num > 0)
         {
-            if (!GameController.Instanse.on_ui && !time.pause)
+            if (!GameController.Instanse.on_ui)
             {
                 sound.PlaySE((int)SoundConst.SE_ID.BOOK_OPEN, 1.0f);
                 GameController.Instanse.on_ui = true;
-                time.pause = true;
+                //time.pause = true;
                 book_num--;
                 book_ui.SetActive(true); //図鑑を表示
             }
@@ -52,10 +52,10 @@ public class Book : MouseController
     public void CloseBook()
     {
         //UIが消えた時
-        if (!GameController.Instanse.on_ui && time.pause)
+        if (!GameController.Instanse.on_ui)
         {
             sound.PlaySE((int)SoundConst.SE_ID.EXIT, 1.0f);
-            time.pause = false;
+            //time.pause = false;
             book_ui.SetActive(false); //図鑑を非表示
         }
     }
