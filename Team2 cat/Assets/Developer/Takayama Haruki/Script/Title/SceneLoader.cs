@@ -12,7 +12,7 @@ public class SceneLoader: MonoBehaviour
    public void SceneLoad(string scene_name)
     {
         Debug.Log("クリック検知");
-        SoundManager.Instance.PlaySE((int)Const.SoundConst.SE_ID.SELECT, 1.0f);
+        SoundManager.Instance.PlaySE((int)Const.SoundConst.SE_ID.SELECT, 1.0f); //SEを鳴らす
         fade_obj.StartFadeOut(move_scene, scene_name); //ゲームシーンに移動
     }
 }

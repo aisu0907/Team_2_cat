@@ -2221,12 +2221,24 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1902834242892958473, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
+      propertyPath: bell_volome
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902834242892958473, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
+      propertyPath: door_volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902834242892958473, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
       propertyPath: fade_in_obj
       value: 
       objectReference: {fileID: 421702080}
     - target: {fileID: 1902834242892958473, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
       propertyPath: castomer_time
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902834242892958473, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
+      propertyPath: game_bgm_volome
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902834242892958473, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
       propertyPath: set_object.Array.size

@@ -8,9 +8,9 @@ public class Poster : MouseController
     [SerializeField] GameObject highlight_effect; //ハイライトエフェクトオブジェクト
 
     [Header("スタートエフェクト設定")]
-    public float poster_pos_x;
-    public float poster_pos_y;
-    public float poster_speed;
+    public float poster_pos_x; //ポスターの目標X位置
+    public float poster_pos_y; //ポスターの目標Y位置
+    public float poster_speed; //ポスターの目標に向かうスピード
 
     [Header("エフェクト設定")]
     public float effect_size_x; //ハイライトエフェクトの横幅
@@ -33,7 +33,7 @@ public class Poster : MouseController
 
         poster = gameObject.GetComponent<Image>(); //画像をセット
         poster_size_save = gameObject.transform.localScale; //ポスターの元のサイズを保存
-        poster_up_size = gameObject.transform.localScale * poster_up_size_rate;
+        poster_up_size = gameObject.transform.localScale * poster_up_size_rate;　//大きくするサイズを設定
         effect_size = new Vector3(effect_size_x, effect_size_y, 0); //座標を設定
 
         sound = SoundManager.Instance;
