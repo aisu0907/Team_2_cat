@@ -6,22 +6,13 @@ public class BookClose : MouseController
 
     void Update()
     {
-        MouseControll(ref is_hover, not_ui);
-
-        if(!GameController.Instanse.is_click)
-        {
-            one_click = false;
-        }
+        MouseControll(ref is_hover, not_ui); //マウス操作を呼ぶ
     }
 
+    //クリック時処理
     public override void OnClick()
     {
-        if (!one_click)
-        {
-            Debug.Log("クリック");
-            GameController.Instanse.on_ui = false;
-            book_ui.CloseBook();
-            one_click = true;
-        }
+        GameController.Instanse.on_ui = false;
+        book_ui.CloseBook(); //図鑑を閉じる
     }
 }

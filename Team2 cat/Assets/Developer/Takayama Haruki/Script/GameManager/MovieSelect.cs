@@ -5,51 +5,50 @@ using UnityEngine.UI;
 public class MovieSelect : MonoBehaviour
 {
     [Header("使用オブジェクト")]
-    [SerializeField] MovieData[] movie_data;//映画のジャンルデータを入れる
-    [SerializeField] GameObject[] targets;       //画像を変更するオブジェクトを入れる
+    [SerializeField] MovieData[] movie_data; //映画のジャンルデータを入れる
+    [SerializeField] GameObject[] targets;   //画像を変更するオブジェクトを入れる
 
     [Header("ゲーム設定")]
-    public int choices_num;//選択肢の数
-    public int fake;       //似た選択肢を入れる回数
-    public bool set_on;    //映画を指定する用
+    public int choices_num; //選択肢の数
+    public int fake;        //似た選択肢を入れる回数
+    public bool set_on;     //映画を指定する用フラグ
 
     [Header("ゲーム情報確認用")]
-    [SerializeField] private int answer_genre;//答えのジャンル
-    [SerializeField] private int answer;      //答え
-    [SerializeField] private Sprite[] choices;//選択肢
+    [Tooltip("set_onを有効にした時だけ設定可能")]
+    [SerializeField] private int answer_genre; //答えのジャンル
+    [Tooltip("set_onを有効にした時だけ設定可能")]
+    [SerializeField] private int answer;       //答え
+    [SerializeField] private Sprite[] choices; //選択肢
 
     private Sprite[] choices_save;//選択肢を一時的に保存用
-    private bool set_switch;
 
-    private HashSet<string> used = new HashSet<string>();//同じ画像を使わないよう管理用
+    private HashSet<string> used = new HashSet<string>(); //同じ画像を使わないよう管理用
 
-    public static MovieSelect Instance { get; private set; } ///シングルトン
+    public static MovieSelect Instance { get; private set; } //シングルトン
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
-        Instance = this;
-        set_switch = set_on;
+        Instance = this; //シングルトン
 
         //配列の数を指定
         choices = new Sprite[choices_num];
         choices_save = new Sprite[choices_num];
 
         //falseだったらランダムで選出する
-        if (!set_switch)
+        if (!set_on)
         {
-            answer_genre = Random.Range(0, movie_data.Length);//答えのジャンルをランダムで取得
-            answer = Random.Range(0, movie_data[answer_genre].poster.Length);//答えをランダムで取得
+            answer_genre = Random.Range(0, movie_data.Length); //答えのジャンルをランダムで取得
+            answer = Random.Range(0, movie_data[answer_genre].poster.Length); //答えをランダムで取得
         }
 
         choices_save[0] = movie_data[answer_genre].poster[answer];//答えの画像を取得
-        Movieselect();
-
+        MovieRandSelect();
     }
 
     /// <summary>
-    /// ゲームで使う映画を決めるようメソッド
+    /// ゲームで使う映画をランダムで決めるようメソッド
     /// </summary>
-    public void Movieselect()
+    public void MovieRandSelect()
     {
         //フェイクが設定されていた場合
         if(fake > 0)

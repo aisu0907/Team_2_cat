@@ -17,6 +17,8 @@ public class Poster : MouseController
     public float effect_size_y; //ハイライトエフェクトの縦幅
     public float poster_up_size_rate; //大きくするエフェクトの拡大率
 
+    [Header("サウンド設定")]
+    public float poster_cursoe_vlome; //カーソルを合わせた時のSE音量
     private Image poster; //ポスター画像
 
     private GameObject highlight_effect_save; //ハイライトエフェクト一時保存用
@@ -27,38 +29,30 @@ public class Poster : MouseController
     private SoundManager sound; //サウンドインスタンス省略用
     private void Start() 
     {
-        //リセット
+        //フラグリセット
         highlight = true;
-        hover_click = true;
 
         poster = gameObject.GetComponent<Image>(); //画像をセット
         poster_size_save = gameObject.transform.localScale; //ポスターの元のサイズを保存
         poster_up_size = gameObject.transform.localScale * poster_up_size_rate;　//大きくするサイズを設定
         effect_size = new Vector3(effect_size_x, effect_size_y, 0); //座標を設定
 
-        sound = SoundManager.Instance;
+        sound = SoundManager.Instance; //省略
     }
 
     private void Update()
     {
+        //演出が終了していたら
         if(GameManager.Instance.effect_end)
         {
-        MouseControll(ref is_hover, not_ui);
-
-        if (!GameController.Instanse.is_click)
-            one_click = false;
+            MouseControll(ref is_hover, not_ui); //マウス操作を呼ぶ
         }
     }
 
     //クリック時の処理
     public override void OnClick()
     {
-        if (!one_click)
-        {
-            //クリア判定
-            GameManager.Instance.Gameclear(poster.sprite);
-            one_click = true;
-        }
+        GameManager.Instance.Gameclear(poster.sprite);
     }
 
     //カーソルが上にある時の処理
@@ -66,7 +60,7 @@ public class Poster : MouseController
     {
         if (highlight == true)
         {
-            sound.PlaySE((int)SoundConst.SE_ID.POSTER_CURSOR, 1.0f);
+            sound.PlaySE((int)SoundConst.SE_ID.POSTER_CURSOR, poster_cursoe_vlome); //音を鳴らす
 
             //ハイライトオブジェクトを生成
 

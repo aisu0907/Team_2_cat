@@ -826,10 +826,13 @@ MonoBehaviour:
   not_ui: 1
   is_hover: 0
   hover_click: 0
-  one_click: 0
+  obj_hover: 0
+  debug_log_hover: 1
   book_ui: {fileID: 6923274258905248822}
   time: {fileID: 1339103603}
   book_num: 999
+  open_vlome: 1
+  exit_vlome: 1
 --- !u!61 &413648424
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2817,7 +2820,8 @@ MonoBehaviour:
   not_ui: 1
   is_hover: 0
   hover_click: 0
-  one_click: 0
+  obj_hover: 0
+  debug_log_hover: 1
   book_ui: {fileID: 413648423}
 --- !u!1 &1434470723 stripped
 GameObject:
@@ -3271,6 +3275,14 @@ PrefabInstance:
       value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -3478458438626028594, guid: 7a6b8261169f35e4a8060ac4e8fd4da8, type: 3}
+      propertyPath: text_cooltime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3478458438626028594, guid: 7a6b8261169f35e4a8060ac4e8fd4da8, type: 3}
+      propertyPath: pop_sound_vlome
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3478458438626028594, guid: 7a6b8261169f35e4a8060ac4e8fd4da8, type: 3}
       propertyPath: end_text_cooltime
       value: 1
       objectReference: {fileID: 0}
@@ -3281,6 +3293,10 @@ PrefabInstance:
     - target: {fileID: 1361711224926315822, guid: 7a6b8261169f35e4a8060ac4e8fd4da8, type: 3}
       propertyPath: show_interval
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361711224926315822, guid: 7a6b8261169f35e4a8060ac4e8fd4da8, type: 3}
+      propertyPath: pop_sound_vlome
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1361711224926315822, guid: 7a6b8261169f35e4a8060ac4e8fd4da8, type: 3}
       propertyPath: textfile.Array.size

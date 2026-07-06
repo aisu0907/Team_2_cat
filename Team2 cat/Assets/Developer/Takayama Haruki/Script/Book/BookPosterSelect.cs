@@ -20,35 +20,36 @@ public class BookPosterSelect : MouseController
     public float effect_size_x; //ハイライトエフェクトの横幅
     public float effect_size_y; //ハイライトエフェクトの縦幅
 
+    [Header("サウンド設定")]
+    public float poster_select_vlome; //選択した時のSE音量
+
     private string movie_text; //1行保存用
     private int text_line; //行数管理用
     private int text_word; //文章区切り用
-    private bool set_informatinon; //情報セット管理用フラグ
-    private bool set_genre; //ジャンルセット管理用フラグ
-    private bool set_title; //タイトルセット管理用フラグ
-    private bool set_summary; //映画概要セット管理用フラグ
-
-    [SerializeField] private string[] movie_information;
+    private bool set_informatinon; //情報セット用フラグ
+    private bool set_genre; //ジャンルセット用フラグ
+    private bool set_title; //タイトルセット用フラグ
+    private bool set_summary; //映画概要セット用フラグ
+    [SerializeField] private string[] movie_information; //映画情報を保存する
     private GameObject highlight_effect_save; //ハイライトエフェクト一時保存用
     private bool highlight;     //ハイライト切り替え用
     private Vector3 effect_size;//ハイライトエフェクト保存用
 
     void Start()
     {
+        //数値リセット
+        text_line = 0;
+        text_word = 0;
+
         //フラグリセット
         not_ui = true;
         set_informatinon = false;
         set_genre = false;
         set_title = false;
         set_summary = false;
-        hover_click = true;
 
-        //数値リセット
-        text_line = 0;
-        text_word = 0;
         //文字列リセット
         movie_information = new string[3];
-
 
         StringReader reader = new StringReader(movie_text_file[genre_id].text); //テキストファイルを取得
 
@@ -121,24 +122,14 @@ public class BookPosterSelect : MouseController
 
     void Update()
     {
-        MouseControll(ref is_hover, not_ui);
-
-        //クリックされていない時
-        if(!GameController.Instanse.is_click)
-        {
-            one_click = false;
-        }
+        MouseControll(ref is_hover, not_ui); //マウス操作を呼ぶ
     }
 
+    //クリック時処理
     public override void OnClick()
     {
-        if (!one_click)
-        {
-            SoundManager.Instance.PlaySE((int)SoundConst.SE_ID.SELECT, 1.0f);
-            Debug.Log("クリック確認");
-            PosterInformationText.Instanse.SetMovieDataText(movie_information);
-            one_click = true;
-        }
+        SoundManager.Instance.PlaySE((int)SoundConst.SE_ID.SELECT, poster_select_vlome);
+        PosterInformationText.Instanse.SetMovieDataText(movie_information);
     }
 
     /// <summary>

@@ -13,12 +13,14 @@ public class StartText : MonoBehaviour
     [SerializeField] TextAsset[] start_text_file; //読み取るテキストデータ
     [SerializeField] List<string[]> start_text_data = new List<string[]>(); //テキストファイルのテキストを保存用
 
-    [Header("文字送りのスピード")]
+    [Header("文字送りの設定")]
     public float show_interval; //文字送りのスピード
-    public bool next_text; //次のテキスト変更用フラグ
-    public float end_text_cooltime;
+    public float text_cooltime; //次のテキストが出るまでのクールタイム
 
-    private Coroutine execution_text; //文字送り用
+    [Header("サウンド設定")]
+    public float pop_sound_vlome; //テキスト更新時のSE音量
+
+    public bool next_text; //次のテキスト変更用フラグ
     private string start_text; //1行保存用
     private int text_line; //行数管理用
     private int text_word; //文章区切り用
@@ -44,19 +46,21 @@ public class StartText : MonoBehaviour
             start_text_data.Add(line.Split(','));
         }
 
-        start_text = start_text_data[text_line][text_word].ToString();
+        start_text = start_text_data[text_line][text_word].ToString(); //1行目を取得
     }
 
     // Update is called once per frame
     void Update()
     {
+        //テキストがスタートしていなかったら
         if(StartGame.Instance.text_start)
         {
+            //テキストの終わりを検出しなかった場合
             if (start_text != "ENDTEXT")
             {
+                //テキストの改行を検出しかった場合
                 if (start_text != "NEXT")
                 {
-
                     if (next_text)
                     {
                         SaveText();
@@ -100,7 +104,7 @@ public class StartText : MonoBehaviour
 
         SoundManager.Instance.PlaySE((int)SoundConst.SE_ID.CUSTOMER_POP, 1.0f);
 
-        StartCoroutine(ShowText()); // コルーチンを開始
+        StartCoroutine(ShowText()); //コルーチンを開始
     }
 
     /// <summary>
@@ -121,11 +125,13 @@ public class StartText : MonoBehaviour
         }
 
         NextText();
+
+        yield return new WaitForSeconds(text_cooltime);
     }
 
     private IEnumerator StanbyEffect()
     {
-        yield return new WaitForSeconds(end_text_cooltime);
+        yield return new WaitForSeconds(text_cooltime);
 
         GameManager.Instance.effect_start = true;
     }

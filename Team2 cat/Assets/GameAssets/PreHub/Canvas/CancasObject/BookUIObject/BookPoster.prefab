@@ -92,6 +92,7 @@ MonoBehaviour:
   not_ui: 0
   is_hover: 0
   hover_click: 0
+  obj_hover: 0
   movie_text_file:
   - {fileID: 4900000, guid: 4882981c2b3ee5f4ab61f38448b205c2, type: 3}
   - {fileID: 4900000, guid: 9d5d18d06cba08542bcbe2c8cdbd5723, type: 3}
@@ -101,6 +102,7 @@ MonoBehaviour:
   poster_id: 0
   effect_size_x: 0.1
   effect_size_y: 0.75
+  poster_select_vlome: 1
   movie_information: []
 --- !u!61 &-2298109948863577734
 BoxCollider2D:

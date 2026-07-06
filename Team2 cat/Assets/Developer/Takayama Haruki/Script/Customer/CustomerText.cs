@@ -19,23 +19,30 @@ public class CustomerText : MonoBehaviour
     [SerializeField] private int genre; //答えのジャンル
     [SerializeField] private int poster; //答えの映画
 
+    [Header("サウンド設定")]
+    public float pop_sound_vlome; //テキスト更新時のSE音量
+
     [Header("文字送りのスピード")]
     public float show_interval; //文字送りのスピード
 
-    private Coroutine execution_text; //文字送り用
-    private int text_num; //テキスト行数
-    private int text_count; //テキストの区切り
-    private string hint; //テキストを1行保存用
-    private bool poster_switch; 
+    private int text_line; //テキスト行数
+    private int text_word; //テキストの区切り
+    private string hint;   //テキストを1行保存用
+    private bool poster_switch; //ポスター検知用フラグ
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        text_num = 0; //行数をリセット
-        text_count = 0;
-        text_next = false; //フラグをリセット
-        poster_switch = false; //フラグをリセット
+        //数値リセット
+        text_line = 0;
+        text_word = 0;
+
+        //フラグをリセット
+        text_next = false; 
+        poster_switch = false;
+
         poster = MovieSelect.Instance.Answer(); //答えを取得
         genre = MovieSelect.Instance.Answergenre(); //答えのジャンルを取得
+
         StringReader reader = new StringReader(textfile[genre].text); //テキストファイルを取得
 
         //テキストファイル内のテキストを取得
@@ -46,12 +53,13 @@ public class CustomerText : MonoBehaviour
             text_data.Add(line.Split(','));
         }
 
-        hint = text_data[text_num][text_count].ToString(); //テキストを1行取得
+        hint = text_data[text_line][text_word].ToString(); //テキストを1行取得
     }
 
     // Update is called once per frame
     void Update()
     {
+        //ゲームがスタートしていたら
         if (StartGame.Instance.game_start)
         {
             //テキストの終わりを検出しなかった場合
@@ -67,6 +75,7 @@ public class CustomerText : MonoBehaviour
                         poster_switch = true;
                         SaveText();
                     }
+
                     //答えのポスターが見つかっていなかった場合
                     else if (!poster_switch)
                     {
@@ -79,16 +88,13 @@ public class CustomerText : MonoBehaviour
                         //次のヒントにいける場合
                         if (text_next)
                         {
-                            text_num++;
-                            hint = text_data[text_num][text_count].ToString();
+                            NextText();
 
                             text_next = false;
 
                             SaveText();
                         }
                     }
-
-
                 }
                 else
                     NextText();
@@ -111,9 +117,9 @@ public class CustomerText : MonoBehaviour
     /// </summary>
     void NextText()
     {
-        text_num++;
-        text_count = 0;
-        hint = text_data[text_num][text_count].ToString();
+        text_line++;
+        text_word = 0;
+        hint = text_data[text_line][text_word].ToString();
     }
 
 
@@ -125,7 +131,7 @@ public class CustomerText : MonoBehaviour
         text.text = hint;
         book_coment.text = hint;
 
-        SoundManager.Instance.PlaySE((int)SoundConst.SE_ID.CUSTOMER_POP, 1.0f);
+        SoundManager.Instance.PlaySE((int)SoundConst.SE_ID.CUSTOMER_POP, pop_sound_vlome);
         StartCoroutine(ShowText()); // コルーチンを開始
     }
 

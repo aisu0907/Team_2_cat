@@ -1187,6 +1187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
   fade_obj: {fileID: 1247674197}
   move_scene: 1
+  select_vlome: 1
 --- !u!114 &1723579068
 MonoBehaviour:
   m_ObjectHideFlags: 0

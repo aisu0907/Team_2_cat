@@ -1,7 +1,5 @@
 using UnityEngine;
-using Const;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 
 public class PosterSetList : MonoBehaviour
 {
@@ -17,69 +15,58 @@ public class PosterSetList : MonoBehaviour
 
     private GameObject[] null_poster_save; //ポスター保存用
     private Vector3 poster_pos; //ポスターを配置する場所
-    private int max_set_num; //ポスターを置く数
-    private int count; 
-    private bool set_start; //ポスターセット開始管理用
-    private bool set_end; 
-    private int object_num;
+    private int max_set_num;    //ポスターを置く数
+    private int count; //配置した数
+    private int object_num; //ポスター識別ID
 
-    private void Start()
+    private void Awake()
     {
-        if(!set_end)
-           set_start = true;
+        //リセット
+        count = 0;
+        object_num = 0;
 
-        if (set_start)
+        poster_pos = start_pos; //ポスターの配置座標を作成
+
+        //設置するポスターの数を決める
+        for (int i = 0; i < poster_data.Length; i++)
         {
-            //リセット
-            count = 0;
-            object_num = 0;
+            max_set_num += poster_data[i].poster.Length;
+            Debug.Log(max_set_num);
+        }
 
-            poster_pos = start_pos; //ポスターの配置座標を作成
+        //配列の数を指定
+        null_poster_save = new GameObject[max_set_num];
 
-            //設置するポスターの数を決める
-            for (int i = 0; i < poster_data.Length; i++)
+        Debug.Log("画像を配置します");
+        //ポスターを配置
+        for (int genre = 0; genre < poster_data.Length; genre++)
+            for (int poster = 0; poster < poster_data[genre].poster.Length; poster++)
             {
-                max_set_num += poster_data[i].poster.Length;
-                Debug.Log(max_set_num);
-            }
 
-            //配列の数を指定
-            null_poster_save = new GameObject[max_set_num];
-
-            Debug.Log("画像を配置します");
-            //ポスターを配置
-            for (int genre = 0; genre < poster_data.Length; genre++)
-                for (int poster = 0; poster < poster_data[genre].poster.Length; poster++)
+                //指定された数ポスターを配置したら
+                if (count > set_num)
                 {
-
-                    //指定された数ポスターを配置したら
-                    if (count > set_num)
-                    {
-                        //位置をリセット
-                        poster_pos.y += plus_space.y;
-                        poster_pos.x = start_pos.x;
-                        count = 0;
-                    }
-
-                    null_poster_save[object_num] = Instantiate(null_poster, content); //ポスターを生成
-                    null_poster_save[object_num].GetComponent<RectTransform>().anchoredPosition = poster_pos; //ポスターの位置を指定
-                    null_poster_save[object_num].GetComponent<Image>().sprite = poster_data[genre].poster[poster]; //ポスターの画像を設定
-                    var movie_data = null_poster_save[object_num].GetComponent<BookPosterSelect>(); //BookPosterSelectを取得
-                    movie_data.genre_id =  genre; //ジャンルを取得
-                    movie_data.poster_id = poster;//ポスターを取得
-
-                    poster_pos.x += plus_space.x;  //x位置を変更
-
-                    count++;
-
-                    if (object_num > max_set_num)
-                        object_num++;
-
-                    Debug.Log("配置に成功しました");
+                    //位置をリセット
+                    poster_pos.y += plus_space.y;
+                    poster_pos.x = start_pos.x;
+                    count = 0;
                 }
 
-            set_end = true;
-            set_start = false;
-        }
+                null_poster_save[object_num] = Instantiate(null_poster, content); //ポスターを生成
+                null_poster_save[object_num].GetComponent<RectTransform>().anchoredPosition = poster_pos; //ポスターの位置を指定
+                null_poster_save[object_num].GetComponent<Image>().sprite = poster_data[genre].poster[poster]; //ポスターの画像を設定
+                var movie_data = null_poster_save[object_num].GetComponent<BookPosterSelect>(); //BookPosterSelectを取得
+                movie_data.genre_id = genre; //ジャンルを設定
+                movie_data.poster_id = poster;//ポスターを設定
+
+                poster_pos.x += plus_space.x;  //x位置を変更
+
+                count++;
+
+                if (object_num > max_set_num)
+                    object_num++;
+
+                Debug.Log("配置に成功しました");
+            }
     }
 }

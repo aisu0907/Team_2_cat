@@ -5,8 +5,10 @@ public class MouseController : MonoBehaviour
 {
     public bool not_ui = false; //UIの上にいるかどうか
     public bool is_hover = false;//マウスのホバー状態
-    public bool hover_click = false;//クリックを長押ししているどうか
-    public bool one_click = false;  //1クリックだけを検知する用
+    public bool hover_click = true;//クリックを長押ししているどうか
+    public bool obj_hover = false; //長押ししている時にオブジェクトの上にいるかどうか
+
+    public bool debug_log_hover = true; //デバッグログ管理用フラグ
 
     /// <summary>
     /// マウスの状態を検知する用メソッド
@@ -37,14 +39,18 @@ public class MouseController : MonoBehaviour
         //当たっているものが自分自身か確認
         bool now_hovered = (hit.collider != null && hit.collider.gameObject == gameObject); //現フレームのマウスのホバー状態
 
-        if (hit.collider != null&& now_hovered)
+        if (hit.collider != null && now_hovered && debug_log_hover)
         {
             // マウスが当たっているオブジェクトの名前をコンソールに表示
             Debug.Log($"マウスが触れているオブジェクト: {hit.collider.gameObject.name}");
+
+            debug_log_hover = false;
         }
+        else
+            debug_log_hover = true;
 
         //カーソルが当たった時
-        if (now_hovered && !is_hovered )
+        if (now_hovered && !is_hovered)
         {
             OnEnter();
         }
@@ -53,15 +59,24 @@ public class MouseController : MonoBehaviour
         if (!GameController.Instanse.is_click)
         {
             //カーソルが当たっている状態でクリックした時
-            if (now_hovered && !hover_click)
+            if (now_hovered && !hover_click && !obj_hover)
             {
+                Debug.Log("クリック確認");
                 OnClick();
             }
-            
+
             hover_click = true;
+            obj_hover = false;
         }
         else
+        {
+            //クリックし始めた時にオブジェクトに触れていなかったら
+            if(hover_click && !now_hovered)
+                obj_hover = true;
+
             hover_click = false;
+
+        }
 
         //カーソルが外れた時
         if (!now_hovered && is_hovered)
@@ -73,17 +88,17 @@ public class MouseController : MonoBehaviour
     }
 
     /// <summary>
-    /// カーソルが当たっている状態でクリックした時の処理用メソッド
+    /// カーソルがオブジェクトに当たっている状態でクリックした時の処理用メソッド
     /// </summary>
     public virtual void OnClick(){}
 
     /// <summary>
-    /// カーソルが当たった時の処理用メソッド
+    /// カーソルがオブジェクトに当たった時の処理用メソッド
     /// </summary>
     public virtual void OnEnter(){}
 
     /// <summary>
-    /// カーソルが外れた時の処理用メソッド
+    /// カーソルがオブジェクトに外れた時の処理用メソッド
     /// </summary>
     public virtual void OnExit(){}
 }

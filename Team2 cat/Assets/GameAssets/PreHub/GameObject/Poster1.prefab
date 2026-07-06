@@ -92,7 +92,7 @@ MonoBehaviour:
   not_ui: 0
   is_hover: 0
   hover_click: 0
-  one_click: 0
+  obj_hover: 0
   highlight_effect: {fileID: 5684479619681306667, guid: 2bbd4a52a4b64f343be8ed4fccdb66a0, type: 3}
   poster_pos_x: 0
   poster_pos_y: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   effect_size_x: 0
   effect_size_y: 0
   poster_up_size_rate: 1.3
+  poster_cursoe_vlome: 1
 --- !u!61 &1132267570322091138
 BoxCollider2D:
   m_ObjectHideFlags: 0

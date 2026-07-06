@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6018438549152980632}
   - component: {fileID: 8773371436183550650}
   - component: {fileID: 9074930592441537394}
+  - component: {fileID: 1175319186460669213}
   - component: {fileID: 56730589782389794}
   - component: {fileID: 4855629051314562552}
-  - component: {fileID: 1175319186460669213}
   m_Layer: 0
   m_Name: TitleManager
   m_TagString: Untagged
@@ -139,6 +139,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea8149105c7882249a8c8ed243948ca2, type: 2}
   se_sound: {fileID: 56730589782389794}
   bgm_sound: {fileID: 4855629051314562552}
+--- !u!114 &1175319186460669213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6447287417300637951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ab575615e74394eb382dda7d1e6318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TitleManager
+  bgm_vlome: 1
 --- !u!82 &56730589782389794
 AudioSource:
   m_ObjectHideFlags: 0
@@ -333,15 +346,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1175319186460669213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6447287417300637951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0ab575615e74394eb382dda7d1e6318, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TitleManager

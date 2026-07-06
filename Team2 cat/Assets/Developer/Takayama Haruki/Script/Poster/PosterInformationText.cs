@@ -17,6 +17,7 @@ public class PosterInformationText : MonoBehaviour
     /// <param name="movie_data"></param>
     public void SetMovieDataText(string[] movie_data)
     {
+        //テキストオブジェクトの数分ループ
         for (int i = 0; i < movie_information_data.Length; i++)
         {
             Debug.Log(movie_data[i]);

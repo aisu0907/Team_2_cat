@@ -21,11 +21,11 @@ public class StartGame : MonoBehaviour
     public float bell_volome; //ベルSEの音量
 
     [Header("ゲーム開始フラグ")]
-    public bool game_start;
-    public bool text_start;
+    public bool game_start; //ゲームのスタート管理用フラグ
+    public bool text_start; //テキストのスタート管理用フラグ
     
-    private SoundManager sound; //サウンドインスタン省略用
-    private GameObject save_obj;
+    private SoundManager sound;  //サウンドインスタン省略用
+    private GameObject save_obj; //オブジェクト一時的保存用
 
     public static StartGame Instance; //シングルトン
     void Awake()
@@ -42,36 +42,36 @@ public class StartGame : MonoBehaviour
         for (int i = 0; i < set_object.Length; i++)
             set_object[i].SetActive(false);
 
-        fade_obj.SetActive(true);
+        fade_obj.SetActive(true); //フェードオブジェクトを表示
 
-        sound = SoundManager.Instance;
+        sound = SoundManager.Instance; //省略
 
-        sound.PlayBGM((int)SoundConst.BGM_ID.GAME, game_bgm_volome);
+        sound.PlayBGM((int)SoundConst.BGM_ID.GAME, game_bgm_volome); //BGMを設定
 
-        fade_in_obj.StartFadeIn();
+        fade_in_obj.StartFadeIn(); //フェードインコルーチン
 
-        StartCoroutine(StartMovie());
+        StartCoroutine(StartMovie()); //スタートムービーコルーチン
     }
 
+    /// <summary>
+    /// ゲームスタート時の演出用コルーチン
+    /// </summary>
+    /// <returns></returns>
     IEnumerator StartMovie()
     {
         yield return new WaitForSeconds(start_time); //指定した時間まで待機
 
-        //ドアの音を鳴らす
-        sound.PlaySE((int)SoundConst.SE_ID.DOOR, door_volume);
+        sound.PlaySE((int)SoundConst.SE_ID.DOOR, door_volume); //ドアの音を鳴らす
 
         yield return new WaitForSeconds(bell_time); //指定した時間まで待機
 
-        //入店音を鳴らす
-        sound.PlaySE((int)SoundConst.SE_ID.BELL, bell_volome);
+        sound.PlaySE((int)SoundConst.SE_ID.BELL, bell_volome); //入店音を鳴らす
 
         yield return new WaitForSeconds(castomer_time); //指定した時間まで待機
 
-        //お客さんを登場
-        set_object[0].SetActive(true);
+        set_object[0].SetActive(true); //お客さんを登場
 
-        //スタートテキストを起動
-        text_start = true;
+        text_start = true; //スタートテキストを起動
     }
 
     /// <summary>
@@ -90,7 +90,6 @@ public class StartGame : MonoBehaviour
     public void GameStart()
     {
         save_obj =  Instantiate(start_text, new Vector3(0, 0, 0), Quaternion.identity);
-
     }
 
     /// <summary>
