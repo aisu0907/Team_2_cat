@@ -17,18 +17,16 @@ public class GameManager : MonoBehaviour
 
     [Header("その他")]
     public TMP_Text moveText;//画面に残り手数を出すUI
-    public Timer timer;//時間を測っているスクリプト
     public int moves = 2;//手数
-    public static int score;
+    public bool is_game_over { get; private set; }//二重にシーン移動しないようにする
 
-    public bool move_scene;
+    public bool move_scene;  //
     public bool effect_start;
     public bool effect_end;
 
     private int ans_genre; //答えのジャンル
     private int ans_poster;//答えのポスター
-    private bool is_game_clear;
-    private bool is_game_over;//二重にシーン移動しないようにする
+    private bool is_game_clear;//ゲームクリア判定
     private SoundManager sound; //サウンドインスタンス省略用
 
     public static GameManager Instance;//どこからでもゲームマネージャーを使える
@@ -55,17 +53,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(!is_game_over)
-        {
-            // 時間のスクリプトが存在、残り時間が0以下
-            if (timer != null && timer.game_time <= 0)
-            {
-                is_game_over = true;
-                
-                GameOver();
-            }
-        }
-
         if(effect_start && !effect_end)
         {
             StartCoroutine(StartMovePoster());
@@ -119,11 +106,14 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
-        Debug.Log("ゲームオーバーが呼ばれました！");//デバック用
+        if (!is_game_over)
+        {
+            Debug.Log("ゲームオーバーが呼ばれました！");//デバック用
 
-        is_game_over = true;//ゲームオーバー状態にする
+            is_game_over = true;//ゲームオーバー状態にする
 
-        fade_obj.StartFadeOut(move_scene, SceneName.GAMEOVER);
+            fade_obj.StartFadeOut(move_scene, SceneName.GAMEOVER);
+        }
     }
 
     /// <summary>
