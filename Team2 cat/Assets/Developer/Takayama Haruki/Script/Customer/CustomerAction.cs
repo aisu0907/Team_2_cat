@@ -7,37 +7,27 @@ public class CustomerAction : MonoBehaviour
     [SerializeField] GameObject comment; //コメントオブジェクト
     public int comment_time; //コメントするまでの時間
 
-    private int count; 
-    private int comment_interval; //秒数記録
+    private bool new_comment; //新しいヒント管理用フラグ
 
-    void Start()
+    private void Start()
     {
-        //リセット
-        count = 0;
-        comment_interval = 0;
-}
-
+        new_comment = false;
+    }
     void Update()
     {
         if (StartGame.Instance.game_start)
         {
             //次のヒントに行ってなかったら
-            if (!comment.GetComponent<CustomerText>().text_next)
-                ++count;
-
-            //1秒たったら
-            if (count >= GameConfig.TICK_TIME)
+            if ((int)(Timer.Instance.game_time - 1) % comment_time == 0)
             {
-                ++comment_interval;
-                count = 0;
+                if (new_comment)
+                {
+                    comment.GetComponent<CustomerText>().text_next = true;
+                    new_comment = false;
+                }
             }
-
-            //インターバルが終了したら
-            if (comment_interval >= comment_time)
-            {
-                comment.GetComponent<CustomerText>().text_next = true; //次のヒントに行く
-                comment_interval = 0; //インターバルリセット
-            }
+            else
+                new_comment = true;
         }
     }
 }

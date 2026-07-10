@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4618345193462581903}
   - component: {fileID: 2118262177351735767}
   - component: {fileID: 6374993046782602695}
+  - component: {fileID: -3501632798548997494}
   - component: {fileID: 1902834242892958473}
   - component: {fileID: 8855081026103327074}
   - component: {fileID: -5268056803052977570}
@@ -128,9 +129,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bd38646b0757c2f468e65ba4f9c4913c, type: 2}
   - {fileID: 11400000, guid: b714a9c098cabb647916627ce8b4c885, type: 2}
   - {fileID: 11400000, guid: 5f66a9ed0d8d03943aa1eb6456f7b2ca, type: 2}
+  target_posters: []
+  fade_obj: {fileID: 0}
+  poster_target_pos: []
+  move_speed: 0
   moveText: {fileID: 0}
-  timer: {fileID: 0}
   moves: 2
+  move_scene: 0
+  effect_start: 0
+  effect_end: 0
 --- !u!114 &141436365846030736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +209,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea8149105c7882249a8c8ed243948ca2, type: 2}
   se_sound: {fileID: 8855081026103327074}
   bgm_sound: {fileID: -5268056803052977570}
+--- !u!114 &-3501632798548997494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916660990900603788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab50877704a96a14eaa81cf9eef3136b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
+  minus_score: 0.5
+  game_score: 5
 --- !u!114 &1902834242892958473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,12 +235,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2622e063966e6409cb165e79c94ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartGame
+  fade_obj: {fileID: 0}
+  start_text: {fileID: 0}
   set_object: []
   fade_in_obj: {fileID: 0}
   start_time: 0
   bell_time: 0
   castomer_time: 0
+  game_bgm_volome: 0
+  door_volume: 0
+  bell_volome: 0
   game_start: 0
+  text_start: 0
 --- !u!82 &8855081026103327074
 AudioSource:
   m_ObjectHideFlags: 0

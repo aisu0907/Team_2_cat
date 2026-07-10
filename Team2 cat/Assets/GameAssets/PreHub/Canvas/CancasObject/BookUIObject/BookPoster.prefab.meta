@@ -1,6 +1,7 @@
 fileFormatVersion: 2
 guid: 4257f0534686d3a4497093edd2a8c032
 labels:
+- Audio
 - ScripTableObject
 PrefabImporter:
   externalObjects: {}

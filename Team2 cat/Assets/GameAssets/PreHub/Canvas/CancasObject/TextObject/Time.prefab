@@ -151,4 +151,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::time
   game_time: 180
+  score_down_time: 30
   pause: 0

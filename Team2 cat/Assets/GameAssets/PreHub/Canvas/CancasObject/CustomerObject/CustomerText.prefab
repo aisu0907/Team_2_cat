@@ -161,6 +161,7 @@ MonoBehaviour:
   book_coment: {fileID: 0}
   genre: 0
   poster: 0
+  pop_sound_vlome: 0
   show_interval: 0.1
 --- !u!114 &5366819144911281984
 MonoBehaviour:
@@ -175,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerAction
   comment: {fileID: 7571660093291329474}
-  comment_time: 180
+  comment_time: 5
 --- !u!114 &-3478458438626028594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,5 +193,6 @@ MonoBehaviour:
   start_text_file:
   - {fileID: 4900000, guid: 1eb2655a241c50f40b567cafdc8e7468, type: 3}
   show_interval: 0
+  text_cooltime: 0
+  pop_sound_vlome: 0
   next_text: 0
-  end_text_cooltime: 0
