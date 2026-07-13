@@ -52,7 +52,7 @@ public class Poster : MouseController
     //クリック時の処理
     public override void OnClick()
     {
-        GameManager.Instance.Gameclear(poster.sprite);
+        GameManager.Instance.GameClear(poster.sprite);
     }
 
     //カーソルが上にある時の処理

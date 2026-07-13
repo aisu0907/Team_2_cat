@@ -18,11 +18,13 @@ public class GameManager : MonoBehaviour
     [Header("その他")]
     public TMP_Text moveText;//画面に残り手数を出すUI
     public int moves = 2;//手数
-    public bool is_game_over { get; private set; }//二重にシーン移動しないようにする
+   
+    public bool move_scene;  //シーン移動管理用フラグ
+    public bool effect_start;//エフェクトの開始管理用フラグ
+    public bool effect_end;  //エフェクトの終了管理用フラグ
 
-    public bool move_scene;  //
-    public bool effect_start;
-    public bool effect_end;
+    public bool is_game_over { get; private set; }//二重にシーン移動しないようにする
+    public static float result_time { get; private set; }
 
     private int ans_genre; //答えのジャンル
     private int ans_poster;//答えのポスター
@@ -42,6 +44,9 @@ public class GameManager : MonoBehaviour
         effect_start = false;
         effect_end = false;
         move_scene = true;
+
+        //数値リセット
+        result_time = 0;
 
         ans_genre = MovieSelect.Instance.Answergenre(); //答えのジャンルを取得
         ans_poster = MovieSelect.Instance.Answer(); //答えを取得
@@ -112,7 +117,10 @@ public class GameManager : MonoBehaviour
 
             is_game_over = true;//ゲームオーバー状態にする
 
+            ScoreManager.result_score = 1.0f;
+
             fade_obj.StartFadeOut(move_scene, SceneName.GAMEOVER);
+
         }
     }
 
@@ -120,11 +128,13 @@ public class GameManager : MonoBehaviour
     /// ゲームクリア判定用メソッド
     /// </summary>
     /// <param name="ans">判定する画像</param>
-    public void Gameclear(Sprite ans)
+    public void GameClear(Sprite ans)
     {
         //ゲームがクリアされてなかったら
         if (!is_game_clear)
         {
+            result_time = Timer.Instance.game_time;
+
             //画像が正解だったら
             if (ans == movie_data[ans_genre].poster[ans_poster])
             {
@@ -138,6 +148,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 sound.PlaySE((int)SoundConst.SE_ID.MISS, 1.0f); //
+                ScoreManager.Instance.ScoreDown();
                 UseMove();
             }
         }

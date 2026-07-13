@@ -6,6 +6,7 @@ public class Timer : MonoBehaviour
     public float game_time; //ゲーム時間
     public int score_down_time; //スコアが下がる間隔
     public bool pause; //ゲームの時間停止管理用
+    public float start_time { get; private set; } //初期タイム
 
     private TMP_Text time_text; //時間を表示するテキスト
     private int min; //分
@@ -18,8 +19,11 @@ public class Timer : MonoBehaviour
     {
         Instance = this; //シングルトン
         
-        //フラグリセット
+        //フラグリセット 
         pause = false;
+
+        //数値リセット
+        start_time = game_time;
 
         //テキストをセット
         time_text = gameObject.GetComponent<TMP_Text>();
@@ -42,9 +46,10 @@ public class Timer : MonoBehaviour
                     GameManager.Instance.GameOver(); //ゲームオーバーを起動
         }
 
-        //指定した秒数が経ってかつスコアを下げれる場合
-        if ((int)(game_time - 1) % 30 == 0)
+        //指定の秒数経ったらかつゲームタイマーが初期じゃなかった時
+        if ((int)(game_time) % 30 == 0 && start_time != game_time)
         {
+            //スコアが下げれる場合
             if (score_down)
             {
                 //スコアを下げる
