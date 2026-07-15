@@ -6,8 +6,9 @@ public class ScoreManager : MonoBehaviour
     [Tooltip("減らすスコア")]
     public float minus_score; //減らすスコア
 
-    [Tooltip("減らすスコア")]
-    public float game_score;
+    [Tooltip("初期スコア")]
+    public float game_score; //初期スコア
+
 
     public static float result_score; //ゲームスコア
 
@@ -16,6 +17,8 @@ public class ScoreManager : MonoBehaviour
     private void Awake()
     {
         Instance = this; //シングルトン
+
+        result_score = game_score;
     }
 
     /// <summary>
@@ -23,6 +26,7 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     public void ScoreDown()
     {
+        //スコアを減少
         game_score -= minus_score;
         result_score = game_score;
     }

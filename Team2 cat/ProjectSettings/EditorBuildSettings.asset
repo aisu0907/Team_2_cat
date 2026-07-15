@@ -15,11 +15,8 @@ EditorBuildSettings:
     path: Assets/MainScenes/GameOverScene.unity
     guid: 778aaaa3e2078f8499456e529824a0dd
   - enabled: 1
-    path: Assets/MainScenes/GameClearScene.unity
-    guid: 164c670cbf346b641b140971cd131ddc
-  - enabled: 0
-    path: Assets/MainScenes/PlayScene.unity
-    guid: d31a21b5b17f5ac41b7e59cdcda954d9
+    path: Assets/Developer/Takayama Haruki/Scene/h_ResultScene.unity
+    guid: f88fe0ad5812b894db39cc5f4f935962
   - enabled: 0
     path: Assets/Developer/Niia Miyu/scene/n_PlayScene.unity
     guid: 9e06e73ce6ce9ad4eafcff4ad8a59339

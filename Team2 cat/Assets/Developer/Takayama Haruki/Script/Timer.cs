@@ -9,8 +9,6 @@ public class Timer : MonoBehaviour
     public float start_time { get; private set; } //初期タイム
 
     private TMP_Text time_text; //時間を表示するテキスト
-    private int min; //分
-    private int sec; //秒
     private bool score_down; //スコア減少管理用フラグ
 
     public static Timer Instance;　//シングルトン
@@ -64,8 +62,8 @@ public class Timer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        min = (int)game_time / 60;//分を計算
-        sec = (int)game_time % 60;//秒を計算
+        int min = (int)game_time / 60;//分を計算
+        int sec = (int)game_time % 60;//秒を計算
             
         //残り時間を表示
         if (game_time % 60 < 10)
