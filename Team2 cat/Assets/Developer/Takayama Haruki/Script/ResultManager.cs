@@ -42,7 +42,7 @@ public class ResultManager : MonoBehaviour
             result_timer_text.text = "クリア時間 : " + min.ToString() + ":" + sec.ToString();
 
         //スコア表示
-        result_score_text.text = clear_score.ToString();
+        result_score_text.text = "評定 : " + clear_score.ToString();
 
     }
 }

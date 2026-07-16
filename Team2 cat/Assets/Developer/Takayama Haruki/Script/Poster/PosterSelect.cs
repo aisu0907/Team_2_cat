@@ -1,41 +1,36 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Const;
+using System.Collections;
 
 public class Poster : MouseController
 {
     [Header("使用オブジェクト")]
     [SerializeField] GameObject highlight_effect; //ハイライトエフェクトオブジェクト
 
-    [Header("スタートエフェクト設定")]
-    public float poster_pos_x; //ポスターの目標X位置
-    public float poster_pos_y; //ポスターの目標Y位置
-    public float poster_speed; //ポスターの目標に向かうスピード
-
     [Header("エフェクト設定")]
-    public float effect_size_x; //ハイライトエフェクトの横幅
-    public float effect_size_y; //ハイライトエフェクトの縦幅
     public float poster_up_size_rate; //大きくするエフェクトの拡大率
+    public Color poster_click_color;  //ポスタークリック時の色
+    public float poster_blinking_time;//ポスターの色が変わる時間
+    public int blinking_count; //点滅回数
 
     [Header("サウンド設定")]
     public float poster_cursoe_vlome; //カーソルを合わせた時のSE音量
-    private Image poster; //ポスター画像
 
-    private GameObject highlight_effect_save; //ハイライトエフェクト一時保存用
-    private bool highlight;     //ハイライト切り替え用
-    private Vector3 effect_size;//ハイライトエフェクト保存用
+    private Image poster; //ポスター画像
+    private SoundManager sound; //サウンドインスタンス省略用
     private Vector3 poster_up_size;  //拡大後サイズ保存用
     private Vector3 poster_size_save;//ポスターの大きさ保存用
-    private SoundManager sound; //サウンドインスタンス省略用
+    private bool effect_end; //エフェクトの状態管理用
     private void Start() 
     {
         //フラグリセット
-        highlight = true;
+        effect_end = true;
 
+        //初期設定
         poster = gameObject.GetComponent<Image>(); //画像をセット
         poster_size_save = gameObject.transform.localScale; //ポスターの元のサイズを保存
         poster_up_size = gameObject.transform.localScale * poster_up_size_rate;　//大きくするサイズを設定
-        effect_size = new Vector3(effect_size_x, effect_size_y, 0); //座標を設定
 
         sound = SoundManager.Instance; //省略
     }
@@ -43,7 +38,7 @@ public class Poster : MouseController
     private void Update()
     {
         //演出が終了していたら
-        if(GameManager.Instance.effect_end)
+        if(StartGame.Instance.game_start)
         {
             MouseControll(ref is_hover, not_ui); //マウス操作を呼ぶ
         }
@@ -52,43 +47,53 @@ public class Poster : MouseController
     //クリック時の処理
     public override void OnClick()
     {
-        GameManager.Instance.GameClear(poster.sprite);
+        //エフェクトが終了していたら
+        if (effect_end)
+        {
+            effect_end = false;
+
+            StartCoroutine(PosterClickEffect()); //エフェクトスタート
+
+            GameManager.Instance.GameClear(poster.sprite); //クリアチェック
+        }
     }
 
     //カーソルが上にある時の処理
     public override void OnEnter()
     {
-        if (highlight == true)
-        {
-            sound.PlaySE((int)SoundConst.SE_ID.POSTER_CURSOR, poster_cursoe_vlome); //音を鳴らす
-
-            //ハイライトオブジェクトを生成
-
-            //if (highlight_effect_save == null)
-            //    highlight_effect_save = Instantiate(highlight_effect, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0), Quaternion.identity); //オブジェクトを生成
-            //highlight_effect_save.transform.localScale = effect_size + gameObject.transform.localScale; //大きさを設定 
-
-            //ポスターの大きさを変更
-            gameObject.transform.localScale = poster_up_size;
-                //(poster_size_save + new Vector3(poster_size_up_x, poster_size_up_y, 0.0f));
-        }
-
-        highlight = false;
+        sound.PlaySE((int)SoundConst.SE_ID.POSTER_CURSOR, poster_cursoe_vlome); //音を鳴らす
+                    
+        //ポスターの大きさを変更
+        gameObject.transform.localScale = poster_up_size;
     }
 
     //カーソルがいなくなったときの処理
     public override void OnExit()
     {
-        if (highlight == false)
-        {
-            ////ハイライトオブジェクトを削除
-            //Destroy(highlight_effect_save);
+        //ポスターの大きさをリセット
+        gameObject.transform.localScale = poster_size_save;
+    }
 
-            //ポスターの大きさをリセット
-            gameObject.transform.localScale = poster_size_save;
+    /// <summary>
+    /// ポスタークリック時の演出を処理するようコルーチン
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator PosterClickEffect()
+    {
+        Color start_color = poster.color;
+
+        for (int i = 0; i < blinking_count; i++)
+        {
+            poster.color = poster_click_color; //ポスターの色を変更
+
+            yield return new WaitForSeconds(poster_blinking_time); //指定時間待つ
+
+            poster.color = start_color; //最初の色に戻す
+
+            yield return new WaitForSeconds(poster_blinking_time); //指定時間待つ
         }
 
-        highlight = true;
+        effect_end = true; 
 
     }
 }

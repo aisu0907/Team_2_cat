@@ -4,8 +4,8 @@ using System.Collections;
 
 public class StartGame : MonoBehaviour
 {
-    [SerializeField] GameObject fade_obj;  //フェード用オブジェクト
-    [SerializeField] GameObject start_text;//スタートコール用オブジェクト
+    [SerializeField] FadeManager fade_in_obj; //FadeManagers取得用
+    [SerializeField] GameObject  start_text;  //スタートコール用オブジェクト
     [SerializeField] GameObject[] set_object; //スタート時にセットするオブジェクト
    
     //演出管理用タイマー
@@ -23,7 +23,6 @@ public class StartGame : MonoBehaviour
     public bool game_start; //ゲームのスタート管理用フラグ
     public bool text_start; //テキストのスタート管理用フラグ
 
-    private FadeManager fade_in_obj; //FadeManager取得用
     private SoundManager sound;  //サウンドインスタン省略用
     private GameObject save_obj; //オブジェクト一時的保存用
 
@@ -34,8 +33,6 @@ public class StartGame : MonoBehaviour
 
         game_start = false;
         text_start = false;
-
-        fade_in_obj = fade_obj.GetComponent<FadeManager>();
     }
     
     void Start()
@@ -43,8 +40,6 @@ public class StartGame : MonoBehaviour
         //オブジェクトを非表示
         for (int i = 0; i < set_object.Length; i++)
             set_object[i].SetActive(false);
-
-        fade_obj.SetActive(true); //フェードオブジェクトを表示
 
         sound = SoundManager.Instance; //省略
 

@@ -268,7 +268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &421702079
 RectTransform:
   m_ObjectHideFlags: 0
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1950,27 +1950,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 497064084301962595, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 497064084301962595, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.00000017438617
       objectReference: {fileID: 0}
     - target: {fileID: 898412539915168011, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 898412539915168011, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 898412539915168011, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 2344833167918129478, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_Name
       value: BookUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344833167918129478, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4398906932493056670, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: book_ui
@@ -1982,27 +1986,27 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     - target: {fileID: 6092016425837227274, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6092016425837227274, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6092016425837227274, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.69290906
       objectReference: {fileID: 0}
     - target: {fileID: 8030056244250892421, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8030056244250892421, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8030056244250892421, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 8374160158179899046, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_Pivot.x
