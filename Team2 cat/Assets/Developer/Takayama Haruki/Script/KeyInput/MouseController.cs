@@ -6,7 +6,7 @@ public class MouseController : MonoBehaviour
     public bool not_ui = false; //UIの上にいるかどうか
     public bool is_hover = false;//マウスのホバー状態
     public bool hover_click = true;//クリックを長押ししているどうか
-    public bool obj_hover = false; //長押ししている時にオブジェクトの上にいるかどうか
+    public bool obj_hover = true; //長押ししている時にオブジェクトの上にいるかどうか
 
     public bool debug_log_hover = true; //デバッグログ管理用フラグ
 
