@@ -66,10 +66,6 @@ public class Timer : MonoBehaviour
         int sec = (int)game_time % 60;//•b‚ğŒvZ
             
         //c‚èŠÔ‚ğ•\¦
-        if (game_time % 60 < 10)
-         time_text.text = "ŠÔ : " + min.ToString() + ":0" + sec.ToString();
-        else
-         time_text.text = "ŠÔ : " + min.ToString() + ":" + sec.ToString();
-
+        time_text.text = "ŠÔ : " + min + ":" + sec.ToString("00");
     }
 }
