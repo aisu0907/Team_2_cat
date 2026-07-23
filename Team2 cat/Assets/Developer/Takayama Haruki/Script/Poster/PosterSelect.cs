@@ -13,6 +13,9 @@ public class Poster : MouseController
     public Color poster_click_color;  //ポスタークリック時の色
     public float poster_blinking_time;//ポスターの色が変わる時間
     public int blinking_count; //点滅回数
+    public int vibration_count; //振動回数
+    public float next_vibration_time; //震える間隔
+    public float vibration_intensity; //振動の強さ
 
     [Header("サウンド設定")]
     public float poster_cursoe_vlome; //カーソルを合わせた時のSE音量
@@ -22,11 +25,12 @@ public class Poster : MouseController
     private Vector3 poster_up_size;  //拡大後サイズ保存用
     private Vector3 poster_size_save;//ポスターの大きさ保存用
     private bool effect_end; //エフェクトの状態管理用
+
     private void Start() 
     {
         //フラグリセット
         effect_end = true;
-
+    
         //初期設定
         poster = gameObject.GetComponent<Image>(); //画像をセット
         poster_size_save = gameObject.transform.localScale; //ポスターの元のサイズを保存
@@ -54,7 +58,11 @@ public class Poster : MouseController
 
             StartCoroutine(PosterClickEffect()); //エフェクトスタート
 
-            GameManager.Instance.GameClear(poster.sprite); //クリアチェック
+            //答えじゃなかった場合
+            if(!GameManager.Instance.GameClear(poster.sprite)) //クリアチェック
+            {
+                StartCoroutine(PosterVibration());//エフェクトスタート
+            }
         }
     }
 
@@ -92,8 +100,29 @@ public class Poster : MouseController
 
             yield return new WaitForSeconds(poster_blinking_time); //指定時間待つ
         }
+    }
 
-        effect_end = true; 
+    private IEnumerator PosterVibration()
+    {
+        RectTransform poster_rect = poster.GetComponent<RectTransform>(); //ポスターのRectTransformを取得
+        Vector2 start_pos = poster_rect.anchoredPosition; //初期位置を取得
 
+        //vibration_count分回す
+        for (int i = 0; i < vibration_count; i++)
+        {
+            Vector2 target_pos = poster_rect.anchoredPosition; //Vector2に変換
+
+            target_pos.x = start_pos.x + vibration_intensity; //振動後の位置に変更
+
+            poster_rect.anchoredPosition = target_pos; //posterの位置を更新
+
+            vibration_intensity = -vibration_intensity; //振動の位置を逆にする
+
+            yield return new WaitForSeconds(next_vibration_time);
+        }
+
+        poster_rect.anchoredPosition = start_pos; //初期位置に戻す
+
+        effect_end = true; //エフェクトの終了
     }
 }

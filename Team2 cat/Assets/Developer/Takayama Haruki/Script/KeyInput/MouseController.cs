@@ -3,12 +3,12 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 public class MouseController : MonoBehaviour
 {
-    public bool not_ui = false; //UIの上にいるかどうか
-    public bool is_hover = false;//マウスのホバー状態
-    public bool hover_click = true;//クリックを長押ししているどうか
-    public bool obj_hover = true; //長押ししている時にオブジェクトの上にいるかどうか
+    protected bool not_ui = false; //UIの上にいるかどうか
+    protected bool is_hover = false;//マウスのホバー状態
+    protected bool hover_click = true;//クリックを長押ししているどうか
+    protected bool obj_hover = true; //長押ししている時にオブジェクトの上にいるかどうか
 
-    public bool debug_log_hover = true; //デバッグログ管理用フラグ
+    protected bool debug_log_hover = true; //デバッグログ管理用フラグ
 
     /// <summary>
     /// マウスの状態を検知する用メソッド
@@ -39,6 +39,7 @@ public class MouseController : MonoBehaviour
         //当たっているものが自分自身か確認
         bool now_hovered = (hit.collider != null && hit.collider.gameObject == gameObject); //現フレームのマウスのホバー状態
 
+        //オブジェクトに触れている時
         if (hit.collider != null && now_hovered)
         {
             if (debug_log_hover)

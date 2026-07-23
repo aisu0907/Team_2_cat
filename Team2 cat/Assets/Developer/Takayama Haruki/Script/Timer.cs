@@ -45,7 +45,7 @@ public class Timer : MonoBehaviour
         }
 
         //指定の秒数経ったらかつゲームタイマーが初期じゃなかった時
-        if ((int)(game_time) % 30 == 0 && start_time != game_time)
+        if ((int)(game_time) % score_down_time == 0 && start_time != game_time)
         {
             //スコアが下げれる場合
             if (score_down)

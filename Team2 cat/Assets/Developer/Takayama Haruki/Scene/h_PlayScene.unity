@@ -1202,6 +1202,10 @@ PrefabInstance:
       propertyPath: game_time
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 5996030519601221008, guid: 30382c611b6378c428031382af3b0ddf, type: 3}
+      propertyPath: score_down_time
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6654548315377882407, guid: 30382c611b6378c428031382af3b0ddf, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

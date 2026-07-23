@@ -1,6 +1,5 @@
 using Const;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 using TMPro;
 
@@ -9,6 +8,7 @@ public class ResultManager : MonoBehaviour
     [SerializeField] RectTransform[] target_star; //目的位置スターオブジェクト
     [SerializeField] GameObject star;     //評価用スターオブジェクト
     [SerializeField] GameObject fade_obj; //フェード用オブジェクト
+    [SerializeField] Transform stars;
     [SerializeField] TextMeshProUGUI result_timer_text; //クリア時間表示オブジェクト
     [SerializeField] TextMeshProUGUI result_score_text; //クリアスコア表示オブジェクト
     public float effect_time; //星が大きくなるまでの時間
@@ -22,26 +22,32 @@ public class ResultManager : MonoBehaviour
 
     void Start()
     {
-        fade_in = fade_obj.GetComponent<FadeManager>(); 
+        effect_start = false;
 
-        fade_in.StartFadeIn();
-        if (GameManager.result_time != 0)
-            clear_time  = (int)(Timer.Instance.start_time - GameManager.result_time);
-        clear_score = ScoreManager.result_score;
+        fade_in = fade_obj.GetComponent<FadeManager>(); 
 
         sound = SoundManager.Instance;
 
+        clear_time = (int)(Timer.Instance.start_time - GameManager.result_time);
+        clear_score = ScoreManager.result_score;
 
+        fade_in.StartFadeIn();
+
+        StartCoroutine(StartEvaluate());
     }
 
     void Update()
     {
+        if (!effect_start)
+        {
+            effect_start = true;
+        }
     }
 
     private void FixedUpdate()
     {
-       int min = (int)clear_time / 60;//分を計算
-       int sec = (int)clear_time % 60;//秒を計算
+        int min = (int)clear_time / 60;//分を計算
+        int sec = (int)clear_time % 60;//秒を計算
 
         //クリア時間を表示
         result_timer_text.text = "クリア時間 : " + min + ":" + sec.ToString("00");
@@ -51,36 +57,47 @@ public class ResultManager : MonoBehaviour
 
     }
 
-    /// リザルト評価のエフェクト管理用メソッド
+    /// リザルト評価のエフェクト管理用コルーチン
     /// </summary>
     /// <returns></returns>
     IEnumerator StartEvaluate()
     {
+        int star_count = (int)(clear_score / 0.5) / 2;
+
+        Debug.Log("通ってる");
         for (int i = 0; i < clear_score; i++)
         {
-            star_save = Instantiate(star, target_star[i].transform);
+            star_save = Instantiate(star, stars);
+            star_save.GetComponent<RectTransform>().anchoredPosition = target_star[i].anchoredPosition;
             star_save.GetComponent<RectTransform>().sizeDelta = new Vector2(1, 1);
 
-            yield return StartCoroutine(StarSizeUp(star_save.GetComponent<RectTransform>().sizeDelta, i, effect_time));
+            yield return StartCoroutine(StarSizeUp(star_save.GetComponent<RectTransform>().sizeDelta, target_star[i], effect_time, star_count));
+
+            star_count--;
 
             yield return new WaitForSeconds(0.1f);
         }
-
-
-
     }
 
-    IEnumerator StarSizeUp(Vector2 start_size, int i, float duraction)
+    /// <summary>
+    /// 星の大きさ変更用コルーチン
+    /// </summary>
+    /// <param name="start_size">変更前の大きさ</param>
+    /// <param name="target">参照するターゲットの</param>
+    /// <param name="duraction">変更にかかる時間</param>
+    /// <param name="evaluate">星の数</param>
+    /// <returns></returns>
+    IEnumerator StarSizeUp(Vector2 start_size, RectTransform target, float duraction, int evaluate)
     {
         RectTransform rect = star_save.GetComponent<RectTransform>();
         Vector2 target_size;
         float time = 0;
 
         //クリアスコアに応じて星の大きさを変える
-        if (clear_score % 0.5f == 0)
-            target_size = target_star[i].sizeDelta;
+        if (0 < evaluate)
+            target_size = target.sizeDelta;
         else
-            target_size = (target_star[i].sizeDelta / 2);
+            target_size = (target.sizeDelta / 2);
 
         //演出が終了するまで
         while (time < duraction)
@@ -92,7 +109,7 @@ public class ResultManager : MonoBehaviour
             yield return null;
         }
 
-        rect.sizeDelta = target_star[i].sizeDelta;
+        rect.sizeDelta = target_size;
     }
 }
 

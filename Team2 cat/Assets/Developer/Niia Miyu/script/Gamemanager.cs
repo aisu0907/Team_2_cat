@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
     /// ゲームクリア判定用メソッド
     /// </summary>
     /// <param name="ans">判定する画像</param>
-    public void GameClear(Sprite ans)
+    public bool GameClear(Sprite ans)
     {
         //ゲームがクリアされてなかったら
         if (!is_game_clear)
@@ -144,6 +144,8 @@ public class GameManager : MonoBehaviour
 
                 UseMove();
                 fade_obj.StartFadeOut(move_scene, SceneName.RESULT);
+
+                return true;
             }
             else
             {
@@ -152,6 +154,8 @@ public class GameManager : MonoBehaviour
                 UseMove();
             }
         }
+
+        return false;
     }
 
 

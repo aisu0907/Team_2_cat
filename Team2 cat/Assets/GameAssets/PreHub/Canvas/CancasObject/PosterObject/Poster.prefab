@@ -99,6 +99,9 @@ MonoBehaviour:
   poster_click_color: {r: 1, g: 1, b: 0, a: 1}
   poster_blinking_time: 0.1
   blinking_count: 2
+  vibration_count: 4
+  next_vibration_time: 0.075
+  vibration_intensity: 10
   poster_cursoe_vlome: 1
 --- !u!61 &1132267570322091138
 BoxCollider2D:
