@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public bool effect_start;//エフェクトの開始管理用フラグ
     public bool effect_end;  //エフェクトの終了管理用フラグ
 
-    public bool is_game_over { get; private set; }//二重にシーン移動しないようにする
+    public static bool is_game_over { get; private set; }//二重にシーン移動しないようにする
     public static float result_time { get; private set; }
 
     private int ans_genre; //答えのジャンル
@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
 
             ScoreManager.result_score = 1.0f;
 
-            fade_obj.StartFadeOut(move_scene, SceneName.GAMEOVER);
+            fade_obj.StartFadeOut(move_scene, SceneName.RESULT);
 
         }
     }
@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                sound.PlaySE((int)SoundConst.SE_ID.MISS, 1.0f); //
+                sound.PlaySE((int)SoundConst.SE_ID.MISS, 1.0f); //音を鳴らす
                 ScoreManager.Instance.ScoreDown();
                 UseMove();
             }

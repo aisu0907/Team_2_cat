@@ -17,7 +17,7 @@ public class FadeManager : MonoBehaviour
     }
 
     /// <summary>
-    /// フェードアウト用メソッド
+    /// フェードイン用メソッド
     /// </summary>
     /// <param name="move_scene">シーン移動管理用</param>
     /// <param name="scene_name">移動するシーン</param>
@@ -56,6 +56,7 @@ public class FadeManager : MonoBehaviour
         while (elapsed_time < fade_duration)
         {
             elapsed_time += Time.deltaTime;
+
             // Mathf.Lerpを使って、時間の経過に合わせてアルファ値を補間する
             float currentAlpha = Mathf.Lerp(start_alpha, end_alpha, elapsed_time / fade_duration);
             

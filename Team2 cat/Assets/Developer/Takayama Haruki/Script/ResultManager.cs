@@ -5,43 +5,61 @@ using TMPro;
 
 public class ResultManager : MonoBehaviour
 {
+    [Header("オブジェクトデータ系")]
+    [SerializeField] GameObject[] clear_data; //データオブジェクト
+    [SerializeField] GameObject star;  //評価用スターオブジェクト
+    [SerializeField] Transform  stars; //星を生成する場所
     [SerializeField] RectTransform[] target_star; //目的位置スターオブジェクト
-    [SerializeField] GameObject star;     //評価用スターオブジェクト
-    [SerializeField] GameObject fade_obj; //フェード用オブジェクト
-    [SerializeField] Transform stars;
+    [SerializeField] FadeManager fade_obj; //フェード用オブジェクト
     [SerializeField] TextMeshProUGUI result_timer_text; //クリア時間表示オブジェクト
     [SerializeField] TextMeshProUGUI result_score_text; //クリアスコア表示オブジェクト
+
+    [Header("タイミングタイム系")]
+    public float clear_time_time; //タイムが出るまでの時間
+    public float clear_score_time;//スコアが出までの時間
+    public float customer_time; //客のコメントが出るまでの時間
+    public float button_time;   //ボタンが出るまでの時間
     public float effect_time; //星が大きくなるまでの時間
-    
-    private FadeManager fade_in; //FadeManager取得用
-    private SoundManager sound; //サウンドインスタンス省略用
+
+    [Header("サウンドボリューム")]
+    public float star_up_vlome; //星エフェクトSE音量
+    public float result_data_vlome; //データ出現SE音量
+
+    public bool debug_flag;
+    public float clear_score { get; private set; }//クリア時の評価 
+
+    private SoundManager sound;  //サウンドインスタンス省略用
     private GameObject star_save; //スターオブジェクト一時保存用
-    private bool effect_start; //エフェクト管理用フラグ
     private float clear_time; //クリア時間
-    private float clear_score;//クリア時の評価
+
+    public static ResultManager Instance; //シングルトン
 
     void Start()
     {
-        effect_start = false;
+        Instance = this; //シングルトン
 
-        fade_in = fade_obj.GetComponent<FadeManager>(); 
+        sound = SoundManager.Instance; //省略用
 
-        sound = SoundManager.Instance;
+        if (!debug_flag)
+        {
+            clear_time = (int)(Timer.Instance.start_time - GameManager.result_time);
+            clear_score = ScoreManager.result_score;
+        }
+        else
+        {
+            clear_time = 3;
+            clear_score = 3;
+        }
 
-        clear_time = (int)(Timer.Instance.start_time - GameManager.result_time);
-        clear_score = ScoreManager.result_score;
+        //データを隠す
+        for (int i = 0; i < clear_data.Length; i++)
+        {
+            clear_data[i].SetActive(false);
+        }
 
-        fade_in.StartFadeIn();
+        fade_obj.StartFadeIn();
 
         StartCoroutine(StartEvaluate());
-    }
-
-    void Update()
-    {
-        if (!effect_start)
-        {
-            effect_start = true;
-        }
     }
 
     private void FixedUpdate()
@@ -53,7 +71,7 @@ public class ResultManager : MonoBehaviour
         result_timer_text.text = "クリア時間 : " + min + ":" + sec.ToString("00");
 
         //スコア表示
-        result_score_text.text = "評定 : " + clear_score;
+        result_score_text.text = "レビュー評価 : " + clear_score;
 
     }
 
@@ -62,21 +80,46 @@ public class ResultManager : MonoBehaviour
     /// <returns></returns>
     IEnumerator StartEvaluate()
     {
-        int star_count = (int)(clear_score / 0.5) / 2;
+        yield return new WaitForSeconds(clear_time_time); //待つ
+        
+        if (!GameManager.is_game_over)
+        {
+            clear_data[ResultData.TIME].SetActive(true); //クリアタイムを表示
 
-        Debug.Log("通ってる");
+            sound.PlaySE((int)SoundConst.SE_ID.RESULT_DATA_POP, result_data_vlome); //音を鳴らす
+
+            yield return new WaitForSeconds(clear_score_time); //待つ
+        }
+
+        int star_count = (int)(clear_score / 0.5) / 2; //星の数を取得
+
+        //スコア系表示
+        clear_data[ResultData.SCORE].SetActive(true);
+        clear_data[ResultData.STAR].SetActive(true);
+
+        sound.PlaySE((int)SoundConst.SE_ID.RESULT_DATA_POP, result_data_vlome); //音を鳴らす
+
         for (int i = 0; i < clear_score; i++)
         {
-            star_save = Instantiate(star, stars);
-            star_save.GetComponent<RectTransform>().anchoredPosition = target_star[i].anchoredPosition;
-            star_save.GetComponent<RectTransform>().sizeDelta = new Vector2(1, 1);
+            star_save = Instantiate(star, stars); //星を生成
+            star_save.GetComponent<RectTransform>().anchoredPosition = target_star[i].anchoredPosition; //星の位置を変更
+            star_save.GetComponent<RectTransform>().sizeDelta = new Vector2(1, 1); //星のサイズを変更
 
+            //星のエフェクトコルーチン
             yield return StartCoroutine(StarSizeUp(star_save.GetComponent<RectTransform>().sizeDelta, target_star[i], effect_time, star_count));
 
-            star_count--;
+            star_count--; //星の数を減らす
 
             yield return new WaitForSeconds(0.1f);
         }
+
+        yield return new WaitForSeconds(customer_time);
+
+        clear_data[ResultData.CSTOMER].SetActive(true); //レビュー表示
+        clear_data[ResultData.BUTTON].SetActive(true);  //ボタン表示
+
+        sound.PlaySE((int)SoundConst.SE_ID.RESULT_DATA_POP, result_data_vlome); //音を鳴らす
+
     }
 
     /// <summary>
@@ -101,15 +144,20 @@ public class ResultManager : MonoBehaviour
 
         //演出が終了するまで
         while (time < duraction)
-        {
+        {            
             time += Time.deltaTime;
 
+            //大きさを徐々に変更
             rect.sizeDelta = Vector2.Lerp(start_size, target_size, time / duraction);
 
             yield return null;
         }
 
-        rect.sizeDelta = target_size;
+        rect.sizeDelta = target_size; //目標の大きさにする
+
+        //音を鳴らす
+        sound.PlaySE((int)SoundConst.SE_ID.STAR_UP, star_up_vlome);
+
     }
 }
 

@@ -56,7 +56,7 @@ public class Poster : MouseController
         {
             effect_end = false;
 
-            StartCoroutine(PosterClickEffect()); //エフェクトスタート
+            //StartCoroutine(PosterClickEffect()); //エフェクトスタート
 
             //答えじゃなかった場合
             if(!GameManager.Instance.GameClear(poster.sprite)) //クリアチェック

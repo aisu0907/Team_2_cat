@@ -40,7 +40,7 @@ public class Timer : MonoBehaviour
             }
             else
                 //ゲームオーバーじゃなかった場合
-                if(!GameManager.Instance.is_game_over)
+                if(!GameManager.is_game_over)
                     GameManager.Instance.GameOver(); //ゲームオーバーを起動
         }
 

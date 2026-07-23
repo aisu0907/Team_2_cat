@@ -101,6 +101,7 @@ public class CustomerText : MonoBehaviour
             }
             else
             {
+                //ポスターを見つけていた場合
                 if (poster_switch)
                 {
                     hint = "ENDTEXT";

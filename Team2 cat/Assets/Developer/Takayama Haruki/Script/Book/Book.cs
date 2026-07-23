@@ -19,6 +19,10 @@ public class Book : MouseController
 
     private void Start()
     {
+        //フラグリセット
+        open_book = false;
+        not_ui = true;
+
         //図鑑表示リセット
         book_ui.SetActive(false);
 

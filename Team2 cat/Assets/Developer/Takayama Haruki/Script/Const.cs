@@ -29,6 +29,7 @@ namespace Const
         public const int SPACE = 5;
     }
 
+    //ポスターの情報
     public static class PosterConst
     {
         public const int COMEDY = 0;
@@ -40,6 +41,7 @@ namespace Const
         public const int SUMMARY = 2;
     }
 
+    //サウンドのID
     public static class SoundConst
     {
         public const int BGM = 0;
@@ -62,6 +64,17 @@ namespace Const
             BOOK_OPEN,
             MISS,
             CUSTOMER_POP,
+            STAR_UP,
+            RESULT_DATA_POP,
         }
+    }
+
+    public static class ResultData
+    {
+        public const int TIME  = 0;
+        public const int STAR  = 1;
+        public const int SCORE = 2;
+        public const int CSTOMER = 3;
+        public const int BUTTON = 4;
     }
 }
