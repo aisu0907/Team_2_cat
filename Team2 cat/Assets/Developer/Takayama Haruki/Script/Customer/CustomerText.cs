@@ -92,7 +92,8 @@ public class CustomerText : MonoBehaviour
 
                             text_next = false;
 
-                            SaveText();
+                            if (hint != "ENDTEXT")
+                                SaveText();
                         }
                     }
                 }
@@ -104,7 +105,7 @@ public class CustomerText : MonoBehaviour
                 //ポスターを見つけていた場合
                 if (poster_switch)
                 {
-                    hint = "ENDTEXT";
+                    //hint = "ENDTEXT";
                     return;
                 }
                 else
