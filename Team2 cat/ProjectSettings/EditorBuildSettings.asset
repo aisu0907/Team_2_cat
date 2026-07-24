@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Developer/Takayama Haruki/Scene/h_PlayScene.unity
     guid: f79133bb93e1a3944b41bfabb5f18350
-  - enabled: 1
+  - enabled: 0
     path: Assets/MainScenes/GameOverScene.unity
     guid: 778aaaa3e2078f8499456e529824a0dd
   - enabled: 1

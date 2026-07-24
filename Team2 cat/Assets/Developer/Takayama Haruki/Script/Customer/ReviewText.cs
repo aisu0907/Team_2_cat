@@ -43,7 +43,7 @@ public class ReviewText : MonoBehaviour
         //テキストの終わりを検出しなかった場合
         while(!review_end)
         {
-            if(review_text == ResultManager.Instance.clear_score.ToString() && !review_switch)
+            if(review_text == ((int)ResultManager.Instance.clear_score).ToString() && !review_switch)
             {
                 review_switch = true;
 
