@@ -1477,6 +1477,34 @@ PrefabInstance:
       propertyPath: book_coment
       value: 
       objectReference: {fileID: 1793923138}
+    - target: {fileID: 3192919317962211876, guid: 62e4bf83b729cf241bccc1099574fa50, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 128.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 3192919317962211876, guid: 62e4bf83b729cf241bccc1099574fa50, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 231.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 3737046679498783728, guid: 62e4bf83b729cf241bccc1099574fa50, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 651.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 3737046679498783728, guid: 62e4bf83b729cf241bccc1099574fa50, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 95.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3737046679498783728, guid: 62e4bf83b729cf241bccc1099574fa50, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3737046679498783728, guid: 62e4bf83b729cf241bccc1099574fa50, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409977989966126503, guid: 62e4bf83b729cf241bccc1099574fa50, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8822083596577154132, guid: b6be913171c292f42a71d5522a973f4d, type: 3}
     - target: {fileID: 4526211211452134400, guid: 62e4bf83b729cf241bccc1099574fa50, type: 3}
       propertyPath: m_Name
       value: Cstomers
@@ -1489,6 +1517,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 7169130617093093788, guid: 62e4bf83b729cf241bccc1099574fa50, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7630982790848757525, guid: 62e4bf83b729cf241bccc1099574fa50, type: 3}
       propertyPath: m_Pivot.x
       value: 0
