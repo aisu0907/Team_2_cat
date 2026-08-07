@@ -1,9 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class PosterInformationText : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI[] movie_information_data; //テキストを入れるオブジェクト
+    [SerializeField] ScrollbarController scrollbar; //リセットするスクロールバー
 
     public static PosterInformationText Instanse; //シングルトン
     private void Awake()
@@ -17,6 +20,8 @@ public class PosterInformationText : MonoBehaviour
     /// <param name="movie_data"></param>
     public void SetMovieDataText(string[] movie_data)
     {
+        scrollbar.BarPosReset();
+
         //テキストオブジェクトの数分ループ
         for (int i = 0; i < movie_information_data.Length; i++)
         {
