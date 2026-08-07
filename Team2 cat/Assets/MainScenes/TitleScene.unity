@@ -267,7 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
   fade_obj: {fileID: 393847788}
   move_scene: 1
-  select_vlome: 1
+  select_vlome: 0.45
 --- !u!1 &307062107
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 307062111}
   - component: {fileID: 307062110}
   - component: {fileID: 307062109}
+  - component: {fileID: 307062112}
   m_Layer: 5
   m_Name: EndButton
   m_TagString: Untagged
@@ -350,7 +351,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 307062110}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 307062112}
+        m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
+        m_MethodName: GameEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &307062110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,6 +402,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307062107}
   m_CullTransparentMesh: 1
+--- !u!114 &307062112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307062107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5ec8aa8fc24dc4685083a4c9ebaa38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExitButton
 --- !u!1 &348696758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,6 +1344,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1175319186460669213, guid: 0e7f9576e0f6a6343a24a387b5464f03, type: 3}
+      propertyPath: bgm_vlome
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5325491146363786285, guid: 0e7f9576e0f6a6343a24a387b5464f03, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.61217

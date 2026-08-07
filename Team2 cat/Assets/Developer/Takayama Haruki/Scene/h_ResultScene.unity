@@ -1140,7 +1140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
   fade_obj: {fileID: 1149349967}
   move_scene: 1
-  select_vlome: 1
+  select_vlome: 0.45
 --- !u!114 &1334125718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1450,7 +1450,7 @@ MonoBehaviour:
   customer_time: 0.8
   button_time: 0
   effect_time: 0.6
-  star_up_vlome: 1
+  star_up_vlome: 0.5
   result_data_vlome: 1
   debug_flag: 0
 --- !u!212 &1549589626

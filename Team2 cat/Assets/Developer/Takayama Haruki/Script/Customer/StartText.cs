@@ -101,7 +101,7 @@ public class StartText : MonoBehaviour
         //テキストオブジェクトにテキストを入れる
         customer_text.text = start_text;
 
-        SoundManager.Instance.PlaySE((int)SoundConst.SE_ID.CUSTOMER_POP, 1.0f);
+        SoundManager.Instance.PlaySE((int)SoundConst.SE_ID.CUSTOMER_POP, pop_sound_vlome);
 
         StartCoroutine(ShowText()); //コルーチンを開始
     }
