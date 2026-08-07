@@ -1116,6 +1116,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6923274258905248822}
     - target: {fileID: 2118262177351735767, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
+      propertyPath: scrollbar
+      value: 
+      objectReference: {fileID: 1213597338}
+    - target: {fileID: 2118262177351735767, guid: 9e48ac0b804375048a401ef1a1d3f386, type: 3}
       propertyPath: movie_information_data.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -2139,7 +2143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3585144817082443743, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000061035156
+      value: 863.69995
       objectReference: {fileID: 0}
     - target: {fileID: 4097838306847091793, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2243,7 +2247,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6926418990691929158, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_Value
-      value: 0.9999999
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926418990691929158, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6926418990691929158, guid: 9bd8c21d61c28894483aca79c6e9b1d1, type: 3}
       propertyPath: m_Colors.m_DisabledColor.b
